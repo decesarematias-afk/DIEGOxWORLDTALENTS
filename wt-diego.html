@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Diego Armando Maradona — World Talents</title>
-<style>html,body{margin:0;padding:0;background:#08080d;overflow:hidden;height:100vh;width:100%;max-width:100vw}#root{height:100vh;width:100%;max-width:100vw;display:flex;justify-content:center;overflow:hidden}</style>
+<style>html,body{margin:0;padding:0;background:#08080d;width:100%;max-width:100vw;overflow-x:hidden}#root{width:100%;max-width:100vw;display:flex;justify-content:center}</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
@@ -531,8 +531,8 @@ const getStyles = (C) => { const tx2=C.wa(0.45),tx3=C.wa(0.25),bg1=C.wa(0.03),bd
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 ::-webkit-scrollbar{display:none}
 
-.wt-root{width:100%;max-width:430px;height:100vh;margin:0 auto;position:relative;overflow:hidden;background:${C.black};color:${C.white};font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased}
-.wt-scroll{height:calc(100vh - 68px);overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth}
+.wt-root{width:100%;max-width:430px;min-height:100vh;margin:0 auto;position:relative;overflow:visible;background:${C.black};color:${C.white};font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased}
+.wt-scroll{overflow:visible;scroll-behavior:smooth}
 
 /* Cover */
 .wt-cover{position:relative;height:250px}
@@ -650,12 +650,12 @@ const getStyles = (C) => { const tx2=C.wa(0.45),tx3=C.wa(0.25),bg1=C.wa(0.03),bd
 .wt-sec{font-size:13px;font-weight:700;padding:0 16px;margin-top:22px;margin-bottom:10px;color:${C.wa(0.5)};letter-spacing:-0.2px}
 
 /* Bottom nav */
-.wt-nav{position:absolute;bottom:0;left:0;right:0;height:68px;backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:space-around;z-index:100;background:linear-gradient(to top,${C.black},rgba(8,8,13,.92));border-top:1px solid ${bd1}}
+.wt-nav{display:none}
 .wt-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:8px 16px;border:none;background:none}
 .wt-nav-label{font-size:9px;font-weight:600;font-family:'Outfit',sans-serif}
 
 /* FAB */
-.wt-fab{position:absolute;bottom:78px;right:16px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,${C.teal},${C.tealDk});border:none;color:${C.white};cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px ${C.ta(0.35)};z-index:90;animation:wt-fab-float 3s ease-in-out infinite;transition:transform .2s}
+.wt-fab{display:none}
 .wt-fab:hover{transform:scale(1.08)}
 @keyframes wt-fab-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 
@@ -3543,6 +3543,14 @@ function WorldTalents() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(React.createElement(WorldTalents));
+
+// Report height to parent for iframe auto-resize
+setInterval(function() {
+  var h = document.documentElement.scrollHeight;
+  if (window.parent !== window) {
+    window.parent.postMessage({ type: 'wt-resize', height: h }, '*');
+  }
+}, 300);
 </script>
 </body>
 </html>
