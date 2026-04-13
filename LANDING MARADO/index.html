@@ -7,7 +7,7 @@
     <meta name="description" content="El lado que nunca te contaron de Diego Armando Maradona. De Fiorito al infinito. 1960–2020.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Space+Mono:wght@400;700&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Space+Mono:wght@400;700&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
@@ -2293,6 +2293,560 @@ select.login-input option{background:#0A0A0F;color:#fff}
 .fap-bar.active{background:#FFE600;animation:fapPulse 0.4s ease-in-out infinite alternate}
 @keyframes fapPulse{from{transform:scaleY(1)}to{transform:scaleY(1.35)}}
 .fap-time{font-family:'Space Mono',monospace;font-size:0.6rem;color:rgba(240,237,230,0.45);flex-shrink:0;min-width:28px;text-align:right;letter-spacing:0}
+
+/* ═══════════════════════════════════════════════
+   PERFIL WORLD TALENTS — DIEGO
+   Variables: celeste + dorado argentino
+   ═══════════════════════════════════════════════ */
+
+#wt-profile-diego {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 60px;
+  background: #070b12;
+  overflow: hidden;
+}
+
+/* Ambient glows */
+.wt-bg-glow-celeste {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(117,170,219,0.10) 0%, transparent 70%);
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.wt-bg-glow-gold {
+  position: absolute;
+  width: 400px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%);
+  bottom: 0; right: -100px;
+  pointer-events: none;
+}
+
+/* Stars particle layer */
+.wt-stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(117,170,219,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 10%, rgba(212,175,55,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 80%, rgba(117,170,219,0.4) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 10% 60%, rgba(245,203,92,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 50%, rgba(117,170,219,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 20%, rgba(212,175,55,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 90%, rgba(117,170,219,0.3) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Card container */
+.wt-profile-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Header stats */
+.wt-profile-header-stats {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.wt-stat-badge {
+  background: rgba(117,170,219,0.08);
+  border: 1px solid rgba(117,170,219,0.20);
+  border-radius: 12px;
+  padding: 10px 16px;
+  text-align: center;
+  min-width: 110px;
+}
+.wt-stat-num {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: #75AADB;
+  line-height: 1;
+}
+.wt-stat-lbl {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 3px;
+}
+
+/* Avatar con anillos pulsantes */
+.wt-avatar-wrap {
+  position: relative;
+  width: 140px; height: 140px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wt-avatar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid #75AADB;
+  animation: wtRingPulse 2.4s ease-out infinite;
+}
+.wt-avatar-ring.wt-ring-1 { width: 140px; height: 140px; animation-delay: 0s; }
+.wt-avatar-ring.wt-ring-2 { width: 168px; height: 168px; animation-delay: 0.4s; }
+.wt-avatar-ring.wt-ring-3 { width: 196px; height: 196px; animation-delay: 0.8s; }
+
+@keyframes wtRingPulse {
+  0%   { opacity: 0.7; transform: scale(0.95); }
+  100% { opacity: 0;   transform: scale(1.3); }
+}
+
+.wt-avatar-img {
+  width: 128px; height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid #75AADB;
+  box-shadow:
+    0 0 0 4px rgba(7,11,18,1),
+    0 0 25px rgba(117,170,219,0.35),
+    0 0 50px rgba(117,170,219,0.12);
+  position: relative; z-index: 1;
+}
+.wt-avatar-fallback {
+  background: linear-gradient(135deg, #D4AF37, #75AADB);
+}
+.wt-avatar-fallback::after {
+  content: 'D10S';
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: white;
+}
+
+/* Badge verificado */
+.wt-avatar-badge {
+  position: absolute;
+  bottom: 4px; right: 4px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: #75AADB;
+  border: 2px solid #070b12;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+}
+
+/* Brand label */
+.wt-brand-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.wt-brand-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #75AADB;
+  box-shadow: 0 0 6px #75AADB;
+  animation: wtDotBlink 2s ease-in-out infinite;
+}
+@keyframes wtDotBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Nombre */
+.wt-profile-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(26px, 7vw, 36px);
+  color: #F0EDE6;
+  letter-spacing: 0.05em;
+  text-align: center;
+  line-height: 1.1;
+  margin: 0 0 4px;
+}
+.wt-profile-handle {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+/* Roles acordeón */
+.wt-roles {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.wt-role-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(117,170,219,0.20);
+  border-radius: 14px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+.wt-role-btn:hover {
+  background: rgba(117,170,219,0.07);
+  border-color: rgba(117,170,219,0.40);
+}
+.wt-role-btn.wt-role-open {
+  background: rgba(117,170,219,0.06);
+  border-color: #75AADB;
+}
+.wt-role-icon { font-size: 18px; }
+.wt-role-label {
+  flex: 1;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  color: #75AADB;
+  letter-spacing: 1px;
+}
+.wt-role-chev {
+  font-size: 18px;
+  color: #75AADB;
+  transition: transform 0.25s;
+  line-height: 1;
+}
+.wt-role-btn.wt-role-open .wt-role-chev { transform: rotate(90deg); }
+
+.wt-role-body {
+  display: none;
+  padding: 0 16px 14px;
+  margin-top: -4px;
+}
+.wt-role-body.wt-role-open { display: block; }
+.wt-role-body p {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Bio */
+.wt-profile-bio {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(212,175,55,0.8);
+  text-align: center;
+  line-height: 1.6;
+  max-width: 340px;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+/* Redes sociales */
+.wt-social-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.wt-social-btn {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+.wt-social-btn:hover { transform: translateY(-2px); }
+.wt-social-ig  { background: rgba(228,64,95,.12);  color: #E4405F; border-color: rgba(228,64,95,.25); }
+.wt-social-fb  { background: rgba(24,119,242,.12); color: #1877F2; border-color: rgba(24,119,242,.25); }
+.wt-social-tw  { background: rgba(29,161,242,.12); color: #1DA1F2; border-color: rgba(29,161,242,.25); }
+.wt-social-yt  { background: rgba(255,0,0,.10);    color: #FF0000; border-color: rgba(255,0,0,.20); }
+.wt-social-globe { background: rgba(117,170,219,.10); color: #75AADB; border-color: rgba(117,170,219,.25); }
+
+/* CTA row */
+.wt-cta-row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.wt-cta-save, .wt-cta-follow {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 10px;
+  border-radius: 14px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+}
+.wt-cta-save {
+  background: rgba(117,170,219,0.12);
+  border: 1px solid rgba(117,170,219,0.35);
+  color: #75AADB;
+}
+.wt-cta-save:hover {
+  background: rgba(117,170,219,0.20);
+  transform: translateY(-2px);
+}
+.wt-cta-follow {
+  background: linear-gradient(135deg, #D4AF37, #F5CB5C);
+  color: #070b12;
+}
+.wt-cta-follow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212,175,55,0.35);
+}
+
+/* Footer branding */
+.wt-profile-footer {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 4px;
+}
+.wt-footer-brand {
+  color: #75AADB;
+  font-weight: bold;
+}
+
+/* ═══════════════════════════════════════════════
+   BOTONERA MARCAS MARADONA
+   ═══════════════════════════════════════════════ */
+#marcas-diego {
+  background: linear-gradient(180deg, var(--dark) 0%, #0A0E1A 50%, var(--dark) 100%);
+  padding: clamp(60px, 8vh, 100px) clamp(20px, 5vw, 60px);
+}
+.marcas-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.marcas-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.marcas-tag {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #75AADB;
+  border: 1px solid rgba(117,170,219,0.3);
+  border-radius: 20px;
+  padding: 5px 14px;
+  margin-bottom: 14px;
+}
+.marcas-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--white);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.marcas-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--white-dim);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Label de categoría */
+.marcas-cat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #D4AF37;
+  margin: 28px 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid #D4AF37;
+}
+
+/* Grid de botones */
+.marcas-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Botón individual */
+.marcas-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(212,175,55,0.15);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--white);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.marcas-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(212,175,55,0.04) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.marcas-btn:hover {
+  background: rgba(212,175,55,0.07);
+  border-color: rgba(212,175,55,0.40);
+  transform: translateX(4px);
+}
+.marcas-btn:hover::before { opacity: 1; }
+
+.marcas-btn-icon {
+  font-size: 22px;
+  min-width: 32px;
+  text-align: center;
+}
+.marcas-btn-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.marcas-btn-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  color: var(--white);
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+.marcas-btn-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  color: var(--white-dim);
+  line-height: 1.4;
+}
+.marcas-btn-arrow {
+  font-size: 20px;
+  color: rgba(212,175,55,0.5);
+  line-height: 1;
+  transition: transform 0.2s;
+}
+.marcas-btn:hover .marcas-btn-arrow { transform: translateX(3px); color: #D4AF37; }
+
+/* Badges */
+.marcas-btn-badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+.marcas-badge-new {
+  background: rgba(16,185,129,0.15);
+  color: #10b981;
+  border: 1px solid rgba(16,185,129,0.3);
+}
+.marcas-badge-soon {
+  background: rgba(117,170,219,0.12);
+  color: #75AADB;
+  border: 1px solid rgba(117,170,219,0.3);
+}
+
+/* Social grid */
+.marcas-social-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.marcas-social-item {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--white);
+  transition: all 0.25s ease;
+}
+.marcas-social-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.marcas-social-icon {
+  width: 46px; height: 46px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.marcas-ig  { background: rgba(228,64,95,.15);  color: #E4405F; }
+.marcas-fb  { background: rgba(24,119,242,.12); color: #1877F2; }
+.marcas-tw  { background: rgba(29,161,242,.12); color: #1DA1F2; }
+.marcas-social-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+.marcas-social-count {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: #D4AF37;
+}
+
+/* Footer marcas */
+.marcas-footer {
+  margin-top: 40px;
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid rgba(212,175,55,0.1);
+}
+.marcas-footer p {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--white-dim);
+  letter-spacing: 1px;
+  line-height: 1.8;
+}
+.marcas-footer strong { color: #75AADB; }
+
+@media (max-width: 480px) {
+  .marcas-social-grid { flex-direction: column; }
+  .marcas-social-item { flex-direction: row; min-width: unset; }
+}
 </style>
     <!-- ElevenLabs removed — using Cartesia voice agent instead -->
 </head>
@@ -2322,35 +2876,174 @@ select.login-input option{background:#0A0A0F;color:#fff}
 
 <div class="tab-content" id="tab-maradona" style="padding-top: 50px;">
 
-<!-- ═══════════════════════════════════════════
-     SALA 0: HERO
-     ═══════════════════════════════════════════ -->
-<section id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-ten" aria-hidden="true">10</div>
-    <div class="hero-content">
-        <!-- Profile photo -->
-        <div class="hero-profile-placeholder">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/500px-Maradona-Mundial_86_con_la_copa.JPG" alt="Diego Armando Maradona" onerror="this.parentElement.innerHTML='<span style=&quot;font-family:Bebas Neue;font-size:3rem;color:#0A0A0F&quot;>DM</span>'">
-        </div>
-        <!-- Hablá con: label -->
-        <div class="hero-habla-label">HABLÁ CON:</div>
-        <h1 class="hero-d10s">D10S</h1>
-        <p class="hero-tagline">El lado que nunca te contaron de Diego Armando Maradona</p>
-        <span class="hero-date">1960 — 2020 · Eterno</span>
-        <!-- WhatsApp premium pill button -->
-        <a href="https://wa.me/5491164899266?text=Hola%20Diego%20%F0%9F%91%8B" target="_blank" rel="noopener" class="hero-wa-btn" aria-label="Chatear con Diego por WhatsApp">
-          <span class="hero-wa-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </span>
-          <span class="hero-wa-text">CHATEÁ CON DIEGO</span>
-          <span class="hero-wa-arrow">→</span>
-        </a>
+<!-- ═══════════════════════════════════════════════
+     PERFIL WORLD TALENTS — DIEGO ARMANDO MARADONA
+     ═══════════════════════════════════════════════ -->
+<section id="wt-profile-diego" class="wt-profile-section">
+
+  <!-- Fondo con ambient glow celeste + dorado -->
+  <div class="wt-profile-bg">
+    <div class="wt-bg-glow-celeste"></div>
+    <div class="wt-bg-glow-gold"></div>
+    <!-- Partículas de estrellas -->
+    <div class="wt-stars" aria-hidden="true"></div>
+  </div>
+
+  <!-- Container del perfil (estilo mobile-first, max 420px centrado) -->
+  <div class="wt-profile-card">
+
+    <!-- Header: contador de seguidores + conocidos -->
+    <div class="wt-profile-header-stats">
+      <div class="wt-stat-badge wt-stat-left">
+        <span class="wt-stat-num">35.6M</span>
+        <span class="wt-stat-lbl">SEGUIDORES 🌍</span>
+      </div>
+      <div class="wt-stat-badge wt-stat-right">
+        <span class="wt-stat-num">∞</span>
+        <span class="wt-stat-lbl">ME CONOCEN 🌐</span>
+      </div>
     </div>
-    <div class="scroll-indicator" onclick="document.getElementById('sala-voz').scrollIntoView({behavior:'smooth'})">
-        <span>Descubrí</span>
-        <div class="arrow"></div>
+
+    <!-- Avatar con borde celeste pulsante -->
+    <div class="wt-avatar-wrap">
+      <!-- Anillos NFC pulsantes (estilo World Talents) -->
+      <div class="wt-avatar-ring wt-ring-1"></div>
+      <div class="wt-avatar-ring wt-ring-2"></div>
+      <div class="wt-avatar-ring wt-ring-3"></div>
+      <!-- Foto de Diego -->
+      <img
+        class="wt-avatar-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/400px-Maradona-Mundial_86_con_la_copa.JPG"
+        alt="Diego Armando Maradona"
+        onerror="this.src=''; this.parentElement.classList.add('wt-avatar-fallback')"
+      >
+      <!-- Badge verificado -->
+      <div class="wt-avatar-badge" title="Perfil World Talents verificado">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
     </div>
+
+    <!-- Label World Talents -->
+    <div class="wt-brand-label">
+      <span class="wt-brand-dot"></span>
+      World Talents
+    </div>
+
+    <!-- Nombre -->
+    <h1 class="wt-profile-name">Diego Armando Maradona</h1>
+    <p class="wt-profile-handle">@d10s</p>
+
+    <!-- Roles (acordeón estilo WT) -->
+    <div class="wt-roles">
+
+      <div class="wt-role-btn" onclick="wtToggleRole(this)">
+        <span class="wt-role-icon">🏆</span>
+        <span class="wt-role-label">CAMPEÓN DEL MUNDO</span>
+        <span class="wt-role-chev">›</span>
+      </div>
+      <div class="wt-role-body">
+        <p>Copa del Mundo México 1986 · Capitán de Argentina · Gol del Siglo · La Mano de Dios · 5 goles y 5 asistencias en un solo torneo.</p>
+      </div>
+
+      <div class="wt-role-btn" onclick="wtToggleRole(this)">
+        <span class="wt-role-icon">⚽</span>
+        <span class="wt-role-label">EL MEJOR DE LA HISTORIA</span>
+        <span class="wt-role-chev">›</span>
+      </div>
+      <div class="wt-role-body">
+        <p>Argentinos Juniors · Boca Juniors · FC Barcelona · SSC Napoli (2 Scudetti) · Selección Argentina (91 goles). Premio al Mejor Jugador del Siglo XX · Balón de Oro del Mundial 1986.</p>
+      </div>
+
+      <div class="wt-role-btn" onclick="wtToggleRole(this)">
+        <span class="wt-role-icon">🕊️</span>
+        <span class="wt-role-label">LUCHADOR DEL PUEBLO</span>
+        <span class="wt-role-chev">›</span>
+      </div>
+      <div class="wt-role-body">
+        <p>De Villa Fiorito al infinito. Símbolo de la Argentina popular. "La pelota no se mancha." 1960 — 2020.</p>
+      </div>
+
+    </div>
+
+    <!-- Bio -->
+    <p class="wt-profile-bio">
+      "Yo nací en un barrio privado de Buenos Aires: privado de luz, de agua, de teléfono y de gas."
+    </p>
+
+    <!-- Redes sociales del Diego -->
+    <div class="wt-social-row">
+      <a class="wt-social-btn wt-social-ig"
+         href="https://instagram.com/maradona" target="_blank" rel="noopener"
+         title="Instagram oficial @maradona">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+        </svg>
+      </a>
+      <a class="wt-social-btn wt-social-fb"
+         href="https://facebook.com/diegomaradona" target="_blank" rel="noopener"
+         title="Facebook Diego Maradona">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+        </svg>
+      </a>
+      <a class="wt-social-btn wt-social-tw"
+         href="https://twitter.com/DiegoAMaradona" target="_blank" rel="noopener"
+         title="Twitter @DiegoAMaradona">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+        </svg>
+      </a>
+      <a class="wt-social-btn wt-social-yt"
+         href="https://youtube.com/@diegomaradona" target="_blank" rel="noopener"
+         title="YouTube">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/>
+          <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0A0E1A"/>
+        </svg>
+      </a>
+      <a class="wt-social-btn wt-social-globe"
+         href="https://m10memorial.com" target="_blank" rel="noopener"
+         title="M10 Memorial">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Botones CTA -->
+    <div class="wt-cta-row">
+      <button class="wt-cta-save" onclick="wtSaveContact()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Guardar contacto
+      </button>
+      <button class="wt-cta-follow" onclick="wtFollowDiego()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <line x1="19" y1="8" x2="19" y2="14"/>
+          <line x1="22" y1="11" x2="16" y2="11"/>
+        </svg>
+        + Seguir
+      </button>
+    </div>
+
+    <!-- World Talents branding footer -->
+    <div class="wt-profile-footer">
+      <span class="wt-footer-tag">Powered by</span>
+      <span class="wt-footer-brand">World Talents</span>
+      <span class="wt-footer-nfc">· NFC ·</span>
+      <span class="wt-footer-tag">phygital</span>
+    </div>
+
+  </div><!-- /wt-profile-card -->
 </section>
 
 
@@ -2383,6 +3076,227 @@ select.login-input option{background:#0A0A0F;color:#fff}
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════
+     BOTONERA MARCAS MARADONA — ESTILO LINKTREE
+     ═══════════════════════════════════════════════ -->
+<section id="marcas-diego" class="marcas-section">
+  <div class="marcas-inner">
+
+    <!-- Header -->
+    <div class="marcas-header">
+      <span class="marcas-tag">UNIVERSO D10S</span>
+      <h2 class="marcas-title">EL LEGADO DE <span class="gold">DIEGO</span></h2>
+      <p class="marcas-subtitle">Todas las marcas, experiencias y proyectos de la familia Maradona</p>
+    </div>
+
+    <!-- CATEGORÍA 1: TIENDA OFICIAL -->
+    <div class="marcas-cat-label">🛍️ TIENDA OFICIAL</div>
+    <div class="marcas-grid">
+      <a class="marcas-btn" href="https://themaradonastore.com" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">🏪</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">The Maradona Store</span>
+          <span class="marcas-btn-desc">Tienda oficial D10S — ropa, accesorios y colecciones</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+      <a class="marcas-btn" href="https://commafootball.com" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">⚡</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">Comma × Maradona 2026</span>
+          <span class="marcas-btn-desc">Colección oficial 2026 — autorizada por los herederos</span>
+        </div>
+        <span class="marcas-btn-badge marcas-badge-new">NUEVO</span>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+    </div>
+
+    <!-- CATEGORÍA 2: INDUMENTARIA RETRO -->
+    <div class="marcas-cat-label">👕 INDUMENTARIA</div>
+    <div class="marcas-grid">
+      <a class="marcas-btn" href="https://copafootball.com/en-us/collections/maradona" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">🎽</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">COPA Football × Maradona</span>
+          <span class="marcas-btn-desc">Camisetas retro oficiales — Boca 81, Argentina 86, Napoli 87</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+      <a class="marcas-btn" href="https://rootsoffight.com/collections/diego-maradona" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">🥊</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">Roots of Fight</span>
+          <span class="marcas-btn-desc">Colección lifestyle — hoodies, tees y accesorios</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+    </div>
+
+    <!-- CATEGORÍA 3: MUSEOS Y EXPERIENCIAS -->
+    <div class="marcas-cat-label">🏛️ MUSEOS & EXPERIENCIAS</div>
+    <div class="marcas-grid">
+      <a class="marcas-btn" href="https://museomaradona.com" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">🇮🇹</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">Museo Maradona — Nápoles</span>
+          <span class="marcas-btn-desc">Collezione Vignati · 100+ piezas auténticas de Diego</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+      <a class="marcas-btn" href="https://lacasaded10s.com" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">🏠</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">La Casa de D10S — Buenos Aires</span>
+          <span class="marcas-btn-desc">Lascano 2257, La Paternal · Museo en su primer hogar</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+      <a class="marcas-btn" href="https://m10memorial.com" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">🕊️</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">M10 Memorial</span>
+          <span class="marcas-btn-desc">El mausoleo y espacio de legado — Huergo 10, Buenos Aires</span>
+        </div>
+        <span class="marcas-btn-badge marcas-badge-soon">PRÓXIMO</span>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+    </div>
+
+    <!-- CATEGORÍA 4: GASTRONOMÍA -->
+    <div class="marcas-cat-label">🍝 GASTRONOMÍA</div>
+    <div class="marcas-grid">
+      <a class="marcas-btn" href="https://instagram.com/maradona.10.restaurante" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">🍕</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">Restaurante Maradona (10)</span>
+          <span class="marcas-btn-desc">Belgrano, Buenos Aires · Horno napolitano + murales del Diego</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+      <a class="marcas-btn" href="https://pastamaradona.it" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">🇮🇹</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">Pasta Maradona N.10 Diego</span>
+          <span class="marcas-btn-desc">Pastificio Paone · Último negocio firmado por Diego</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+    </div>
+
+    <!-- CATEGORÍA 5: STREAMING -->
+    <div class="marcas-cat-label">🎬 DOCUMENTALES Y SERIES</div>
+    <div class="marcas-grid">
+      <a class="marcas-btn" href="https://www.primevideo.com/search?phrase=sueño+bendito" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">📺</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">Sueño Bendito — Amazon Prime</span>
+          <span class="marcas-btn-desc">Serie biográfica oficial · 10 episodios</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+      <a class="marcas-btn" href="https://www.max.com" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">🎥</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">Diego Maradona (Kapadia) — HBO Max</span>
+          <span class="marcas-btn-desc">Documental de Asif Kapadia · 90% en Rotten Tomatoes</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+      <a class="marcas-btn" href="https://www.netflix.com/search?q=maradona" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">🎬</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">Maradona in Mexico — Netflix</span>
+          <span class="marcas-btn-desc">Serie documental · Su etapa como DT en México</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+    </div>
+
+    <!-- CATEGORÍA 6: GAMING -->
+    <div class="marcas-cat-label">🎮 GAMING</div>
+    <div class="marcas-grid">
+      <a class="marcas-btn" href="https://www.ea.com/games/ea-sports-fc" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">⚽</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">EA Sports FC 25/26 — ICON</span>
+          <span class="marcas-btn-desc">Maradona volvió al juego en 2025 como ICON legendario</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+      <a class="marcas-btn" href="https://efootball.com" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">🕹️</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">eFootball — Legend</span>
+          <span class="marcas-btn-desc">Konami · Classic No.10 y National Legend sin interrupciones</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+    </div>
+
+    <!-- CATEGORÍA 7: FAMILIA -->
+    <div class="marcas-cat-label">❤️ FAMILIA MARADONA</div>
+    <div class="marcas-grid">
+      <a class="marcas-btn" href="https://fundacionmaradona.org" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">🏛️</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">Fundación Maradona</span>
+          <span class="marcas-btn-desc">Presidida por Dalma · Relanzada noviembre 2024</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+      <a class="marcas-btn" href="https://instagram.com/maradonaheirs" target="_blank" rel="noopener">
+        <span class="marcas-btn-icon">👨‍👩‍👧‍👦</span>
+        <div class="marcas-btn-info">
+          <span class="marcas-btn-name">Herederos Maradona</span>
+          <span class="marcas-btn-desc">@maradonaheirs · Instagram oficial de los 5 hijos</span>
+        </div>
+        <span class="marcas-btn-arrow">›</span>
+      </a>
+    </div>
+
+    <!-- CATEGORÍA 8: REDES OFICIALES -->
+    <div class="marcas-cat-label">📱 REDES OFICIALES DEL DIEGO</div>
+    <div class="marcas-social-grid">
+      <a class="marcas-social-item" href="https://instagram.com/maradona" target="_blank" rel="noopener">
+        <div class="marcas-social-icon marcas-ig">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="17.5" cy="6.5" r="1.2"/>
+          </svg>
+        </div>
+        <span class="marcas-social-name">@maradona</span>
+        <span class="marcas-social-count">8M+</span>
+      </a>
+      <a class="marcas-social-item" href="https://facebook.com/diegomaradona" target="_blank" rel="noopener">
+        <div class="marcas-social-icon marcas-fb">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+          </svg>
+        </div>
+        <span class="marcas-social-name">Diego Maradona</span>
+        <span class="marcas-social-count">12M+</span>
+      </a>
+      <a class="marcas-social-item" href="https://twitter.com/DiegoAMaradona" target="_blank" rel="noopener">
+        <div class="marcas-social-icon marcas-tw">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+          </svg>
+        </div>
+        <span class="marcas-social-name">@DiegoAMaradona</span>
+        <span class="marcas-social-count">161K</span>
+      </a>
+    </div>
+
+    <!-- Footer marcas -->
+    <div class="marcas-footer">
+      <p>Información basada en marcas y proyectos oficiales verificados · Abril 2026</p>
+      <p>Derechos gestionados por los herederos vía <strong>Electa Global</strong></p>
+    </div>
+
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════════
      FOOTER (tab-maradona)
      ═══════════════════════════════════════════ -->
@@ -2403,34 +3317,33 @@ select.login-input option{background:#0A0A0F;color:#fff}
      ═══════════════════════════════════════════════════════ -->
 <div class="tab-content" id="tab-maradoniano" style="display:none; padding-top: 50px;">
 
-<section class="hero-museo" id="hero-museo">
-  <!-- Fondo con imagen -->
-  <div class="hero-museo-bg"></div>
-  <!-- Número 10 parallax -->
-  <div class="hero-museo-ten" aria-hidden="true">10</div>
-  <!-- Contenido central -->
-  <div class="hero-museo-content">
-    <div class="hero-museo-photo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/500px-Maradona-Mundial_86_con_la_copa.JPG"
-           alt="Diego Armando Maradona"
-           onerror="this.parentElement.style.background='linear-gradient(135deg,#D4AF37,#B8941F)'">
+<!-- Hero movido desde tab-maradona -->
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-ten" aria-hidden="true">10</div>
+    <div class="hero-content">
+        <!-- Profile photo -->
+        <div class="hero-profile-placeholder">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/500px-Maradona-Mundial_86_con_la_copa.JPG" alt="Diego Armando Maradona" onerror="this.parentElement.innerHTML='<span style=&quot;font-family:Bebas Neue;font-size:3rem;color:#0A0A0F&quot;>DM</span>'">
+        </div>
+        <!-- Hablá con: label -->
+        <div class="hero-habla-label">HABLÁ CON:</div>
+        <h1 class="hero-d10s">D10S</h1>
+        <p class="hero-tagline">El lado que nunca te contaron de Diego Armando Maradona</p>
+        <span class="hero-date">1960 — 2020 · Eterno</span>
+        <!-- WhatsApp premium pill button -->
+        <a href="https://wa.me/5491164899266?text=Hola%20Diego%20%F0%9F%91%8B" target="_blank" rel="noopener" class="hero-wa-btn" aria-label="Chatear con Diego por WhatsApp">
+          <span class="hero-wa-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </span>
+          <span class="hero-wa-text">CHATEÁ CON DIEGO</span>
+          <span class="hero-wa-arrow">→</span>
+        </a>
     </div>
-    <span class="hero-museo-tag">EXPERIENCIA INTERACTIVA</span>
-    <h1 class="hero-museo-title">MUSEO DE <span class="gold-neon">D10S</span></h1>
-    <p class="hero-museo-sub">14 salas · De Fiorito al infinito · 1960 — 2020</p>
-    <div class="hero-museo-stats">
-      <span class="museo-stat"><strong>14</strong> SALAS</span>
-      <span class="museo-stat-div">·</span>
-      <span class="museo-stat"><strong>∞</strong> HISTORIAS</span>
-      <span class="museo-stat-div">·</span>
-      <span class="museo-stat"><strong>1</strong> D10S</span>
+    <div class="scroll-indicator" onclick="document.getElementById('sala-fiorito').scrollIntoView({behavior:'smooth'})">
+        <span>Descubrí</span>
+        <div class="arrow"></div>
     </div>
-  </div>
-  <!-- Scroll indicator -->
-  <div class="hero-museo-scroll" onclick="document.getElementById('sala-fiorito').scrollIntoView({behavior:'smooth'})">
-    <span>Entrá al museo</span>
-    <div class="hero-museo-arrow"></div>
-  </div>
 </section>
 
 <!-- NAV STICKY MUSEO -->
@@ -4930,6 +5843,37 @@ document.addEventListener('keydown', function(e) {
     <div id="muralLbDesc" class="mural-lb-desc"></div>
   </div>
 </div>
+
+<script>
+// ─── World Talents Profile — Diego ───
+function wtToggleRole(btn) {
+  var body = btn.nextElementSibling;
+  var isOpen = btn.classList.contains('wt-role-open');
+  // Cerrar todos
+  document.querySelectorAll('.wt-role-btn').forEach(function(b) { b.classList.remove('wt-role-open'); });
+  document.querySelectorAll('.wt-role-body').forEach(function(b) { b.classList.remove('wt-role-open'); });
+  // Abrir el clickeado si estaba cerrado
+  if (!isOpen) {
+    btn.classList.add('wt-role-open');
+    body.classList.add('wt-role-open');
+  }
+}
+
+function wtSaveContact() {
+  var vcard = 'BEGIN:VCARD\nVERSION:3.0\nFN:Diego Armando Maradona\nNICKNAME:D10S\nORG:Selección Argentina;Napoli\nTITLE:Campeón del Mundo 1986\nURL:https://instagram.com/maradona\nNOTE:1960-2020. La pelota no se mancha.\nEND:VCARD';
+  var blob = new Blob([vcard], { type: 'text/vcard' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'diego-maradona.vcf';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function wtFollowDiego() {
+  window.open('https://instagram.com/maradona', '_blank', 'noopener,noreferrer');
+}
+</script>
 
 </body>
 </html>
