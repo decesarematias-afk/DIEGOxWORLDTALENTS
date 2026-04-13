@@ -3278,31 +3278,67 @@ select.login-input option{background:#0A0A0F;color:#fff}
 
 
 <!-- ═══════════════════════════════════════════
-     SECCIÓN VOZ: HABLÁ CON DIEGO
+     SECCIÓN VOZ: HABLÁ CON D10S
      ═══════════════════════════════════════════ -->
-<section class="diego-beta-section" id="sala-voz" style="background: radial-gradient(ellipse at center, rgba(212,175,55,0.04) 0%, transparent 70%), linear-gradient(180deg, var(--dark) 0%, #0D0D18 50%, var(--dark) 100%);">
-  <div class="diego-beta-inner">
-    <span class="diego-beta-badge">BETA</span>
-    <h2 class="diego-beta-title">VOZ DEL <span class="gold">DIEGO</span></h2>
-    <p class="diego-beta-subtitle">Versión experimental — Escribile al Diego y escuchá su respuesta con inteligencia artificial</p>
+<section class="diego-beta-section" id="sala-voz" style="background: radial-gradient(ellipse at 30% 20%, rgba(117,170,219,0.05) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(212,175,55,0.04) 0%, transparent 50%), linear-gradient(180deg, var(--dark) 0%, #080a12 50%, var(--dark) 100%); position:relative; overflow:hidden;">
 
-    <div class="diego-chat-container">
+  <!-- Fondo decorativo: número 10 -->
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:clamp(250px,50vw,600px);color:transparent;-webkit-text-stroke:1px rgba(212,175,55,.03);pointer-events:none;user-select:none;z-index:0;line-height:1;" aria-hidden="true">10</div>
+
+  <div class="diego-beta-inner" style="position:relative;z-index:1;">
+
+    <!-- Header brandeado -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;">
+      <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#D4AF37,#F5CB5C);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(212,175,55,.3);">
+        <span style="font-size:18px;">⚽</span>
+      </div>
+      <span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(117,170,219,.6);text-transform:uppercase;">Powered by World Talents AI</span>
+    </div>
+
+    <h2 class="diego-beta-title" style="font-size:clamp(2.5rem,7vw,4rem);letter-spacing:.08em;">HABLÁ CON <span style="color:#FFE600;text-shadow:0 0 30px rgba(255,230,0,.3),0 0 60px rgba(255,230,0,.1);">D10S</span></h2>
+
+    <p class="diego-beta-subtitle" style="color:rgba(240,237,230,.5);max-width:480px;margin:0 auto 2rem;line-height:1.7;font-size:clamp(12px,2.5vw,15px);">
+      Charlá con Diego usando inteligencia artificial.<br>
+      <span style="color:#D4AF37;">Preguntale del Mundial 86, de Fiorito, de Nápoles, de la vida.</span>
+    </p>
+
+    <!-- Chat container brandeado -->
+    <div class="diego-chat-container" style="border:1px solid rgba(212,175,55,.12);border-radius:20px;background:linear-gradient(180deg,rgba(18,18,26,.95) 0%,rgba(10,10,15,.98) 100%);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 40px rgba(212,175,55,.04);backdrop-filter:blur(20px);">
+
+      <!-- Header del chat -->
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid rgba(212,175,55,.08);">
+        <div style="width:40px;height:40px;border-radius:50%;border:2px solid #D4AF37;overflow:hidden;flex-shrink:0;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/100px-Maradona-Mundial_86_con_la_copa.JPG" alt="Diego" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#F0EDE6;letter-spacing:1px;">DIEGO ARMANDO MARADONA</div>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#D4AF37;box-shadow:0 0 8px #D4AF37;animation:wtDotBlink 2s ease-in-out infinite;"></div>
+            <span style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(212,175,55,.6);letter-spacing:1px;">D10S · ETERNO</span>
+          </div>
+        </div>
+      </div>
+
       <div class="diego-chat-messages" id="diegoChatMessages">
         <div class="diego-msg diego-msg-diego">
           <div class="diego-msg-header">
-            <span class="diego-msg-name">DIEGO</span>
+            <span class="diego-msg-name" style="color:#D4AF37;">DIEGO</span>
           </div>
           <div class="diego-msg-text">Eh, ¿qué hacés, querido? Soy el Diego. Preguntame lo que quieras — del Mundial, de Boca, de la vida... ¿Qué querés saber?</div>
         </div>
       </div>
-      <div class="diego-chat-input">
-        <button class="diego-mic-btn" id="diegoMicBtn" title="Hablar">🎤</button>
-        <input type="text" id="diegoChatInput" placeholder="Escribile al Diego..." maxlength="300" autocomplete="off">
-        <button class="diego-send-btn" id="diegoSendBtn">ENVIAR</button>
+
+      <div class="diego-chat-input" style="border-top:1px solid rgba(212,175,55,.08);padding:14px 16px;">
+        <button class="diego-mic-btn" id="diegoMicBtn" title="Hablar" style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;">🎤</button>
+        <input type="text" id="diegoChatInput" placeholder="Escribile al Diego..." maxlength="300" autocomplete="off" style="flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px 16px;color:#F0EDE6;font-family:'Inter',sans-serif;font-size:14px;outline:none;">
+        <button class="diego-send-btn" id="diegoSendBtn" style="background:linear-gradient(135deg,#D4AF37,#F5CB5C);color:#0A0A0F;border:none;border-radius:12px;padding:12px 20px;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px;cursor:pointer;transition:all .2s;">ENVIAR</button>
       </div>
     </div>
 
-    <p class="diego-beta-note">VOZ GENERADA POR IA · CARTESIA SONIC-3 · NO REPRESENTA AL DIEGO REAL</p>
+    <!-- Disclaimer -->
+    <p class="diego-beta-note" style="margin-top:20px;font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,.2);letter-spacing:2px;">
+      ⚽ VOZ GENERADA POR IA · CARTESIA SONIC-3 · NO REPRESENTA AL DIEGO REAL · 1960–2020 ETERNO
+    </p>
   </div>
 </section>
 
