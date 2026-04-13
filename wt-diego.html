@@ -232,18 +232,7 @@ const FEED_CATS = [
   { id: "vip", label: "Inédito", emoji: "👑", color: "#FFD700", colorDk: "#b8860b", isVip: true },
 ];
 const VIP_PRICE = { total: 10000, creator: 8000, platform: 2000, currency: "ARS" };
-const FEED_POSTS = [
-  { id: 1, cat: "marca", g: `linear-gradient(135deg,${C.teal},${C.tealDk})`, caption: "La pelota no se mancha. Nunca. ⚽", link: "", ts: "Eterno" },
-  { id: 2, cat: "venta", g: `linear-gradient(135deg,${C.gold},#f59e0b)`, caption: "Camiseta retro Argentina 86 — edición homenaje", link: "https://themaradonastore.com", ts: "2026" },
-  { id: 3, cat: "marca", g: `linear-gradient(135deg,${C.green},${C.greenDk})`, caption: "De Fiorito al infinito. El pibe que soñó con comer y terminó siendo Dios.", link: "", ts: "1960-2020" },
-  { id: 4, cat: "training", g: `linear-gradient(135deg,#6366f1,#4338ca)`, caption: "Napoli: 2 Scudetti, 1 Copa UEFA, 1 Supercopa. La ciudad que me amó como ninguna. 🇮🇹", link: "", ts: "1984-1991" },
-  { id: 5, cat: "venta", g: `linear-gradient(135deg,${C.red},#dc2626)`, caption: "Pasta Maradona N.10 — el último negocio que firmé 🍝", link: "https://pastamaradona.it", ts: "2020" },
-  { id: 6, cat: "vida", g: `linear-gradient(135deg,${C.pink},#be185d)`, caption: "Azamor 523, Villa Fiorito. Privado de luz, de agua, de teléfono y de gas.", link: "", ts: "1960" },
-  { id: 7, cat: "clases", g: `linear-gradient(135deg,${C.cyan},#0891b2)`, caption: "Gol del Siglo: 60 metros, 44 pasos, 12 toques, 10.87 segundos. ¡Barrilete cósmico!", link: "https://youtube.com/watch?v=Pl3AnYCeTrU", ts: "22/06/1986" },
-  { id: 8, cat: "marca", g: `linear-gradient(135deg,${C.purple},#7c3aed)`, caption: "Si me muero, quiero volver a nacer y quiero ser futbolista. Y quiero volver a ser Diego Armando Maradona.", link: "", ts: "Eterno" },
-  { id: 9, cat: "vip", g: "linear-gradient(135deg,#FFD700,#b8860b)", caption: "Lo que pasó en el vestuario antes de la final del 86 — nunca contado 🔑", link: "", ts: "Inédito" },
-  { id: 10, cat: "vip", g: "linear-gradient(135deg,#FFD700,#8B6914)", caption: "La llamada con Doña Tota después de los goles a Inglaterra 💎", link: "", ts: "Inédito" },
-];
+const FEED_POSTS = [];
 const ACHS = [
   { id: 1, i: "🌟", n: "Primera Vista", d: "Tu primera vista", u: true, r: "Común" },
   { id: 2, i: "👤", n: "Perfil Completo", d: "Info completa", u: true, r: "Común" },
@@ -262,12 +251,7 @@ const RC = {
 const ANA = { profileViews: 35600000, feedViews: 99999999, saves: 1000000, weekly: [{ d: "L", v: 520000 }, { d: "M", v: 480000 }, { d: "X", v: 610000 }, { d: "J", v: 450000 }, { d: "V", v: 580000 }, { d: "S", v: 820000 }, { d: "D", v: 750000 }] };
 
 // ── SPONSOR FEED ──
-const SPONSOR_POSTS = [
-  { id: "sp1", brand: "TechNova", brandLogo: "🚀", g: "linear-gradient(135deg,#6366f1,#312e81)", caption: "Nuevo auricular inalámbrico TN-X9 — experiencia inmersiva con cancelación activa", link: "https://technova.com/tn-x9", tag: "NOVEDAD", ts: "Hace 3h" },
-  { id: "sp2", brand: "Café Origen", brandLogo: "☕", g: "linear-gradient(135deg,#92400e,#451a03)", caption: "Blend premium de altura — café de especialidad directo de finca a tu casa", link: "https://cafeorigen.com/blend", tag: "PROMO -20%", ts: "Hace 6h" },
-  { id: "sp3", brand: "UrbanFit", brandLogo: "💪", g: "linear-gradient(135deg,#059669,#064e3b)", caption: "Remera deportiva con tecnología dry-fit y bolsillo NFC integrado", link: "https://urbanfit.com/nfc-tee", tag: "EXCLUSIVO", ts: "Hace 1d" },
-  { id: "sp4", brand: "ByteBank", brandLogo: "🏦", g: "linear-gradient(135deg,#0ea5e9,#0c4a6e)", caption: "Cuenta digital sin costo de mantenimiento + tarjeta con NFC contactless", link: "https://bytebank.com/abrir", tag: "SIN COSTO", ts: "Hace 2d" },
-];
+const SPONSOR_POSTS = [];
 
 // ── K8Z NFC STORE ──
 const K8Z_PRODUCTS = [
@@ -825,7 +809,7 @@ function WorldTalents() {
     name: "Diego Armando Maradona", nick: "@d10s",
     role: "Campeón del Mundo 1986 · El Mejor de Todos los Tiempos", initials: "DM",
     bio: "Yo nací en un barrio privado de Buenos Aires: privado de luz, de agua, de teléfono y de gas.",
-    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/400px-Maradona-Mundial_86_con_la_copa.JPG", coverPhoto: DEF_COVER,
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/400px-Maradona-Mundial_86_con_la_copa.JPG", coverPhoto: "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=800&h=300&fit=crop&crop=center",
     vipDesc: "Historias exclusivas del vestuario, anécdotas nunca contadas y el lado humano de D10S.",
     coverLink: "",
   });

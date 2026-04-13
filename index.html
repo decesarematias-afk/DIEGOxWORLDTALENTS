@@ -2847,8 +2847,396 @@ select.login-input option{background:#0A0A0F;color:#fff}
   .marcas-social-grid { flex-direction: column; }
   .marcas-social-item { flex-direction: row; min-width: unset; }
 }
+
+/* ═══════════════════════════════════════════════
+   UNIVERSO MARCAS — HORIZONTAL SCROLL
+   ═══════════════════════════════════════════════ */
+#marcas-universo {
+  background: var(--dark);
+  overflow: hidden;
+}
+.mu-intro {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+}
+.mu-intro-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--celeste);
+  border: 1px solid rgba(117,170,219,.3);
+  border-radius: 20px;
+  padding: 6px 18px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+.mu-intro-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 8rem);
+  color: var(--white);
+  letter-spacing: .1em;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.mu-intro-title .gold { color: var(--gold); }
+.mu-intro-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(14px, 2vw, 17px);
+  color: var(--white-dim);
+  max-width: 560px;
+  line-height: 1.7;
+  font-style: italic;
+}
+.mu-scroll-hint {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  animation: muHintBounce 2s ease-in-out infinite;
+}
+.mu-scroll-hint svg { opacity: .6; }
+@keyframes muHintBounce {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
+}
+.mu-chapter {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--dark);
+}
+.mu-chapter-bg-num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: clamp(200px, 40vw, 500px);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(212,175,55,.06);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  line-height: 1;
+}
+.mu-chapter-header {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  padding: 32px 48px;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.mu-chapter-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--celeste);
+  text-transform: uppercase;
+}
+.mu-chapter-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: var(--white);
+  letter-spacing: .08em;
+  line-height: 1;
+}
+.mu-chapter-name .gold { color: var(--gold); }
+.mu-chapter-counter {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--white-dim);
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+.mu-progress-bar {
+  position: absolute;
+  bottom: 32px; left: 48px; right: 48px;
+  height: 1px;
+  background: rgba(255,255,255,.1);
+  z-index: 10;
+}
+.mu-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--celeste));
+  transition: width .1s linear;
+}
+.mu-track-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+}
+.mu-track {
+  display: flex;
+  gap: 0;
+  padding: 0 80px;
+  will-change: transform;
+}
+.mu-card {
+  flex-shrink: 0;
+  width: min(380px, 85vw);
+  margin-right: 32px;
+  background: var(--dark-card);
+  border: 1px solid rgba(212,175,55,.12);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .3s, box-shadow .3s, transform .3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--white);
+  position: relative;
+}
+.mu-card:hover {
+  border-color: rgba(212,175,55,.40);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 30px rgba(212,175,55,.08);
+  transform: translateY(-6px);
+}
+#mu-chapter-claudia  .mu-card { border-color: rgba(236,72,153,.12); }
+#mu-chapter-claudia  .mu-card:hover { border-color: rgba(236,72,153,.40); box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 30px rgba(236,72,153,.08); }
+#mu-chapter-herederos .mu-card { border-color: rgba(117,170,219,.12); }
+#mu-chapter-herederos .mu-card:hover { border-color: rgba(117,170,219,.50); box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 30px rgba(117,170,219,.10); }
+#mu-chapter-fundacion .mu-card { border-color: rgba(245,203,92,.12); }
+#mu-chapter-fundacion .mu-card:hover { border-color: rgba(245,203,92,.50); }
+#mu-chapter-moda      .mu-card { border-color: rgba(139,92,246,.12); }
+#mu-chapter-moda      .mu-card:hover { border-color: rgba(139,92,246,.50); }
+#mu-chapter-cultura   .mu-card { border-color: rgba(16,185,129,.12); }
+#mu-chapter-cultura   .mu-card:hover { border-color: rgba(16,185,129,.50); }
+.mu-card-visual {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-size: 72px;
+  flex-shrink: 0;
+}
+.mu-vis-gradient-gold   { background: linear-gradient(135deg, #1a1300, #2a1f00); }
+.mu-vis-gradient-pink   { background: linear-gradient(135deg, #1a0812, #2d0f20); }
+.mu-vis-gradient-celeste{ background: linear-gradient(135deg, #070b12, #0d1a2e); }
+.mu-vis-gradient-purple { background: linear-gradient(135deg, #0f0720, #1a0d35); }
+.mu-vis-gradient-green  { background: linear-gradient(135deg, #030d08, #06180f); }
+.mu-card-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(212,175,55,.06) 0%, transparent 70%);
+}
+.mu-card-emoji {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 20px rgba(212,175,55,.3));
+}
+.mu-card-badge {
+  position: absolute;
+  top: 14px; right: 14px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  z-index: 2;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.mu-badge-active { background: rgba(16,185,129,.15); color: #10b981; border: 1px solid rgba(16,185,129,.3); }
+.mu-badge-new    { background: rgba(245,203,92,.15); color: #F5CB5C; border: 1px solid rgba(245,203,92,.3); }
+.mu-badge-soon   { background: rgba(117,170,219,.12); color: #75AADB; border: 1px solid rgba(117,170,219,.3); }
+.mu-badge-star   { background: rgba(212,175,55,.15); color: #D4AF37; border: 1px solid rgba(212,175,55,.3); }
+.mu-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.mu-card-category {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--white-dim);
+}
+.mu-card-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--white);
+  letter-spacing: .04em;
+  line-height: 1.1;
+}
+.mu-card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  color: var(--white-dim);
+  line-height: 1.6;
+  flex: 1;
+}
+.mu-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+.mu-card-link-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.mu-card-arrow {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(212,175,55,.3);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold);
+  font-size: 14px;
+  transition: all .2s;
+}
+.mu-card:hover .mu-card-arrow {
+  background: var(--gold);
+  color: var(--dark);
+  border-color: var(--gold);
+  transform: translateX(2px);
+}
+.mu-track-spacer {
+  flex-shrink: 0;
+  width: 80px;
+  height: 1px;
+}
+.mu-outro {
+  background: var(--dark);
+  padding: 80px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(212,175,55,.1);
+}
+.mu-outro-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--white);
+  letter-spacing: .1em;
+  margin-bottom: 12px;
+}
+.mu-outro-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--white-dim);
+  font-style: italic;
+  margin-bottom: 40px;
+}
+.mu-social-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.mu-social-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: var(--dark-card);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 40px;
+  text-decoration: none;
+  color: var(--white);
+  transition: all .25s;
+}
+.mu-social-pill:hover {
+  border-color: rgba(212,175,55,.4);
+  transform: translateY(-2px);
+}
+.mu-social-pill-icon {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.mu-spi-ig  { background: rgba(228,64,95,.15); color: #E4405F; }
+.mu-spi-fb  { background: rgba(24,119,242,.12); color: #1877F2; }
+.mu-spi-yt  { background: rgba(255,0,0,.10); color: #FF0000; }
+.mu-spi-wt  { background: rgba(117,170,219,.10); color: #75AADB; }
+.mu-social-pill-info { text-align: left; }
+.mu-social-pill-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--white);
+  display: block;
+  letter-spacing: .5px;
+}
+.mu-social-pill-count {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--gold);
+  display: block;
+}
+.mu-outro-legal {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.04);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255,255,255,.2);
+  letter-spacing: 1.5px;
+  line-height: 1.8;
+}
+.mu-outro-legal strong { color: #75AADB; }
+@media (max-width: 768px) {
+  .mu-chapter-header { padding: 20px 24px; }
+  .mu-progress-bar   { left: 24px; right: 24px; bottom: 24px; }
+  .mu-track          { padding: 0 24px; }
+  .mu-card           { width: min(300px, 80vw); margin-right: 16px; }
+  .mu-chapter-name   { font-size: clamp(2rem, 8vw, 3.5rem); }
+}
+@media (max-width: 767px) {
+  .mu-chapter {
+    height: auto;
+    min-height: auto;
+    padding-bottom: 40px;
+  }
+  .mu-chapter-header {
+    position: relative;
+    padding: 28px 20px 16px;
+  }
+  .mu-track-wrap {
+    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .mu-track-wrap::-webkit-scrollbar { display: none; }
+  .mu-track {
+    padding: 0 20px;
+  }
+  .mu-progress-bar { display: none; }
+  .mu-chapter-bg-num { font-size: 40vw; }
+}
 </style>
     <!-- ElevenLabs removed — using Cartesia voice agent instead -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
@@ -2925,30 +3313,358 @@ select.login-input option{background:#0A0A0F;color:#fff}
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     BOTONERA MARCAS MARADONA — ESTILO LINKTREE
-     ═══════════════════════════════════════════════ -->
-<section id="marcas-diego" class="marcas-section">
-  <div class="marcas-inner">
+<!-- ═══════════════════════════════════════════════════════
+     UNIVERSO MARCAS — SCROLL HORIZONTAL POR FAMILIA
+     ═══════════════════════════════════════════════════════ -->
+<section id="marcas-universo">
 
-    <!-- Header -->
-    <div class="marcas-header">
-      <span class="marcas-tag">UNIVERSO D10S</span>
-      <h2 class="marcas-title">EL LEGADO DE <span class="gold">DIEGO</span></h2>
-      <p class="marcas-subtitle">Todas las marcas, experiencias y proyectos de la familia Maradona</p>
+  <!-- INTRO -->
+  <div class="mu-intro">
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:clamp(200px,40vw,500px);color:transparent;-webkit-text-stroke:1px rgba(212,175,55,.04);pointer-events:none;user-select:none;z-index:0;line-height:1;" aria-hidden="true">D10S</div>
+    <span class="mu-intro-tag">UNIVERSO D10S</span>
+    <h2 class="mu-intro-title">EL <span class="gold">LEGADO</span> EN CADA MARCA</h2>
+    <p class="mu-intro-sub">Las marcas, proyectos y emprendimientos de la familia Maradona. Organizados por voz propia. Deslizá para explorar.</p>
+    <div class="mu-scroll-hint">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12l7 7 7-7"/><path d="M12 5v14"/></svg>
+      Scrolleá para descubrir
     </div>
+  </div>
 
-    <!-- CATEGORÍA 1: TIENDA OFICIAL -->
-    <div class="marcas-cat-label">🛍️ TIENDA OFICIAL</div>
-    <div class="marcas-grid">
-      <a class="marcas-btn" href="https://themaradonastore.com" target="_blank" rel="noopener">
-        <span class="marcas-btn-icon">🏪</span>
-        <div class="marcas-btn-info">
-          <span class="marcas-btn-name">The Maradona Store</span>
-          <span class="marcas-btn-desc">Tienda oficial D10S — ropa, accesorios y colecciones</span>
+  <!-- CAPÍTULO 1 — CLAUDIA VILLAFAÑE -->
+  <div class="mu-chapter" id="mu-chapter-claudia">
+    <div class="mu-chapter-bg-num">CV</div>
+    <div class="mu-chapter-header">
+      <div>
+        <div class="mu-chapter-label">Capítulo 01</div>
+        <div class="mu-chapter-name">CLAUDIA <span class="gold">VILLAFAÑE</span></div>
+      </div>
+      <div class="mu-chapter-counter" id="mu-counter-claudia">01 / 05</div>
+    </div>
+    <div class="mu-track-wrap">
+      <div class="mu-track" id="mu-track-claudia">
+        <a class="mu-card" href="https://instagram.com/eventosplanv" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-pink"><span class="mu-card-emoji">🎊</span><span class="mu-card-badge mu-badge-active">ACTIVO</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Organización de Eventos · +20 años</span>
+            <div class="mu-card-title">Eventos Plan V</div>
+            <p class="mu-card-desc">La empresa de bodas y eventos más conocida de Argentina. Organizó la boda de Paulo Dybala y Oriana Sabatini. Activa desde 2005. 221K seguidores.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">@eventosplanv</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://instagram.com/claudiavillafaneok" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-pink"><span class="mu-card-emoji">📸</span><span class="mu-card-badge mu-badge-star">2M SEGUIDORES</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Presencia Digital Oficial</span>
+            <div class="mu-card-title">@claudiavillafaneok</div>
+            <p class="mu-card-desc">Su único canal digital oficial. Familia, eventos Plan V, recetas de La Tata y homenajes al Diego.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">Instagram oficial</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://instagram.com/claudiavillafaneok" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-pink"><span class="mu-card-emoji">👩‍🍳</span><span class="mu-card-badge mu-badge-star">GANADORA</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Gastronomía · Streaming · TV</span>
+            <div class="mu-card-title">La Cocina de La Tata</div>
+            <p class="mu-card-desc">Campeona de MasterChef Celebrity Argentina 2021. Programa propio en Bondi Live (dic 2024). Regresó a MasterChef en enero 2026.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">Ver contenido</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://instagram.com/claudiavillafaneok" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-pink"><span class="mu-card-emoji">🇮🇹</span><span class="mu-card-badge mu-badge-soon">PRÓXIMA EDICIÓN</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Turismo Experiencial · Italia</span>
+            <div class="mu-card-title">La Tierra del Diego</div>
+            <p class="mu-card-desc">Tour premium de 9 días por Roma, Milán y Nápoles siguiendo los pasos de Diego. Murales, Bar Nilo, Estadio Diego Armando Maradona.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">Próximas fechas</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <div class="mu-card" style="cursor:default;">
+          <div class="mu-card-visual mu-vis-gradient-pink"><span class="mu-card-emoji">🏆</span><span class="mu-card-badge mu-badge-star">MARTÍN FIERRO ORO</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Reconocimiento · Telefe · 2021–2022</span>
+            <div class="mu-card-title">MasterChef Celebrity</div>
+            <p class="mu-card-desc">Ganadora de la primera temporada (enero 2021). El programa obtuvo el Martín Fierro de Oro 2022. Su apodo "La Tata" se convirtió en su marca personal.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">Historia</span><div class="mu-card-arrow" style="opacity:.4">›</div></div>
+          </div>
         </div>
-        <span class="marcas-btn-arrow">›</span>
+        <div class="mu-track-spacer"></div>
+      </div>
+    </div>
+    <div class="mu-progress-bar"><div class="mu-progress-fill" id="mu-prog-claudia"></div></div>
+  </div>
+
+  <!-- CAPÍTULO 2 — LOS HEREDEROS -->
+  <div class="mu-chapter" id="mu-chapter-herederos">
+    <div class="mu-chapter-bg-num">5</div>
+    <div class="mu-chapter-header">
+      <div>
+        <div class="mu-chapter-label">Capítulo 02</div>
+        <div class="mu-chapter-name">LOS <span class="gold">HEREDEROS</span></div>
+      </div>
+      <div class="mu-chapter-counter" id="mu-counter-herederos">01 / 06</div>
+    </div>
+    <div class="mu-track-wrap">
+      <div class="mu-track" id="mu-track-herederos">
+        <a class="mu-card" href="https://instagram.com/dalmaradona" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">🎭</span><span class="mu-card-badge mu-badge-active">ACTIVO</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Dalma Maradona · Actriz y Activista</span>
+            <div class="mu-card-title">Dalma Maradona</div>
+            <p class="mu-card-desc">Actriz profesional, presidenta de la Fundación Maradona (relanzada nov 2024), co-diseñadora de accesorios "Babu" con Giannina.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">@dalmaradona</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://instagram.com/dalmaradona" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">👶</span><span class="mu-card-badge mu-badge-new">MARCA PROPIA</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Dalma Maradona · Indumentaria Infantil</span>
+            <div class="mu-card-title">Dalma by Gioco</div>
+            <p class="mu-card-desc">Línea de portachupetes artesanales y accesorios para bebés con "Gioco di Re". Superó las 100 unidades vendidas.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">Ver colección</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://instagram.com/gianninamaradona" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">👗</span><span class="mu-card-badge mu-badge-active">ACTIVO</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Giannina Maradona · Moda</span>
+            <div class="mu-card-title">Catarsis</div>
+            <p class="mu-card-desc">Marca de ropa casual fundada por Giannina, estudiante de Diseño en la Universidad de Palermo. Estética urbana y emocional.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">@gianninamaradona</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://instagram.com/dalmaradona" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">👜</span><span class="mu-card-badge mu-badge-new">DALMA + GIANNINA</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Dalma & Giannina · Accesorios</span>
+            <div class="mu-card-title">Babu</div>
+            <p class="mu-card-desc">Cápsula de accesorios co-diseñada por las dos hermanas juntas. Un proyecto que une sus talentos creativos bajo una sola marca familiar.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">Ver proyecto</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://instagram.com/janamaradona" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">💄</span><span class="mu-card-badge mu-badge-active">ACTIVO</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Jana Maradona · Belleza · Montevideo</span>
+            <div class="mu-card-title">Venere Make Up</div>
+            <p class="mu-card-desc">Empresa de maquillaje artístico y glitter para eventos, operando en Uruguay y Argentina. Jana mantiene el perfil más alejado de los medios.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">@janamaradona</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://instagram.com/diegomaradonajr" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">⚽</span><span class="mu-card-badge mu-badge-active">ACTIVO</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Diego Maradona Jr. · DT · Italia/España</span>
+            <div class="mu-card-title">Diego Jr. — Coach</div>
+            <p class="mu-card-desc">Hijo italiano de Diego. Exseleccionado italiano de fútbol playa (100+ partidos). Director técnico en Napoli United, FC Pompei, UD Ibarra y Portici.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">@diegomaradonajr</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <div class="mu-track-spacer"></div>
+      </div>
+    </div>
+    <div class="mu-progress-bar"><div class="mu-progress-fill" id="mu-prog-herederos"></div></div>
+  </div>
+
+  <!-- CAPÍTULO 3 — FUNDACIÓN Y ESPACIOS -->
+  <div class="mu-chapter" id="mu-chapter-fundacion">
+    <div class="mu-chapter-bg-num">M10</div>
+    <div class="mu-chapter-header">
+      <div>
+        <div class="mu-chapter-label">Capítulo 03</div>
+        <div class="mu-chapter-name">FUNDACIÓN <span class="gold">& LEGADO</span></div>
+      </div>
+      <div class="mu-chapter-counter" id="mu-counter-fundacion">01 / 04</div>
+    </div>
+    <div class="mu-track-wrap">
+      <div class="mu-track" id="mu-track-fundacion">
+        <a class="mu-card" href="https://m10memorial.com" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">🕊️</span><span class="mu-card-badge mu-badge-soon">EN CONSTRUCCIÓN</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Buenos Aires · Huergo 10</span>
+            <div class="mu-card-title">M10 Memorial</div>
+            <p class="mu-card-desc">El mausoleo y espacio de legado oficial de los herederos. 1.000 m², capacidad para 1 millón de visitantes/año. Traslado de restos aprobado en octubre 2024.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">m10memorial.com</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://fundacionmaradona.org" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">🤝</span><span class="mu-card-badge mu-badge-active">ACTIVO</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Presidida por Dalma Maradona · Nov 2024</span>
+            <div class="mu-card-title">Fundación Maradona</div>
+            <p class="mu-card-desc">Relanzada en noviembre 2024 por los herederos. Promueve el legado social y deportivo de Diego, con foco en infancia, deporte popular y memoria colectiva.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">fundacionmaradona.org</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://museomaradona.com" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">🇮🇹</span><span class="mu-card-badge mu-badge-active">ABIERTO</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Nápoles · Collezione Vignati</span>
+            <div class="mu-card-title">Museo Maradona</div>
+            <p class="mu-card-desc">100+ piezas auténticas donadas por Diego. El contrato original Barça-Napoli, botines Puma King del '86, el banco del vestuario del San Paolo. Desde €10.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">museomaradona.com</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://lacasaded10s.com" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">🏠</span><span class="mu-card-badge mu-badge-active">ABIERTO</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">La Paternal, Buenos Aires · Patrimonio histórico</span>
+            <div class="mu-card-title">La Casa de D10S</div>
+            <p class="mu-card-desc">Lascano 2257. La primera casa propia de Diego, comprada por Argentinos Juniors para su cumpleaños 18 en 1978. Declarada patrimonio histórico en 2016.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">lacasaded10s.com</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <div class="mu-track-spacer"></div>
+      </div>
+    </div>
+    <div class="mu-progress-bar"><div class="mu-progress-fill" id="mu-prog-fundacion"></div></div>
+  </div>
+
+  <!-- CAPÍTULO 4 — INDUMENTARIA -->
+  <div class="mu-chapter" id="mu-chapter-moda">
+    <div class="mu-chapter-bg-num">86</div>
+    <div class="mu-chapter-header">
+      <div>
+        <div class="mu-chapter-label">Capítulo 04</div>
+        <div class="mu-chapter-name">MODA <span class="gold">& ESTILO</span></div>
+      </div>
+      <div class="mu-chapter-counter" id="mu-counter-moda">01 / 04</div>
+    </div>
+    <div class="mu-track-wrap">
+      <div class="mu-track" id="mu-track-moda">
+        <a class="mu-card" href="https://commafootball.com" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-purple"><span class="mu-card-emoji">⚡</span><span class="mu-card-badge mu-badge-new">2026</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Colección Oficial · Electa Global · 2026</span>
+            <div class="mu-card-title">Comma × Maradona</div>
+            <p class="mu-card-desc">La primera colección oficial autorizada por los 5 herederos vía Electa Global. Jerseys a €79, hoodies, graphic tees y lifestyle.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">commafootball.com</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://copafootball.com/en-us/collections/maradona" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-purple"><span class="mu-card-emoji">🎽</span><span class="mu-card-badge mu-badge-active">ACTIVO</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Camisetas Retro Oficiales · Holanda</span>
+            <div class="mu-card-title">COPA Football</div>
+            <p class="mu-card-desc">La colección retro más completa: Argentinos Juniors 1976, Boca 1981-82, Argentina 1986, Napoli 1986-87. Licencia legítima.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">copafootball.com</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://rootsoffight.com/collections/diego-maradona" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-purple"><span class="mu-card-emoji">🥊</span><span class="mu-card-badge mu-badge-active">ACTIVO</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Lifestyle · EE.UU.</span>
+            <div class="mu-card-title">Roots of Fight</div>
+            <p class="mu-card-desc">Colección lifestyle: heavyweight tees, hoodies, sweatpants y accesorios junto a leyendas como Ali y Bruce Lee. Licencia oficial.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">rootsoffight.com</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://instagram.com/catarsis.ok" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-purple"><span class="mu-card-emoji">👗</span><span class="mu-card-badge mu-badge-active">GIANNINA</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Giannina Maradona · Diseño independiente</span>
+            <div class="mu-card-title">Catarsis</div>
+            <p class="mu-card-desc">Marca propia de Giannina. Ropa casual con estética urbana y emocional. Co-diseña "Babu" con Dalma.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">Instagram</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <div class="mu-track-spacer"></div>
+      </div>
+    </div>
+    <div class="mu-progress-bar"><div class="mu-progress-fill" id="mu-prog-moda"></div></div>
+  </div>
+
+  <!-- CAPÍTULO 5 — CULTURA Y ENTRETENIMIENTO -->
+  <div class="mu-chapter" id="mu-chapter-cultura">
+    <div class="mu-chapter-bg-num">∞</div>
+    <div class="mu-chapter-header">
+      <div>
+        <div class="mu-chapter-label">Capítulo 05</div>
+        <div class="mu-chapter-name">CULTURA <span class="gold">& EXPERIENCIAS</span></div>
+      </div>
+      <div class="mu-chapter-counter" id="mu-counter-cultura">01 / 05</div>
+    </div>
+    <div class="mu-track-wrap">
+      <div class="mu-track" id="mu-track-cultura">
+        <a class="mu-card" href="https://www.primevideo.com/search?phrase=sueno+bendito" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">📺</span><span class="mu-card-badge mu-badge-active">AMAZON PRIME</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Serie biográfica oficial · 10 episodios</span>
+            <div class="mu-card-title">Sueño Bendito</div>
+            <p class="mu-card-desc">La serie biográfica oficial sobre la vida de Diego. Filmada con el apoyo de los herederos. Disponible en Amazon Prime Video.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">Amazon Prime Video</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://www.max.com" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">🎥</span><span class="mu-card-badge mu-badge-star">90% RT</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Documental · Asif Kapadia · HBO Max</span>
+            <div class="mu-card-title">Diego Maradona</div>
+            <p class="mu-card-desc">El documental definitivo de Asif Kapadia (director de "Amy"). 90% en Rotten Tomatoes. Ganó el Premio BAFTA.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">Ver en Max</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://www.ea.com/games/ea-sports-fc" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">🎮</span><span class="mu-card-badge mu-badge-new">FC 25/26</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">EA Sports · ICON Legendario · 2025</span>
+            <div class="mu-card-title">EA Sports FC — D10S Icon</div>
+            <p class="mu-card-desc">Maradona regresó al juego en febrero 2025 como ICON y "Grassroot Great". Acuerdo con los herederos vía Electa Global.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">ea.com/fc</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://pastamaradona.it" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">🍝</span><span class="mu-card-badge mu-badge-star">ÚLTIMO NEGOCIO</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">Pastificio Paone · Italia · 1878</span>
+            <div class="mu-card-title">Pasta Maradona N.10</div>
+            <p class="mu-card-desc">Firmada por Diego el 1° de noviembre de 2020 — 24 días antes de su muerte — en su último acuerdo comercial. 9 formatos artesanales.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">pastamaradona.it</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <a class="mu-card" href="https://efootball.com" target="_blank" rel="noopener">
+          <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">🕹️</span><span class="mu-card-badge mu-badge-active">KONAMI</span></div>
+          <div class="mu-card-body">
+            <span class="mu-card-category">eFootball · Legend Activo</span>
+            <div class="mu-card-title">eFootball — Legend D10S</div>
+            <p class="mu-card-desc">Konami mantiene a Maradona como "Classic No.10" y "National Legend" en eFootball sin interrupciones.</p>
+            <div class="mu-card-footer"><span class="mu-card-link-label">efootball.com</span><div class="mu-card-arrow">›</div></div>
+          </div>
+        </a>
+        <div class="mu-track-spacer"></div>
+      </div>
+    </div>
+    <div class="mu-progress-bar"><div class="mu-progress-fill" id="mu-prog-cultura"></div></div>
+  </div>
+
+  <!-- OUTRO: REDES OFICIALES -->
+  <div class="mu-outro">
+    <h2 class="mu-outro-title">REDES <span class="gold">OFICIALES</span></h2>
+    <p class="mu-outro-sub">Canales verificados gestionados por los herederos vía Electa Global</p>
+    <div class="mu-social-row">
+      <a class="mu-social-pill" href="https://instagram.com/maradona" target="_blank" rel="noopener">
+        <div class="mu-social-pill-icon mu-spi-ig"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2"/></svg></div>
+        <div class="mu-social-pill-info"><span class="mu-social-pill-name">@maradona</span><span class="mu-social-pill-count">8M+ seguidores</span></div>
       </a>
+      <a class="mu-social-pill" href="https://instagram.com/maradonaheirs" target="_blank" rel="noopener">
+        <div class="mu-social-pill-icon mu-spi-ig"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2"/></svg></div>
+        <div class="mu-social-pill-info"><span class="mu-social-pill-name">@maradonaheirs</span><span class="mu-social-pill-count">Canal de los 5 herederos</span></div>
+      </a>
+      <a class="mu-social-pill" href="https://facebook.com/diegomaradona" target="_blank" rel="noopener">
+        <div class="mu-social-pill-icon mu-spi-fb"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></div>
+        <div class="mu-social-pill-info"><span class="mu-social-pill-name">Diego Maradona</span><span class="mu-social-pill-count">12M+ likes</span></div>
+      </a>
+      <a class="mu-social-pill" href="https://instagram.com/claudiavillafaneok" target="_blank" rel="noopener">
+        <div class="mu-social-pill-icon mu-spi-wt">👩</div>
+        <div class="mu-social-pill-info"><span class="mu-social-pill-name">@claudiavillafaneok</span><span class="mu-social-pill-count">2M seguidores</span></div>
+      </a>
+    </div>
+    <p class="mu-outro-legal">
+      Contenido curado de fuentes oficiales verificadas · Derechos gestionados por los 5 herederos vía
+      <strong>Electa Global</strong> (acuerdo oct 2025) · Abril 2026
+    </p>
+  </div>
+
+</section><!-- /#marcas-universo -->
       <a class="marcas-btn" href="https://commafootball.com" target="_blank" rel="noopener">
         <span class="marcas-btn-icon">⚡</span>
         <div class="marcas-btn-info">
@@ -5722,6 +6438,75 @@ function wtSaveContact() {
 function wtFollowDiego() {
   window.open('https://instagram.com/maradona', '_blank', 'noopener,noreferrer');
 }
+
+// ─── HORIZONTAL SCROLL — Universo Marcas ───
+(function() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isMobile = function() { return window.innerWidth < 768; };
+
+  function setupHChapter(trackId, chapterId, progId, counterId, cardCount) {
+    if (isMobile() || prefersReduced) return;
+    var track = document.getElementById(trackId);
+    var chapter = document.getElementById(chapterId);
+    var prog = document.getElementById(progId);
+    var counter = document.getElementById(counterId);
+    if (!track || !chapter) return;
+
+    var getScrollAmount = function() { return -(track.scrollWidth - window.innerWidth); };
+
+    gsap.to(track, {
+      x: getScrollAmount,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: chapter,
+        start: 'top top',
+        end: function() { return '+=' + Math.abs(getScrollAmount()); },
+        pin: true,
+        anticipatePin: 1,
+        scrub: 1,
+        invalidateOnRefresh: true,
+        onUpdate: function(self) {
+          var p = self.progress;
+          if (prog) prog.style.width = (p * 100) + '%';
+          if (counter) {
+            var currentIdx = Math.min(Math.floor(p * cardCount) + 1, cardCount);
+            var pad = function(n) { return String(n).padStart(2, '0'); };
+            counter.textContent = pad(currentIdx) + ' / ' + pad(cardCount);
+          }
+        }
+      }
+    });
+  }
+
+  function initAll() {
+    setupHChapter('mu-track-claudia',   'mu-chapter-claudia',   'mu-prog-claudia',   'mu-counter-claudia',   5);
+    setupHChapter('mu-track-herederos', 'mu-chapter-herederos', 'mu-prog-herederos', 'mu-counter-herederos', 6);
+    setupHChapter('mu-track-fundacion', 'mu-chapter-fundacion', 'mu-prog-fundacion', 'mu-counter-fundacion', 4);
+    setupHChapter('mu-track-moda',      'mu-chapter-moda',      'mu-prog-moda',      'mu-counter-moda',      4);
+    setupHChapter('mu-track-cultura',   'mu-chapter-cultura',   'mu-prog-cultura',   'mu-counter-cultura',   5);
+
+    document.querySelectorAll('.mu-chapter-bg-num').forEach(function(num) {
+      var chapter = num.closest('.mu-chapter');
+      if (!chapter || isMobile() || prefersReduced) return;
+      gsap.to(num, {
+        yPercent: 10, ease: 'none',
+        scrollTrigger: { trigger: chapter, start: 'top bottom', end: 'bottom top', scrub: 2 }
+      });
+    });
+
+    ScrollTrigger.refresh();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
+  }
+})();
+// ─── Fin Horizontal Scroll Marcas ───
 </script>
 
 </body>
