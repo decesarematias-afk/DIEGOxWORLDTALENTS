@@ -6656,21 +6656,27 @@ function wtFollowDiego() {
 (function() {
   var iframe = document.getElementById('wt-iframe');
   if (!iframe) return;
+  var lastH = 0;
   window.addEventListener('message', function(e) {
-    if (e.data && e.data.type === 'wt-resize') {
-      iframe.style.height = e.data.height + 'px';
+    if (e.data && e.data.type === 'wt-resize' && e.data.height > 50) {
+      var h = e.data.height;
+      if (h !== lastH) {
+        lastH = h;
+        iframe.style.height = h + 'px';
+      }
     }
   });
   // Fallback: poll iframe height
   iframe.addEventListener('load', function() {
     function syncHeight() {
       try {
-        var h = iframe.contentDocument.documentElement.scrollHeight;
-        if (h > 100) iframe.style.height = h + 'px';
+        var root = iframe.contentDocument.getElementById('root');
+        var h = root ? Math.max(root.scrollHeight, root.offsetHeight) : iframe.contentDocument.documentElement.scrollHeight;
+        if (h > 50 && h !== lastH) { lastH = h; iframe.style.height = h + 'px'; }
       } catch(e) {}
     }
     syncHeight();
-    setInterval(syncHeight, 500);
+    setInterval(syncHeight, 300);
   });
 })();
 
