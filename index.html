@@ -2061,6 +2061,14 @@ img { max-width: 100%; display: block; }
 .hr-social-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:0 12px}
 .hr-social-btn{display:flex;align-items:center;gap:7px;padding:10px 16px;border-radius:14px;border:1px solid;text-decoration:none;font-size:12px;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 .hr-social-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.hr-club-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-height:280px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(212,175,55,0.2) transparent;padding:4px 0}
+.hr-club-grid::-webkit-scrollbar{width:4px}
+.hr-club-grid::-webkit-scrollbar-thumb{background:rgba(212,175,55,0.2);border-radius:2px}
+.hr-club-item{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px;border-radius:14px;background:rgba(255,255,255,0.02);border:1.5px solid rgba(255,255,255,0.06);cursor:pointer;transition:all .25s;text-align:center}
+.hr-club-item:hover{border-color:rgba(212,175,55,0.3);background:rgba(212,175,55,0.04);transform:translateY(-2px)}
+.hr-club-item.selected{border-color:#D4AF37;background:rgba(212,175,55,0.1);box-shadow:0 0 16px rgba(212,175,55,0.15)}
+.hr-club-item img{width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
+.hr-club-item span{font-family:'Inter',sans-serif;font-size:9px;font-weight:600;color:rgba(255,255,255,0.7);line-height:1.2;max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .hincha-social-link{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#fff;text-decoration:none;font-size:16px;transition:all .3s}
 .hincha-social-link:hover{background:rgba(255,255,255,0.12);transform:scale(1.1)}
 .hincha-social-link.wa-link{background:rgba(37,211,102,.15);color:#25D366;border-color:rgba(37,211,102,.3)}
@@ -5147,13 +5155,8 @@ select.login-input option{background:#0A0A0F;color:#fff}
     <label class="profile-field-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:4px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>SLOGAN</label>
     <input class="login-input" id="hinchaLoginSlogan" placeholder="Tu grito de guerra">
     <label class="profile-field-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:4px"><circle cx="12" cy="12" r="10"/><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>CLUB</label>
-    <select class="login-input" id="hinchaLoginClub">
-      <option value="">Elegir club...</option>
-      <option>Boca Juniors</option><option>River Plate</option><option>Racing</option><option>Independiente</option>
-      <option>San Lorenzo</option><option>Argentinos Juniors</option><option>Newell's</option><option>Rosario Central</option>
-      <option>Estudiantes</option><option>Velez</option><option>Belgrano</option><option>Godoy Cruz</option>
-      <option>Otro</option>
-    </select>
+    <input type="hidden" id="hinchaLoginClub" value="">
+    <div class="hr-club-grid" id="hinchaClubGrid"></div>
     <label class="profile-field-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E4405F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:4px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>INSTAGRAM</label>
     <input class="login-input" id="hinchaLoginIg" placeholder="@tuusuario">
     <label class="profile-field-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1877F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>FACEBOOK</label>
@@ -5977,12 +5980,61 @@ var YOUTUBE_VIDEO_MAP = {
 };
 
 // === PROFILE ===
+var CLUBES_ARG = [
+  {n:'Boca Juniors',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Escudo_del_Club_Atl%C3%A9tico_Boca_Juniors.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Boca_Juniors.svg.png'},
+  {n:'River Plate',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Escudo_del_C_A_River_Plate.svg/80px-Escudo_del_C_A_River_Plate.svg.png'},
+  {n:'Racing',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Escudo_de_Racing_Club_%282014%29.svg/80px-Escudo_de_Racing_Club_%282014%29.svg.png'},
+  {n:'Independiente',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Escudo_del_Club_Atl%C3%A9tico_Independiente.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Independiente.svg.png'},
+  {n:'San Lorenzo',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Escudo_del_Club_Atl%C3%A9tico_San_Lorenzo_de_Almagro.svg/80px-Escudo_del_Club_Atl%C3%A9tico_San_Lorenzo_de_Almagro.svg.png'},
+  {n:'Huracán',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Escudo_del_Club_Atl%C3%A9tico_Hurac%C3%A1n.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Hurac%C3%A1n.svg.png'},
+  {n:'Vélez Sarsfield',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg/80px-Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg.png'},
+  {n:'Argentinos Juniors',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Escudo_de_la_Asociaci%C3%B3n_Atl%C3%A9tica_Argentinos_Juniors.svg/80px-Escudo_de_la_Asociaci%C3%B3n_Atl%C3%A9tica_Argentinos_Juniors.svg.png'},
+  {n:'Estudiantes',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Escudo_del_Club_Estudiantes_de_La_Plata.svg/80px-Escudo_del_Club_Estudiantes_de_La_Plata.svg.png'},
+  {n:'Gimnasia LP',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Escudo_del_Club_de_Gimnasia_y_Esgrima_La_Plata.svg/80px-Escudo_del_Club_de_Gimnasia_y_Esgrima_La_Plata.svg.png'},
+  {n:"Newell's",e:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Escudo_del_Club_Atl%C3%A9tico_Newell%27s_Old_Boys_de_Rosario.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Newell%27s_Old_Boys_de_Rosario.svg.png'},
+  {n:'Rosario Central',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Escudo_del_Club_Atl%C3%A9tico_Rosario_Central.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Rosario_Central.svg.png'},
+  {n:'Talleres',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Escudo_del_Club_Atl%C3%A9tico_Talleres.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Talleres.svg.png'},
+  {n:'Belgrano',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Escudo_del_Club_Atl%C3%A9tico_Belgrano.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Belgrano.svg.png'},
+  {n:'Instituto',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Escudo_del_Instituto_Atl%C3%A9tico_Central_C%C3%B3rdoba.svg/80px-Escudo_del_Instituto_Atl%C3%A9tico_Central_C%C3%B3rdoba.svg.png'},
+  {n:'Godoy Cruz',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Escudo_del_Club_Deportivo_Godoy_Cruz_Antonio_Tomba.svg/80px-Escudo_del_Club_Deportivo_Godoy_Cruz_Antonio_Tomba.svg.png'},
+  {n:'Banfield',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Escudo_del_Club_Atl%C3%A9tico_Banfield.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Banfield.svg.png'},
+  {n:'Lanús',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Escudo_del_Club_Atl%C3%A9tico_Lan%C3%BAs.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Lan%C3%BAs.svg.png'},
+  {n:'Defensa y Justicia',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Escudo_del_Club_Social_y_Deportivo_Defensa_y_Justicia.svg/80px-Escudo_del_Club_Social_y_Deportivo_Defensa_y_Justicia.svg.png'},
+  {n:'Platense',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Escudo_del_Club_Atl%C3%A9tico_Platense.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Platense.svg.png'},
+  {n:'Barracas Central',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Escudo_del_Club_Atl%C3%A9tico_Barracas_Central.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Barracas_Central.svg.png'},
+  {n:'Tigre',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Escudo_del_Club_Atl%C3%A9tico_Tigre_-_2019.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Tigre_-_2019.svg.png'},
+  {n:'Sarmiento',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Escudo_del_Club_Atl%C3%A9tico_Sarmiento_de_Jun%C3%ADn.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Sarmiento_de_Jun%C3%ADn.svg.png'},
+  {n:'Central Córdoba',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Escudo_del_Club_Atl%C3%A9tico_Central_C%C3%B3rdoba_%28Santiago_del_Estero%29.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Central_C%C3%B3rdoba_%28Santiago_del_Estero%29.svg.png'},
+  {n:'Unión',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Escudo_del_Club_Atl%C3%A9tico_Uni%C3%B3n_%28Santa_Fe%29.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Uni%C3%B3n_%28Santa_Fe%29.svg.png'},
+  {n:'Colón',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Escudo_del_Club_Atl%C3%A9tico_Col%C3%B3n.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Col%C3%B3n.svg.png'},
+  {n:'Atlético Tucumán',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Escudo_del_Club_Atl%C3%A9tico_Tucum%C3%A1n_-_2017.svg/80px-Escudo_del_Club_Atl%C3%A9tico_Tucum%C3%A1n_-_2017.svg.png'},
+  {n:'Deportivo Riestra',e:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Escudo_del_Deportivo_Riestra.svg/80px-Escudo_del_Deportivo_Riestra.svg.png'},
+];
+function hinchaRenderClubGrid() {
+  var grid = document.getElementById('hinchaClubGrid');
+  if (!grid) return;
+  var sel = document.getElementById('hinchaLoginClub').value || '';
+  var html = '';
+  CLUBES_ARG.forEach(function(c) {
+    var isSelected = (sel === c.n) ? ' selected' : '';
+    html += '<div class="hr-club-item'+isSelected+'" onclick="hinchaSelectClub(\''+c.n.replace(/'/g,"\\'")+'\')">';
+    html += '<img src="'+c.e+'" alt="'+c.n+'" loading="lazy" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2236%22 height=%2236%22><circle cx=%2218%22 cy=%2218%22 r=%2216%22 fill=%22%23222%22 stroke=%22%23D4AF37%22/><text x=%2218%22 y=%2222%22 text-anchor=%22middle%22 fill=%22%23D4AF37%22 font-size=%2212%22>⚽</text></svg>\'">';
+    html += '<span>'+c.n+'</span></div>';
+  });
+  grid.innerHTML = html;
+}
+window.hinchaSelectClub = function(name) {
+  document.getElementById('hinchaLoginClub').value = name;
+  document.querySelectorAll('.hr-club-item').forEach(function(el) { el.classList.remove('selected'); });
+  event.currentTarget.classList.add('selected');
+};
 window.hinchaOpenLogin = function() {
   var ov = document.getElementById('hinchaLoginOverlay');
   if (!ov) return;
   document.getElementById('hinchaLoginName').value = hinchaProfile.name || '';
   document.getElementById('hinchaLoginSlogan').value = hinchaProfile.slogan || '';
   document.getElementById('hinchaLoginClub').value = hinchaProfile.club || '';
+  hinchaRenderClubGrid();
   document.getElementById('hinchaLoginIg').value = hinchaProfile.instagram || '';
   document.getElementById('hinchaLoginFb').value = hinchaProfile.facebook || '';
   document.getElementById('hinchaLoginTw').value = hinchaProfile.twitter || '';
