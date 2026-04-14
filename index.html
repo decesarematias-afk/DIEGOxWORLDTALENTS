@@ -3326,6 +3326,25 @@ select.login-input option{background:#0A0A0F;color:#fff}
   .mu-progress-bar { display: none; }
   .mu-chapter-bg-num { font-size: 40vw; }
 }
+
+/* ── Bio gloriosa del Diego ── */
+.wt-bio-glory { width:100%;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:20px;padding:0 20px; }
+.wt-bio-stat-row { display:flex;align-items:center;justify-content:center;gap:0;width:100%;max-width:420px;background:rgba(117,170,219,0.06);border:1px solid rgba(117,170,219,0.15);border-radius:16px;padding:14px 8px; }
+.wt-bio-stat { display:flex;flex-direction:column;align-items:center;gap:2px;flex:1; }
+.wt-bio-stat-div { width:1px;height:36px;background:rgba(117,170,219,0.20); }
+.wt-bio-stat-num { font-family:'Bebas Neue',sans-serif;font-size:26px;color:#75AADB;line-height:1;letter-spacing:0.03em; }
+.wt-bio-stat-label { font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.7);letter-spacing:1.5px;text-transform:uppercase;text-align:center; }
+.wt-bio-stat-sub { font-family:'Space Mono',monospace;font-size:7px;color:rgba(117,170,219,0.6);letter-spacing:1px;text-transform:uppercase;text-align:center; }
+.wt-bio-text { font-family:'Inter',sans-serif;font-size:13px;color:rgba(240,237,230,0.75);text-align:center;line-height:1.8;max-width:320px; }
+.wt-bio-quote { font-family:'Lora',serif;font-style:italic;font-size:14px;color:#D4AF37;text-align:center;padding:10px 20px;border-left:2px solid #D4AF37;border-right:2px solid #D4AF37;letter-spacing:0.02em;line-height:1.5; }
+
+/* ── Frases contraídas por defecto ── */
+.frase-card .fap,.frase-card .frase-category,.frase-card .frase-context { display:none;opacity:0;max-height:0;overflow:hidden;transition:opacity 0.35s ease,max-height 0.35s ease; }
+.frase-card.expanded .fap,.frase-card.expanded .frase-category { display:block;opacity:1;max-height:120px; }
+.frase-card.expanded .frase-context { display:block;opacity:1;max-height:200px; }
+.frase-card::after { content:'+';position:absolute;bottom:10px;right:14px;font-family:'Space Mono',monospace;font-size:16px;color:rgba(212,175,55,0.5);transition:transform 0.3s ease,color 0.3s ease;line-height:1; }
+.frase-card { position:relative;cursor:pointer;padding-bottom:28px !important; }
+.frase-card.expanded::after { content:'−';color:#D4AF37; }
 </style>
     <!-- ElevenLabs removed — using Cartesia voice agent instead -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -3371,6 +3390,31 @@ select.login-input option{background:#0A0A0F;color:#fff}
     loading="eager"
     scrolling="no"
   ></iframe>
+
+  <!-- Bio gloriosa del Diego -->
+  <div class="wt-bio-glory" style="background:#070b12;padding-top:20px;padding-bottom:30px;">
+    <div class="wt-bio-stat-row">
+      <div class="wt-bio-stat">
+        <span class="wt-bio-stat-num">🏆</span>
+        <span class="wt-bio-stat-label">Campeón del Mundo</span>
+        <span class="wt-bio-stat-sub">México 1986</span>
+      </div>
+      <div class="wt-bio-stat-div"></div>
+      <div class="wt-bio-stat">
+        <span class="wt-bio-stat-num">2</span>
+        <span class="wt-bio-stat-label">Scudetti</span>
+        <span class="wt-bio-stat-sub">Nápoles 87 · 90</span>
+      </div>
+      <div class="wt-bio-stat-div"></div>
+      <div class="wt-bio-stat">
+        <span class="wt-bio-stat-num">10</span>
+        <span class="wt-bio-stat-label">El Número</span>
+        <span class="wt-bio-stat-sub">Eterno</span>
+      </div>
+    </div>
+    <p class="wt-bio-text">De Villa Fiorito al cielo.<br>El pibe que soñaba con comer se convirtió<br>en el mejor jugador de todos los tiempos.</p>
+    <div class="wt-bio-quote">"La pelota no se mancha."</div>
+  </div>
 </section>
 
 
@@ -4637,9 +4681,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
     </div>
 
     <div class="frases-tabs">
-        <button class="frases-tab active" data-filter="all">Todas</button>
+        <button class="frases-tab" data-filter="all">Todas</button>
         <button class="frases-tab" data-filter="identidad">Identidad</button>
-        <button class="frases-tab" data-filter="futbol">F&uacute;tbol</button>
+        <button class="frases-tab active" data-filter="futbol">F&uacute;tbol</button>
         <button class="frases-tab" data-filter="familia">Familia</button>
         <button class="frases-tab" data-filter="filosofia">Filosof&iacute;a</button>
         <button class="frases-tab" data-filter="humor">Humor</button>
@@ -5210,6 +5254,9 @@ document.querySelectorAll('.frases-tab').forEach(tab => {
         });
     });
 });
+// Arrancar en Fútbol
+var ftab = document.querySelector('.frases-tab[data-filter="futbol"]');
+if (ftab) ftab.click();
 
 // Frase expand on click
 document.querySelectorAll('.frase-card').forEach(card => {
