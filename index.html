@@ -573,10 +573,10 @@ img { max-width: 100%; display: block; }
 
 .flip-card {
     perspective: 1000px;
-    height: 380px;
+    height: min(70vh, 500px);
     cursor: pointer;
     flex-shrink: 0;
-    width: min(340px, 80vw);
+    width: min(85vw, 500px);
 }
 
 .fiorito-progress {
@@ -692,8 +692,8 @@ img { max-width: 100%; display: block; }
         padding: 0 20px;
     }
     .flip-card {
-        height: 300px;
-        width: min(300px, 80vw);
+        height: min(60vh, 400px);
+        width: 85vw;
     }
     .fiorito-progress { display: none; }
 }
@@ -1948,8 +1948,10 @@ img { max-width: 100%; display: block; }
 .sabias-hscroll { position: relative; height: 100vh; overflow: hidden; background: var(--dark); }
 .sabias-hscroll .sala-title { position: absolute; top: 32px; left: 0; right: 0; z-index: 10; }
 .sabias-track-wrap { position: absolute; inset: 0; display: flex; align-items: center; z-index: 5; }
-.sabias-grid { display: flex; gap: 24px; padding: 0 60px; will-change: transform; text-align: left; }
-.sabias-card { background: var(--dark-card); border: 1px solid rgba(212,175,55,0.08); border-radius: 16px; padding: 1.8rem; transition: all 0.3s; flex-shrink: 0; width: min(340px, 80vw); }
+.sabias-grid { display: flex; gap: 20px; padding: 0 40px; will-change: transform; text-align: left; }
+.sabias-card { background: var(--dark-card); border: 1px solid rgba(212,175,55,0.08); border-radius: 20px; padding: 2.5rem 2rem; transition: all 0.3s; flex-shrink: 0; width: min(85vw, 500px); min-height: 60vh; display: flex; flex-direction: column; justify-content: center; }
+.sabias-icon { font-size: 48px; margin-bottom: 20px; }
+.sabias-text { font-size: clamp(16px, 2.5vw, 20px); line-height: 1.7; }
 .sabias-progress { position: absolute; bottom: 28px; left: 48px; right: 48px; height: 1px; background: rgba(255,255,255,.1); z-index: 10; }
 .sabias-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--celeste)); }
 @media (max-width: 767px) {
@@ -1958,7 +1960,7 @@ img { max-width: 100%; display: block; }
   .sabias-track-wrap { position: relative; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .sabias-track-wrap::-webkit-scrollbar { display: none; }
   .sabias-grid { padding: 0 20px; }
-  .sabias-card { width: min(300px, 80vw); }
+  .sabias-card { width: 85vw; min-height: 50vh; }
   .sabias-progress { display: none; }
 }
 .sabias-card:hover { border-color: rgba(212,175,55,0.35); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
@@ -3053,8 +3055,8 @@ select.login-input option{background:#0A0A0F;color:#fff}
 }
 .mu-card {
   flex-shrink: 0;
-  width: min(380px, 85vw);
-  margin-right: 32px;
+  width: min(85vw, 500px);
+  margin-right: 24px;
   background: var(--dark-card);
   border: 1px solid rgba(212,175,55,.12);
   border-radius: 20px;
@@ -3269,7 +3271,7 @@ select.login-input option{background:#0A0A0F;color:#fff}
   .mu-chapter-header { padding: 20px 24px; }
   .mu-progress-bar   { left: 24px; right: 24px; bottom: 24px; }
   .mu-track          { padding: 0 24px; }
-  .mu-card           { width: min(300px, 80vw); margin-right: 16px; }
+  .mu-card           { width: 85vw; margin-right: 16px; }
   .mu-chapter-name   { font-size: clamp(2rem, 8vw, 3.5rem); }
 }
 @media (max-width: 767px) {
