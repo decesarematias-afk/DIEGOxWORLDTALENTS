@@ -1944,9 +1944,23 @@ img { max-width: 100%; display: block; }
 .hero-sub-alt { font-family: var(--font-body); font-size: clamp(1rem, 2.5vw, 1.4rem); color: var(--white-dim); font-style: italic; margin-top: 16px; max-width: 600px; }
 
 /* ═══ SABÍAS QUE ═══ */
-.sabias-que-section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; text-align: center; }
-.sabias-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 2rem; text-align: left; }
-.sabias-card { background: var(--dark-card); border: 1px solid rgba(212,175,55,0.08); border-radius: 6px; padding: 1.5rem; transition: all 0.3s; }
+.sabias-que-section { text-align: center; }
+.sabias-hscroll { position: relative; height: 100vh; overflow: hidden; background: var(--dark); }
+.sabias-hscroll .sala-title { position: absolute; top: 32px; left: 0; right: 0; z-index: 10; }
+.sabias-track-wrap { position: absolute; inset: 0; display: flex; align-items: center; z-index: 5; }
+.sabias-grid { display: flex; gap: 24px; padding: 0 60px; will-change: transform; text-align: left; }
+.sabias-card { background: var(--dark-card); border: 1px solid rgba(212,175,55,0.08); border-radius: 16px; padding: 1.8rem; transition: all 0.3s; flex-shrink: 0; width: min(340px, 80vw); }
+.sabias-progress { position: absolute; bottom: 28px; left: 48px; right: 48px; height: 1px; background: rgba(255,255,255,.1); z-index: 10; }
+.sabias-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--celeste)); }
+@media (max-width: 767px) {
+  .sabias-hscroll { height: auto; min-height: auto; padding: 40px 0 24px; }
+  .sabias-hscroll .sala-title { position: relative; top: auto; margin-bottom: 16px; }
+  .sabias-track-wrap { position: relative; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .sabias-track-wrap::-webkit-scrollbar { display: none; }
+  .sabias-grid { padding: 0 20px; }
+  .sabias-card { width: min(300px, 80vw); }
+  .sabias-progress { display: none; }
+}
 .sabias-card:hover { border-color: rgba(212,175,55,0.35); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
 /* === FONDOS TEMÁTICOS SABÍAS QUE === */
 .sabias-card:nth-child(1){background:linear-gradient(135deg,rgba(117,170,219,0.18) 0%,rgba(18,18,26,0.95) 100%);border-color:rgba(117,170,219,0.22)}
@@ -4666,7 +4680,6 @@ select.login-input option{background:#0A0A0F;color:#fff}
         <p class="musica-subtitle">M&aacute;s de 300 canciones le dedicaron al Diego. Ac&aacute; est&aacute;n las mejores.</p>
         <div class="musica-grid" id="musicaTier1">
             <div class="musica-item"><span class="musica-label">La Mosca &mdash; Muchachos</span><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5r1ZxyU8So2hMac9qd7v3A?theme=0" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
-            <div class="musica-item"><span class="musica-label">Rodrigo &mdash; La Mano de Dios</span><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1dNmjzGKb0BFGHOT8rE9B4?theme=0" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
             <div class="musica-item"><span class="musica-label">Manu Chao &mdash; La Vida Tombola</span><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3U34tMYhMbr6tBWZdCUp6f?theme=0" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
             <div class="musica-item"><span class="musica-label">Los Piojos &mdash; Marad&oacute;</span><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2sO8LquCDDhtIhStoHhLjw?theme=0" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
             <div class="musica-item"><span class="musica-label">Las Pastillas del Abuelo &mdash; &iquest;Qu&eacute; Es Dios?</span><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5ihj0EOYE16YJ7jb605Ox4?theme=0" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
@@ -4705,8 +4718,10 @@ select.login-input option{background:#0A0A0F;color:#fff}
 </div><!-- /sala-content playlist -->
 
 <div class="sala-content" id="sala-curiosidades" data-sala="curiosidades"><section class="sabias-que-section">
-  <h2 class="sala-title reveal">&#x00BF;Sab&iacute;as Que...?</h2>
-  <div class="sabias-grid">
+  <div class="sabias-hscroll" id="sabias-hscroll">
+    <h2 class="sala-title reveal">&#x00BF;Sab&iacute;as Que...?</h2>
+    <div class="sabias-track-wrap">
+      <div class="sabias-grid" id="sabias-track">
     <div class="sabias-card reveal-stagger" style="transition-delay:0.05s"><div class="sabias-icon">&#x26BD;</div><div class="sabias-text">La camiseta que us&oacute; contra Inglaterra en 1986 se subast&oacute; por 9.3 millones de d&oacute;lares, la prenda deportiva m&aacute;s cara de la historia.</div></div>
     <div class="sabias-card reveal-stagger" style="transition-delay:0.1s"><div class="sabias-icon">&#x1F3B6;</div><div class="sabias-text">M&aacute;s de 300 canciones en todo el mundo mencionan a Maradona, desde el rock argentino hasta el hip-hop africano.</div></div>
     <div class="sabias-card reveal-stagger" style="transition-delay:0.15s"><div class="sabias-icon">&#x1F3A8;</div><div class="sabias-text">Solo en Buenos Aires hay m&aacute;s de 200 murales dedicados a Diego. En N&aacute;poles, el mural de los Quartieri Spagnoli recibe 6 millones de visitantes al a&ntilde;o.</div></div>
@@ -4715,7 +4730,11 @@ select.login-input option{background:#0A0A0F;color:#fff}
     <div class="sabias-card reveal-stagger" style="transition-delay:0.3s"><div class="sabias-icon">&#x1F30D;</div><div class="sabias-text">En 2005, en una encuesta de la FIFA, el Gol del Siglo fue elegido como el mejor gol de la historia de los Mundiales.</div></div>
     <div class="sabias-card reveal-stagger" style="transition-delay:0.35s"><div class="sabias-icon">&#x1F3DF;</div><div class="sabias-text">El estadio de Napoli fue renombrado &quot;Estadio Diego Armando Maradona&quot; en diciembre de 2020, apenas d&iacute;as despu&eacute;s de su muerte.</div></div>
     <div class="sabias-card reveal-stagger" style="transition-delay:0.4s"><div class="sabias-icon">&#x2764;</div><div class="sabias-text">Cuando muri&oacute;, cerca de 1 mill&oacute;n de personas rompieron la cuarentena para despedirlo en Casa Rosada. La fila era de 1.6 km.</div></div>
-  </div>
+        <div style="flex-shrink:0;width:60px;height:1px;"></div>
+      </div><!-- /sabias-grid -->
+    </div><!-- /sabias-track-wrap -->
+    <div class="sabias-progress"><div class="sabias-progress-fill" id="sabias-prog"></div></div>
+  </div><!-- /sabias-hscroll -->
 </section>
 </div><!-- /sala-content curiosidades -->
 
@@ -5531,7 +5550,7 @@ updateNav();
    HINCHA TAB — Mundial 2026 / Profile / Songs / Map
    ═══════════════════════════════════════════════ */
 (function(){
-var hinchaProfile = JSON.parse(localStorage.getItem('hinchaProfile') || 'null') || {name:'',photo:'',club:'',slogan:'',instagram:'',tiktok:'',whatsapp:''};
+var hinchaProfile = JSON.parse(localStorage.getItem('hinchaProfile') || 'null') || {name:'Diego Armando Maradona',photo:'./imagen_perfil_ultima.png',club:'Boca Juniors',slogan:'La pelota no se mancha',instagram:'maradona',tiktok:'',whatsapp:'5491164899266'};
 // Load photo from separate key (avoids localStorage quota errors with large images)
 if (!hinchaProfile.photo) hinchaProfile.photo = localStorage.getItem('hinchaProfilePhoto') || '';
 var hinchaLeafletMap = null;
@@ -6420,6 +6439,25 @@ function wtFollowDiego() {
         scrollTrigger: { trigger: chapter, start: 'top bottom', end: 'bottom top', scrub: 2 }
       });
     });
+
+    // ─── Sabías Que horizontal scroll ───
+    (function() {
+      if (isMobile() || prefersReduced) return;
+      var track = document.getElementById('sabias-track');
+      var chapter = document.getElementById('sabias-hscroll');
+      var prog = document.getElementById('sabias-prog');
+      if (!track || !chapter) return;
+      var getScrollAmount = function() { return -(track.scrollWidth - window.innerWidth); };
+      gsap.to(track, {
+        x: getScrollAmount, ease: 'none',
+        scrollTrigger: {
+          trigger: chapter, start: 'top top',
+          end: function() { return '+=' + Math.abs(getScrollAmount()); },
+          pin: true, anticipatePin: 1, scrub: 1, invalidateOnRefresh: true,
+          onUpdate: function(self) { if (prog) prog.style.width = (self.progress * 100) + '%'; }
+        }
+      });
+    })();
 
     // ─── Sala Fiorito horizontal scroll ───
     (function() {
