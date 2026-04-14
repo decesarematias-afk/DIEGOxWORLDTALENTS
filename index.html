@@ -2061,14 +2061,14 @@ img { max-width: 100%; display: block; }
 .hr-social-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:0 12px}
 .hr-social-btn{display:flex;align-items:center;gap:7px;padding:10px 16px;border-radius:14px;border:1px solid;text-decoration:none;font-size:12px;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 .hr-social-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
-.hr-club-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-height:280px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(212,175,55,0.2) transparent;padding:4px 0}
+.hr-club-grid{display:flex;flex-direction:column;gap:4px;max-height:240px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(212,175,55,0.2) transparent;padding:4px 0}
 .hr-club-grid::-webkit-scrollbar{width:4px}
 .hr-club-grid::-webkit-scrollbar-thumb{background:rgba(212,175,55,0.2);border-radius:2px}
-.hr-club-item{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px;border-radius:14px;background:rgba(255,255,255,0.02);border:1.5px solid rgba(255,255,255,0.06);cursor:pointer;transition:all .25s;text-align:center}
-.hr-club-item:hover{border-color:rgba(212,175,55,0.3);background:rgba(212,175,55,0.04);transform:translateY(-2px)}
-.hr-club-item.selected{border-color:#D4AF37;background:rgba(212,175,55,0.1);box-shadow:0 0 16px rgba(212,175,55,0.15)}
-.hr-club-item img{width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
-.hr-club-item span{font-family:'Inter',sans-serif;font-size:9px;font-weight:600;color:rgba(255,255,255,0.7);line-height:1.2;max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hr-club-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,0.02);border:1.5px solid rgba(255,255,255,0.06);cursor:pointer;transition:all .2s}
+.hr-club-item:hover{border-color:rgba(212,175,55,0.3);background:rgba(212,175,55,0.04)}
+.hr-club-item.selected{border-color:#D4AF37;background:rgba(212,175,55,0.1);box-shadow:0 0 12px rgba(212,175,55,0.12)}
+.hr-club-item img{width:28px;height:28px;object-fit:contain;flex-shrink:0}
+.hr-club-item span{font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:rgba(255,255,255,0.85)}
 .hincha-social-link{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#fff;text-decoration:none;font-size:16px;transition:all .3s}
 .hincha-social-link:hover{background:rgba(255,255,255,0.12);transform:scale(1.1)}
 .hincha-social-link.wa-link{background:rgba(37,211,102,.15);color:#25D366;border-color:rgba(37,211,102,.3)}
@@ -6014,19 +6014,20 @@ function hinchaRenderClubGrid() {
   var grid = document.getElementById('hinchaClubGrid');
   if (!grid) return;
   var sel = document.getElementById('hinchaLoginClub').value || '';
+  var sorted = CLUBES_ARG.slice().sort(function(a,b){ return a.n.localeCompare(b.n); });
   var html = '';
-  CLUBES_ARG.forEach(function(c) {
+  sorted.forEach(function(c) {
     var isSelected = (sel === c.n) ? ' selected' : '';
-    html += '<div class="hr-club-item'+isSelected+'" onclick="hinchaSelectClub(\''+c.n.replace(/'/g,"\\'")+'\')">';
-    html += '<img src="'+c.e+'" alt="'+c.n+'" loading="lazy" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2236%22 height=%2236%22><circle cx=%2218%22 cy=%2218%22 r=%2216%22 fill=%22%23222%22 stroke=%22%23D4AF37%22/><text x=%2218%22 y=%2222%22 text-anchor=%22middle%22 fill=%22%23D4AF37%22 font-size=%2212%22>⚽</text></svg>\'">';
+    html += '<div class="hr-club-item'+isSelected+'" onclick="hinchaSelectClub(this,\''+c.n.replace(/'/g,"\\'")+'\')">';
+    html += '<img src="'+c.e+'" alt="'+c.n+'" loading="lazy">';
     html += '<span>'+c.n+'</span></div>';
   });
   grid.innerHTML = html;
 }
-window.hinchaSelectClub = function(name) {
+window.hinchaSelectClub = function(el, name) {
   document.getElementById('hinchaLoginClub').value = name;
-  document.querySelectorAll('.hr-club-item').forEach(function(el) { el.classList.remove('selected'); });
-  event.currentTarget.classList.add('selected');
+  document.querySelectorAll('.hr-club-item').forEach(function(e) { e.classList.remove('selected'); });
+  el.classList.add('selected');
 };
 window.hinchaOpenLogin = function() {
   var ov = document.getElementById('hinchaLoginOverlay');
@@ -6101,7 +6102,12 @@ function hinchaApplyProfile() {
   var c = document.getElementById('hinchaProfileClub');
   if (c) c.textContent = hinchaProfile.club ? hinchaProfile.club + ' \u26bd' : 'Sin club \u26bd';
   var al = document.getElementById('hinchaAllegiance');
-  if (al) al.textContent = hinchaProfile.club ? 'HINCHA DE ' + hinchaProfile.club.toUpperCase() : '';
+  if (al) {
+    if (hinchaProfile.club) {
+      var _cd = (typeof CLUBES_ARG!=='undefined') ? CLUBES_ARG.find(function(c){return c.n===hinchaProfile.club;}) : null;
+      al.innerHTML = (_cd ? '<img src="'+_cd.e+'" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;margin-right:6px">' : '') + 'HINCHA DE ' + hinchaProfile.club.toUpperCase();
+    } else al.textContent = '';
+  }
   var wa = document.getElementById('hinchaWaLink');
   if (wa) { if (hinchaProfile.whatsapp) { wa.href = 'https://wa.me/' + hinchaProfile.whatsapp.replace(/[^0-9]/g,''); wa.style.display = ''; } else wa.style.display = 'none'; }
   var ig = document.getElementById('hinchaIgLink');
