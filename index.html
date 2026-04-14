@@ -3345,6 +3345,21 @@ select.login-input option{background:#0A0A0F;color:#fff}
 .frase-card::after { content:'+';position:absolute;bottom:10px;right:14px;font-family:'Space Mono',monospace;font-size:16px;color:rgba(212,175,55,0.5);transition:transform 0.3s ease,color 0.3s ease;line-height:1; }
 .frase-card { position:relative;cursor:pointer;padding-bottom:28px !important; }
 .frase-card.expanded::after { content:'−';color:#D4AF37; }
+
+/* ── Tarjeta con imagen de fondo real ── */
+.mu-card-img{position:relative;height:min(500px,72vh);flex-direction:column;justify-content:flex-end;padding:0;overflow:hidden}
+.mu-card-bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0;transition:transform 0.6s ease}
+.mu-card-img:hover .mu-card-bgimg{transform:scale(1.04)}
+.mu-card-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.20) 35%,rgba(0,0,0,0.90) 100%);border-radius:inherit;z-index:1}
+.mu-card-img .mu-card-visual{display:none}
+.mu-card-img .mu-card-body{position:relative;z-index:2;background:transparent;padding:20px 22px 26px}
+.mu-card-img .mu-card-title{color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.6);font-size:20px}
+.mu-card-img .mu-card-category{color:rgba(255,255,255,0.55)}
+.mu-card-img .mu-card-desc{color:rgba(255,255,255,0.78);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mu-card-img .mu-card-footer{border-top:1px solid rgba(255,255,255,0.10)}
+.mu-card-img .mu-card-link-label{color:rgba(255,255,255,0.55)}
+.mu-badge-float{position:absolute;top:14px;right:14px;z-index:3}
+@media(max-width:768px){.mu-card-img{height:min(420px,65vh)}}
 </style>
     <!-- ElevenLabs removed — using Cartesia voice agent instead -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -3520,7 +3535,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
     </div>
     <div class="mu-track-wrap">
       <div class="mu-track" id="mu-track-claudia">
-        <a class="mu-card" href="https://instagram.com/eventosplanv" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://instagram.com/eventosplanv" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Decorated_wedding_hall_in_a_restaurant._(50667953138).jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-pink"><span class="mu-card-emoji">🎊</span><span class="mu-card-badge mu-badge-active">ACTIVO</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Organización de Eventos · +20 años</span>
@@ -3529,7 +3546,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
             <div class="mu-card-footer"><span class="mu-card-link-label">@eventosplanv</span><div class="mu-card-arrow">›</div></div>
           </div>
         </a>
-        <a class="mu-card" href="https://instagram.com/claudiavillafaneok" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://instagram.com/claudiavillafaneok" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Good_Food_Display_-_NCI_Visuals_Online.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-pink"><span class="mu-card-emoji">📸</span><span class="mu-card-badge mu-badge-star">2M SEGUIDORES</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Presencia Digital Oficial</span>
@@ -3538,7 +3557,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
             <div class="mu-card-footer"><span class="mu-card-link-label">Instagram oficial</span><div class="mu-card-arrow">›</div></div>
           </div>
         </a>
-        <a class="mu-card" href="https://instagram.com/claudiavillafaneok" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://instagram.com/claudiavillafaneok" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Food_Set_Up_(8212917518).jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-pink"><span class="mu-card-emoji">👩‍🍳</span><span class="mu-card-badge mu-badge-star">GANADORA</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Gastronomía · Streaming · TV</span>
@@ -3547,7 +3568,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
             <div class="mu-card-footer"><span class="mu-card-link-label">Ver contenido</span><div class="mu-card-arrow">›</div></div>
           </div>
         </a>
-        <a class="mu-card" href="https://instagram.com/claudiavillafaneok" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://instagram.com/claudiavillafaneok" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Napoli_Fuorigrotta,_Stadio_San_Paolo.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-pink"><span class="mu-card-emoji">🇮🇹</span><span class="mu-card-badge mu-badge-soon">PRÓXIMA EDICIÓN</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Turismo Experiencial · Italia</span>
@@ -3556,7 +3579,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
             <div class="mu-card-footer"><span class="mu-card-link-label">Próximas fechas</span><div class="mu-card-arrow">›</div></div>
           </div>
         </a>
-        <div class="mu-card" style="cursor:default;">
+        <div class="mu-card mu-card-img" style="cursor:default;">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Gourmet_Chef_(Unsplash).jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-pink"><span class="mu-card-emoji">🏆</span><span class="mu-card-badge mu-badge-star">MARTÍN FIERRO ORO</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Reconocimiento · Telefe · 2021–2022</span>
@@ -3579,35 +3604,51 @@ select.login-input option{background:#0A0A0F;color:#fff}
       <div class="mu-chapter-counter" id="mu-counter-dalma">01 / 08</div>
     </div>
     <div class="mu-track-wrap"><div class="mu-track" id="mu-track-dalma">
-      <a class="mu-card" href="https://instagram.com/dalmaradona" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/dalmaradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Buenos_Aires_Teatro_Colon_3.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">🎭</span><span class="mu-card-badge mu-badge-active">EN CARTEL 2026</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Teatro · Timbre 4 · Gira Nacional</span><div class="mu-card-title">Al final las tragedias no mejoran a nadie</div><p class="mu-card-desc">Obra de Julieta Cayetina protagonizada por Dalma. Temporada 2025–2026 en Timbre 4 y gira nacional. Regresó al teatro después de 6 años de maternidad. Actriz profesional desde los 9 años.</p><div class="mu-card-footer"><span class="mu-card-link-label">@dalmaradona</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://www.disneyplus.com" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://www.disneyplus.com" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Dalma_Maradona_en_la_Casa_de_la_Cultura_de_la_Villa_21_Barracas.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">🎬</span><span class="mu-card-badge mu-badge-star">1.3M ESPECTADORES</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Cine · Disney+ · 2025</span><div class="mu-card-title">Homo Argentum</div><p class="mu-card-desc">Film de Cohn y Duprat con Guillermo Francella donde Dalma interpreta a "Eliana". Alcanzó 1.3 millones de espectadores en cine argentino. Disponible en Disney+ desde enero 2026.</p><div class="mu-card-footer"><span class="mu-card-link-label">Ver en Disney+</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://www.max.com" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://www.max.com" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Dalma_Maradona_-_Vivo_en_Argentina_(cropped).jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">🎥</span><span class="mu-card-badge mu-badge-soon">HBO MAX</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Docuserie · 3 episodios · Max 2023</span><div class="mu-card-title">La Hija de Dios</div><p class="mu-card-desc">Docuserie narrada por Dalma en primera persona. Dirección: Lorena Muñoz. Participan Coppola, Goycochea, Tévez, Di María. Estrenada en HBO Max (oct 2023). IMDb: 7.5/10.</p><div class="mu-card-footer"><span class="mu-card-link-label">Ver en Max</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/dalmaradona" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/dalmaradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Pendants_made_of_polymer_clay_(handmade).jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">👶</span><span class="mu-card-badge mu-badge-new">MARCA PROPIA</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Accesorios · Bebés · 2023</span><div class="mu-card-title">Dalma by Gioco</div><p class="mu-card-desc">Línea de portachupetes artesanales hechos a mano con tanza y mostacillas, en asociación con Gioco di Re. Superó las 100 unidades vendidas en 10 semanas.</p><div class="mu-card-footer"><span class="mu-card-link-label">@dalmaradona</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/dalmaradona" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/dalmaradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Handmade_earrings_by_crystaldust_designs.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">👜</span><span class="mu-card-badge mu-badge-active">CON GIANINNA</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Accesorios · Proyecto conjunto 2024</span><div class="mu-card-title">Babu</div><p class="mu-card-desc">Cápsula de accesorios inspirada en Maradona, diseñada junto a Gianinna. Anunciada en enero 2024. Proyecto familiar que une los talentos de las hermanas.</p><div class="mu-card-footer"><span class="mu-card-link-label">@dalmaradona</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://fundacionmaradona.org" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://fundacionmaradona.org" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Abren_en_la_Casa_Rosada_el_velatorio_p%C3%BAblico_de_Diego_Armando_Maradona.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">🏛️</span><span class="mu-card-badge mu-badge-star">PRESIDENTA</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Fundación Maradona · Relanzada Nov 2024</span><div class="mu-card-title">Fundación Maradona</div><p class="mu-card-desc">Dalma es presidenta de la Fundación Maradona relanzada en noviembre de 2024 junto a los 5 herederos. Promueve proyectos deportivos, culturales y educativos.</p><div class="mu-card-footer"><span class="mu-card-link-label">fundacionmaradona.org</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/dalmaradona" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/dalmaradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Dalma_Maradona_-_L%C3%ADnea_de_tiempo_(cropped).jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">📸</span><span class="mu-card-badge mu-badge-star">2M SEGUIDORES</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Presencia Digital</span><div class="mu-card-title">@dalmaradona</div><p class="mu-card-desc">Su canal oficial en Instagram. Contenido sobre teatro, cine, familia y el legado de Diego. Representación artística: TP Agencia. Titulada en Arte Dramático (UNA).</p><div class="mu-card-footer"><span class="mu-card-link-label">Instagram oficial</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/dalmaradona" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/dalmaradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Radio_Slovenia_studio.JPG?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-celeste"><span class="mu-card-emoji">📻</span><span class="mu-card-badge mu-badge-soon">PANELISTA</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Streaming · Radio · Bondi Live</span><div class="mu-card-title">Medios y Comunicación</div><p class="mu-card-desc">Conductora en Radio Metro 95.1 (2021–2023). Panelista fija de "Ángel Responde" en Bondi Live (2024–jun 2025). Dejó el streaming en junio 2025 para volver al teatro.</p><div class="mu-card-footer"><span class="mu-card-link-label">@dalmaradona</span><div class="mu-card-arrow">›</div></div></div>
       </a>
@@ -3624,19 +3665,27 @@ select.login-input option{background:#0A0A0F;color:#fff}
       <div class="mu-chapter-counter" id="mu-counter-gianinna">01 / 04</div>
     </div>
     <div class="mu-track-wrap"><div class="mu-track" id="mu-track-gianinna">
-      <a class="mu-card" href="https://instagram.com/wearcatarsis" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/wearcatarsis" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Harajuku_-_Takeshita_Street_20_(15119969724).jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">👗</span><span class="mu-card-badge mu-badge-new">MARCA PROPIA</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Diseño · Moda Urbana · Desde 2016</span><div class="mu-card-title">Catarsis</div><p class="mu-card-desc">Línea de ropa casual urbana diseñada por Gianinna, egresada de Diseño de Indumentaria de la Universidad de Palermo. Lanzada dic 2015. Primer desfile: Latinoamérica Fashion Week 2016.</p><div class="mu-card-footer"><span class="mu-card-link-label">@wearcatarsis</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/giamaradona" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/giamaradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Bijoux_traditionnels_en_or.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">👜</span><span class="mu-card-badge mu-badge-active">CON DALMA</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Accesorios · Proyecto conjunto 2024</span><div class="mu-card-title">Babu</div><p class="mu-card-desc">Cápsula de accesorios co-diseñada con Dalma. Gianinna diseña, Dalma acompaña. Anunciada en enero 2024 vía Instagram Stories. Proyecto familiar.</p><div class="mu-card-footer"><span class="mu-card-link-label">@giamaradona</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/aguerobenja19" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/aguerobenja19" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Estadio_Libertadores_de_America_2014.JPG?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">⚽</span><span class="mu-card-badge mu-badge-active">INDEPENDIENTE 2025</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Benjamín Agüero Maradona · 17 años</span><div class="mu-card-title">Benjamín, el nieto de Diego</div><p class="mu-card-desc">Hijo de Gianinna y el Kun Agüero. Delantero, pie izquierdo. Juega en la 7ª división de Club Atlético Independiente desde 2025. Su padrino es Lionel Messi.</p><div class="mu-card-footer"><span class="mu-card-link-label">@aguerobenja19</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/giamaradona" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/giamaradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Street_fashion_in_Tokyo_2019.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">📸</span><span class="mu-card-badge mu-badge-star">1M SEGUIDORES</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Presencia Digital</span><div class="mu-card-title">@giamaradona</div><p class="mu-card-desc">Su canal oficial en Instagram. Fue testigo clave en el juicio por la muerte de Diego (13 mayo 2025). Estudió Diseño en UP. Lidera junto a Dalma la batalla legal.</p><div class="mu-card-footer"><span class="mu-card-link-label">Instagram oficial</span><div class="mu-card-arrow">›</div></div></div>
       </a>
@@ -3653,19 +3702,27 @@ select.login-input option{background:#0A0A0F;color:#fff}
       <div class="mu-chapter-counter" id="mu-counter-jana">01 / 04</div>
     </div>
     <div class="mu-track-wrap"><div class="mu-track" id="mu-track-jana">
-      <a class="mu-card" href="https://instagram.com/venerebyjana" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/venerebyjana" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Glitter_adhered_on_arm_in_a_cosmetics_class_in_Baozhong_Junior_High_School_20130308.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-purple"><span class="mu-card-emoji">💄</span><span class="mu-card-badge mu-badge-active">ACTIVO</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Maquillaje Artístico · Argentina & Uruguay</span><div class="mu-card-title">Venere by Jana</div><p class="mu-card-desc">Servicio de maquillaje artístico para eventos: glitter, gemas, tatuajes temporales, maquillaje flúor y tribal. Opera en Argentina y Uruguay. Clientes: Jésica Cirio, Flor Vigna.</p><div class="mu-card-footer"><span class="mu-card-link-label">@venerebyjana</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/janamaradona" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/janamaradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Applying_makeup_during_filming_of_Transformers_at_Holloman_AFB_2006-05-31.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-purple"><span class="mu-card-emoji">💅</span><span class="mu-card-badge mu-badge-soon">BEAUTY NETWORK</span></div>
         <div class="mu-card-body"><span class="mu-card-category">CMC América · Red de Profesionales</span><div class="mu-card-title">Red Profesional Beauty</div><p class="mu-card-desc">Trabaja en la red CMC América de profesionales de belleza. Participó en eventos nacionales e internacionales. Destacada en Belleza Fashion (Canal Net TV).</p><div class="mu-card-footer"><span class="mu-card-link-label">@janamaradona</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/janamaradona" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/janamaradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Fashion_model_(9406509517).jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-purple"><span class="mu-card-emoji">👙</span><span class="mu-card-badge mu-badge-star">MODELO 2019</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Moda · Campaña Eufloria</span><div class="mu-card-title">Campaña Eufloria</div><p class="mu-card-desc">Protagonizó una campaña de lencería para la marca Eufloria (diciembre 2019). Primera aparición pública como modelo. Cobertura en Caras, Ciudad Magazine y medios internacionales.</p><div class="mu-card-footer"><span class="mu-card-link-label">@janamaradona</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/janamaradona" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/janamaradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Applying_makeup_during_filming_of_Transformers_at_Holloman_AFB_2006-05-31.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-purple"><span class="mu-card-emoji">📸</span><span class="mu-card-badge mu-badge-star">320K SEGUIDORES</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Presencia Digital · Montevideo</span><div class="mu-card-title">@janamaradona</div><p class="mu-card-desc">La heredera más discreta. Reside en Montevideo. Asistió a TODAS las audiencias del juicio. Declaró como testigo el 25 de marzo de 2025. Bio: @venerebyjana.</p><div class="mu-card-footer"><span class="mu-card-link-label">Instagram oficial</span><div class="mu-card-arrow">›</div></div></div>
       </a>
@@ -3682,19 +3739,27 @@ select.login-input option{background:#0A0A0F;color:#fff}
       <div class="mu-chapter-counter" id="mu-counter-diegojr">01 / 04</div>
     </div>
     <div class="mu-track-wrap"><div class="mu-track" id="mu-track-diegojr">
-      <a class="mu-card" href="https://instagram.com/diegomaradonajunior" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/diegomaradonajunior" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Stadio_Maradona_Serie_A.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">🦺</span><span class="mu-card-badge mu-badge-active">DT ACTUAL</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Director Técnico · Portici 1906 · Eccellenza</span><div class="mu-card-title">Diego Jr. — Director Técnico</div><p class="mu-card-desc">Desde noviembre 2025 dirige Portici 1906 (Eccellenza Campania). Historial: Napoli United (semifinal playoffs), Pompei (2° puesto), Montecalcio, UD Ibarra Tenerife.</p><div class="mu-card-footer"><span class="mu-card-link-label">@diegomaradonajunior</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/diegomaradonajunior" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/diegomaradonajunior" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Studio_1_of_Radio_Universidad_de_Costa_Rica,_5_August_2016.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">📻</span><span class="mu-card-badge mu-badge-soon">RADIO NÁPOLES</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Medios · Radio CRC · Italia</span><div class="mu-card-title">Radio CRC Nápoles</div><p class="mu-card-desc">Opinionista y co-conductor en Radio CRC, una de las radios deportivas más escuchadas de Nápoles. Analiza el calcio italiano y mantiene vivo el vínculo con su padre.</p><div class="mu-card-footer"><span class="mu-card-link-label">@diegomaradonajunior</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/diegomaradonajunior" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/diegomaradonajunior" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Iran_v_Spain,_Beach_Soccer_Intercontinental_Cup_2019.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">🏖️</span><span class="mu-card-badge mu-badge-star">SUBCAMPEÓN FIFA</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Fútbol Playa · Selección Italia</span><div class="mu-card-title">Carrera Deportiva</div><p class="mu-card-desc">Exjugador de más de 15 clubes italianos. Convocado por la Selección Italiana de Fútbol Playa. Subcampeón Mundial FIFA 2008. Campeón italiano con Napoli Beach Soccer 2009.</p><div class="mu-card-footer"><span class="mu-card-link-label">@diegomaradonajunior</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/diegomaradonajunior" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/diegomaradonajunior" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/800px-Maradona-Mundial_86_con_la_copa.JPG" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">📸</span><span class="mu-card-badge mu-badge-star">446K SEGUIDORES</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Presencia Digital · Nápoles</span><div class="mu-card-title">@diegomaradonajunior</div><p class="mu-card-desc">Hijo italiano de Diego, reconocido en 1993, doble ciudadanía (2021). Casado con Nunzia Pennino. Sus hijos: Diego Matias e India Nicole. Vive en Nápoles.</p><div class="mu-card-footer"><span class="mu-card-link-label">Instagram oficial</span><div class="mu-card-arrow">›</div></div></div>
       </a>
@@ -3711,15 +3776,21 @@ select.login-input option{background:#0A0A0F;color:#fff}
       <div class="mu-chapter-counter" id="mu-counter-dieguito">01 / 03</div>
     </div>
     <div class="mu-track-wrap"><div class="mu-track" id="mu-track-dieguito">
-      <a class="mu-card" href="https://instagram.com/diegofernandomaradona" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/diegofernandomaradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/800px-Maradona-Mundial_86_con_la_copa.JPG" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">👦</span><span class="mu-card-badge mu-badge-star">13 AÑOS</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Hijo de Diego y Verónica Ojeda</span><div class="mu-card-title">Diego Fernando Maradona</div><p class="mu-card-desc">El heredero más joven. Nacido el 13 de febrero de 2013. Completó la primaria en diciembre 2024 siendo segundo escolta de la bandera. Inició la secundaria en 2025.</p><div class="mu-card-footer"><span class="mu-card-link-label">@diegofernandomaradona</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://instagram.com/diegofernandomaradona" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://instagram.com/diegofernandomaradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/PLAZA_DE_LA_REPUBLICA,_OBELISCO_DE_BUENOS_AIRES.JPG?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">⚖️</span><span class="mu-card-badge mu-badge-new">JUSTICIA</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Activismo · Juicio por Diego · 2025</span><div class="mu-card-title">"Justicia por mi papá"</div><p class="mu-card-desc">Publicó un video viral en marzo de 2025, al inicio del nuevo juicio por la muerte de Diego, vistiendo una remera con el rostro de su padre. Sus palabras conmovieron a toda Argentina.</p><div class="mu-card-footer"><span class="mu-card-link-label">@diegofernandomaradona</span><div class="mu-card-arrow">›</div></div></div>
       </a>
-      <a class="mu-card" href="https://fundacionmaradona.org" target="_blank" rel="noopener">
+      <a class="mu-card mu-card-img" href="https://fundacionmaradona.org" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Homenaje_a_Diego_Armando_Maradona_at_the_Azteca_Stadium_(2021).jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
         <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">🏛️</span><span class="mu-card-badge mu-badge-star">CO-HEREDERO</span></div>
         <div class="mu-card-body"><span class="mu-card-category">Fundación Maradona · 1/5 de la herencia</span><div class="mu-card-title">Heredero Oficial</div><p class="mu-card-desc">Uno de los 5 herederos universales con el 20% del patrimonio de Diego. Representado legalmente por su madre Verónica Ojeda y el abogado Mario Baudry.</p><div class="mu-card-footer"><span class="mu-card-link-label">fundacionmaradona.org</span><div class="mu-card-arrow">›</div></div></div>
       </a>
@@ -3740,7 +3811,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
     </div>
     <div class="mu-track-wrap">
       <div class="mu-track" id="mu-track-fundacion">
-        <a class="mu-card" href="https://m10memorial.com" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://m10memorial.com" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Culto_a_Maradona.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">🕊️</span><span class="mu-card-badge mu-badge-soon">EN CONSTRUCCIÓN</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Buenos Aires · Huergo 10</span>
@@ -3749,7 +3822,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
             <div class="mu-card-footer"><span class="mu-card-link-label">m10memorial.com</span><div class="mu-card-arrow">›</div></div>
           </div>
         </a>
-        <a class="mu-card" href="https://fundacionmaradona.org" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://fundacionmaradona.org" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Diego_Maradona_Napoli.JPG?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">🤝</span><span class="mu-card-badge mu-badge-active">ACTIVO</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Presidida por Dalma Maradona · Nov 2024</span>
@@ -3758,7 +3833,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
             <div class="mu-card-footer"><span class="mu-card-link-label">fundacionmaradona.org</span><div class="mu-card-arrow">›</div></div>
           </div>
         </a>
-        <a class="mu-card" href="https://museomaradona.com" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://museomaradona.com" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Maglia_di_diego_armando_maradona,_indossata_in_italia_argentina_del_29-06-82.JPG?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">🇮🇹</span><span class="mu-card-badge mu-badge-active">ABIERTO</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Nápoles · Collezione Vignati</span>
@@ -3767,7 +3844,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
             <div class="mu-card-footer"><span class="mu-card-link-label">museomaradona.com</span><div class="mu-card-arrow">›</div></div>
           </div>
         </a>
-        <a class="mu-card" href="https://lacasaded10s.com" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://lacasaded10s.com" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Casa_regalo_de_Maradona_a_sus_padres.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-gold"><span class="mu-card-emoji">🏠</span><span class="mu-card-badge mu-badge-active">ABIERTO</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">La Paternal, Buenos Aires · Patrimonio histórico</span>
@@ -3794,7 +3873,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
     </div>
     <div class="mu-track-wrap">
       <div class="mu-track" id="mu-track-moda">
-        <a class="mu-card" href="https://commafootball.com" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://commafootball.com" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/800px-Maradona-Mundial_86_con_la_copa.JPG" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-purple"><span class="mu-card-emoji">⚡</span><span class="mu-card-badge mu-badge-new">2026</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Colección Oficial · Electa Global · 2026</span>
@@ -3803,7 +3884,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
             <div class="mu-card-footer"><span class="mu-card-link-label">commafootball.com</span><div class="mu-card-arrow">›</div></div>
           </div>
         </a>
-        <a class="mu-card" href="https://copafootball.com/en-us/collections/maradona" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://copafootball.com/en-us/collections/maradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Maglia_di_diego_armando_maradona,_indossata_in_italia_argentina_del_29-06-82.JPG?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-purple"><span class="mu-card-emoji">🎽</span><span class="mu-card-badge mu-badge-active">ACTIVO</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Camisetas Retro Oficiales · Holanda</span>
@@ -3812,7 +3895,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
             <div class="mu-card-footer"><span class="mu-card-link-label">copafootball.com</span><div class="mu-card-arrow">›</div></div>
           </div>
         </a>
-        <a class="mu-card" href="https://rootsoffight.com/collections/diego-maradona" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://rootsoffight.com/collections/diego-maradona" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Young_man_with_hoodie.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-purple"><span class="mu-card-emoji">🥊</span><span class="mu-card-badge mu-badge-active">ACTIVO</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Lifestyle · EE.UU.</span>
@@ -3839,7 +3924,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
     </div>
     <div class="mu-track-wrap">
       <div class="mu-track" id="mu-track-cultura">
-        <a class="mu-card" href="https://www.primevideo.com/search?phrase=sueno+bendito" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://www.primevideo.com/search?phrase=sueno+bendito" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Buenos_Aires_at_night.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">📺</span><span class="mu-card-badge mu-badge-active">AMAZON PRIME</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Serie biográfica oficial · 10 episodios</span>
@@ -3848,7 +3935,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
             <div class="mu-card-footer"><span class="mu-card-link-label">Amazon Prime Video</span><div class="mu-card-arrow">›</div></div>
           </div>
         </a>
-        <a class="mu-card" href="https://www.max.com" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://www.max.com" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Diego_Maradona_Napoli.JPG?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">🎥</span><span class="mu-card-badge mu-badge-star">90% RT</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Documental · Asif Kapadia · HBO Max</span>
@@ -3857,7 +3946,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
             <div class="mu-card-footer"><span class="mu-card-link-label">Ver en Max</span><div class="mu-card-arrow">›</div></div>
           </div>
         </a>
-        <a class="mu-card" href="https://www.ea.com/games/ea-sports-fc" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://www.ea.com/games/ea-sports-fc" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/800px-Maradona-Mundial_86_con_la_copa.JPG" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">🎮</span><span class="mu-card-badge mu-badge-new">FC 25/26</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">EA Sports · ICON Legendario · 2025</span>
@@ -3866,7 +3957,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
             <div class="mu-card-footer"><span class="mu-card-link-label">ea.com/fc</span><div class="mu-card-arrow">›</div></div>
           </div>
         </a>
-        <a class="mu-card" href="https://pastamaradona.it" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://pastamaradona.it" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Nonna_tagliatelle_01.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">🍝</span><span class="mu-card-badge mu-badge-star">ÚLTIMO NEGOCIO</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">Pastificio Paone · Italia · 1878</span>
@@ -3875,7 +3968,9 @@ select.login-input option{background:#0A0A0F;color:#fff}
             <div class="mu-card-footer"><span class="mu-card-link-label">pastamaradona.it</span><div class="mu-card-arrow">›</div></div>
           </div>
         </a>
-        <a class="mu-card" href="https://efootball.com" target="_blank" rel="noopener">
+        <a class="mu-card mu-card-img" href="https://efootball.com" target="_blank" rel="noopener">
+<img class="mu-card-bgimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/Estadio_Monumental_Antonio_Vespucio_Liberti.jpg?width=800" alt="" loading="lazy" onerror="this.style.display='none'">
+<div class="mu-card-img-overlay"></div>
           <div class="mu-card-visual mu-vis-gradient-green"><span class="mu-card-emoji">🕹️</span><span class="mu-card-badge mu-badge-active">KONAMI</span></div>
           <div class="mu-card-body">
             <span class="mu-card-category">eFootball · Legend Activo</span>
