@@ -2050,9 +2050,17 @@ img { max-width: 100%; display: block; }
 .hincha-profile-club{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:4px}
 .hincha-profile-allegiance{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;color:#75AADB;margin-bottom:12px;background:linear-gradient(135deg,rgba(117,170,219,0.1),rgba(117,170,219,0.05));border:1px solid rgba(117,170,219,0.2);border-radius:100px;padding:6px 18px;display:inline-block;max-width:90%}
 .hincha-profile-social{display:flex;gap:12px;margin-bottom:16px}
-.hr-chev.hr-rotated{transform:rotate(180deg)}
-#hinchaRedesExpand.hr-open{max-height:300px;opacity:1;margin-top:8px}
-.hincha-social-link{display:flex !important}
+.hr-redes-btn{width:100%;display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:16px;background:rgba(117,170,219,0.04);border:1px solid rgba(117,170,219,0.15);color:#75AADB;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .25s;animation:hrRedesGlow 2s ease-in-out infinite;position:relative;overflow:hidden}
+.hr-redes-btn::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(90deg,transparent,rgba(117,170,219,0.06),transparent);animation:hrRedesShine 3s ease-in-out infinite}
+@keyframes hrRedesGlow{0%,100%{border-color:rgba(117,170,219,0.15);box-shadow:0 0 8px rgba(117,170,219,0.05)}50%{border-color:rgba(117,170,219,0.35);box-shadow:0 0 20px rgba(117,170,219,0.15)}}
+@keyframes hrRedesShine{0%{transform:translateX(-100%)}50%{transform:translateX(100%)}100%{transform:translateX(100%)}}
+.hr-redes-btn:hover{border-color:rgba(117,170,219,0.4);background:rgba(117,170,219,0.07);box-shadow:0 0 24px rgba(117,170,219,0.2)}
+.hr-redes-count{padding:3px 8px;border-radius:10px;background:rgba(117,170,219,0.12);color:#75AADB;font-size:10px;font-weight:800;font-family:'Space Mono',monospace}
+.hr-redes-expand{overflow:hidden;max-height:0;opacity:0;transition:max-height .4s cubic-bezier(.4,0,.2,1),opacity .3s,margin .3s;margin-top:0}
+.hr-redes-expand.open{max-height:220px;opacity:1;margin-top:10px}
+.hr-social-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:0 12px}
+.hr-social-btn{display:flex;align-items:center;gap:7px;padding:10px 16px;border-radius:14px;border:1px solid;text-decoration:none;font-size:12px;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.hr-social-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
 .hincha-social-link{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#fff;text-decoration:none;font-size:16px;transition:all .3s}
 .hincha-social-link:hover{background:rgba(255,255,255,0.12);transform:scale(1.1)}
 .hincha-social-link.wa-link{background:rgba(37,211,102,.15);color:#25D366;border-color:rgba(37,211,102,.3)}
@@ -5084,30 +5092,27 @@ select.login-input option{background:#0A0A0F;color:#fff}
   <button class="hincha-edit-profile-btn" id="hinchaEditProfileBtn" onclick="hinchaOpenLogin()">&#x270f;&#xfe0f; EDITAR PERFIL</button>
   <div class="hincha-profile-slogan" id="hinchaSlogan"></div>
   <div class="hincha-profile-allegiance" id="hinchaAllegiance"></div>
-  <!-- Redes desplegable estilo WT -->
+  <!-- Redes desplegable (replica exacta WT) -->
   <div style="padding:0 16px;margin-bottom:16px;">
-    <button id="hinchaRedesToggle" onclick="document.getElementById('hinchaRedesExpand').classList.toggle('hr-open');this.querySelector('.hr-chev').classList.toggle('hr-rotated')"
-      style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-radius:16px;background:rgba(117,170,219,0.04);border:1px solid rgba(117,170,219,0.15);cursor:pointer;font-family:'Inter',sans-serif;transition:all .25s;">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <span style="font-size:14px;font-weight:700;color:#75AADB;">Mis Redes</span>
-        <span class="hr-icons" id="hinchaRedesIcons" style="display:flex;gap:4px;"></span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <span id="hinchaRedesCount" style="font-family:'Space Mono',monospace;font-size:11px;color:#75AADB;background:rgba(117,170,219,0.1);padding:2px 8px;border-radius:8px;">0</span>
-        <svg class="hr-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#75AADB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .3s;"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
+    <button class="hr-redes-btn" onclick="var exp=document.getElementById('hrRedesExp');exp.classList.toggle('open');this.querySelector('.hr-chev').style.transform=exp.classList.contains('open')?'rotate(180deg)':'none'">
+      <span style="flex:1;text-align:left;display:flex;align-items:center;gap:8px;">
+        <span>Mis Redes</span>
+        <span id="hinchaRedesIcons" style="display:flex;align-items:center;gap:5px;"></span>
+      </span>
+      <span class="hr-redes-count" id="hinchaRedesCount">0</span>
+      <svg class="hr-chev" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#75AADB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .3s;"><polyline points="6 9 12 15 18 9"/></svg>
     </button>
-    <div id="hinchaRedesExpand" style="max-height:0;overflow:hidden;opacity:0;transition:max-height .4s cubic-bezier(.4,0,.2,1),opacity .3s,margin .3s;margin-top:0;">
-      <div style="display:flex;flex-wrap:wrap;gap:8px;padding:12px 4px;">
-        <a href="#" class="hincha-social-link wa-link" id="hinchaWaLink" style="display:none;padding:10px 16px;border-radius:12px;background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.2);text-decoration:none;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#25D366;" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg> WhatsApp</a>
-        <a href="#" class="hincha-social-link ig-link" id="hinchaIgLink" style="display:none;padding:10px 16px;border-radius:12px;background:rgba(228,64,95,0.08);border:1px solid rgba(228,64,95,0.2);text-decoration:none;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#E4405F;" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2"/></svg> Instagram</a>
-        <a href="#" class="hincha-social-link fb-link" id="hinchaFbLink" style="display:none;padding:10px 16px;border-radius:12px;background:rgba(24,119,242,0.08);border:1px solid rgba(24,119,242,0.2);text-decoration:none;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#1877F2;" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg> Facebook</a>
-        <a href="#" class="hincha-social-link tw-link" id="hinchaTwLink" style="display:none;padding:10px 16px;border-radius:12px;background:rgba(29,161,242,0.08);border:1px solid rgba(29,161,242,0.2);text-decoration:none;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#1DA1F2;" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg> Twitter</a>
-        <a href="#" class="hincha-social-link yt-link" id="hinchaYtLink" style="display:none;padding:10px 16px;border-radius:12px;background:rgba(255,0,0,0.08);border:1px solid rgba(255,0,0,0.2);text-decoration:none;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#FF0000;" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98" fill="#0A0E1A"/></svg> YouTube</a>
-        <a href="#" class="hincha-social-link sp-link" id="hinchaSpLink" style="display:none;padding:10px 16px;border-radius:12px;background:rgba(29,185,84,0.08);border:1px solid rgba(29,185,84,0.2);text-decoration:none;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#1DB954;" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02z"/></svg> Spotify</a>
-        <a href="#" class="hincha-social-link tk-link" id="hinchaTkLink" style="display:none;padding:10px 16px;border-radius:12px;background:rgba(255,0,80,0.08);border:1px solid rgba(255,0,80,0.2);text-decoration:none;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#ff0050;" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48V13.2a8.16 8.16 0 004.77 1.53v-3.5a4.82 4.82 0 01-.81.07 4.84 4.84 0 01-2.38-.63v-3.98z"/></svg> TikTok</a>
-        <a href="#" class="hincha-social-link li-link" id="hinchaLiLink" style="display:none;padding:10px 16px;border-radius:12px;background:rgba(10,102,194,0.08);border:1px solid rgba(10,102,194,0.2);text-decoration:none;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#0A66C2;" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn</a>
-        <a href="#" class="hincha-social-link web-link" id="hinchaWebLink" style="display:none;padding:10px 16px;border-radius:12px;background:rgba(117,170,219,0.08);border:1px solid rgba(117,170,219,0.2);text-decoration:none;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#75AADB;" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg> Web</a>
+    <div class="hr-redes-expand" id="hrRedesExp">
+      <div class="hr-social-grid">
+        <a href="#" class="hr-social-btn" id="hinchaWaLink" style="display:none;background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.3);color:#25D366;" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3"/></svg>WhatsApp</a>
+        <a href="#" class="hr-social-btn" id="hinchaIgLink" style="display:none;background:rgba(228,64,95,0.1);border-color:rgba(228,64,95,0.3);color:#E4405F;" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>Instagram</a>
+        <a href="#" class="hr-social-btn" id="hinchaFbLink" style="display:none;background:rgba(24,119,242,0.1);border-color:rgba(24,119,242,0.3);color:#1877F2;" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>Facebook</a>
+        <a href="#" class="hr-social-btn" id="hinchaTwLink" style="display:none;background:rgba(29,161,242,0.1);border-color:rgba(29,161,242,0.3);color:#1DA1F2;" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5"/></svg>Twitter</a>
+        <a href="#" class="hr-social-btn" id="hinchaYtLink" style="display:none;background:rgba(255,0,0,0.1);border-color:rgba(255,0,0,0.3);color:#FF0000;" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="4"/><polygon points="10 9 16 12 10 15 10 9"/></svg>YouTube</a>
+        <a href="#" class="hr-social-btn" id="hinchaSpLink" style="display:none;background:rgba(29,185,84,0.1);border-color:rgba(29,185,84,0.3);color:#1DB954;" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15c2-1 6-1 8 0"/><path d="M7 12c2.5-1.5 7.5-1.5 10 0"/></svg>Spotify</a>
+        <a href="#" class="hr-social-btn" id="hinchaTkLink" style="display:none;background:rgba(255,0,80,0.1);border-color:rgba(255,0,80,0.3);color:#ff0050;" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>TikTok</a>
+        <a href="#" class="hr-social-btn" id="hinchaLiLink" style="display:none;background:rgba(10,102,194,0.1);border-color:rgba(10,102,194,0.3);color:#0A66C2;" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+        <a href="#" class="hr-social-btn" id="hinchaWebLink" style="display:none;background:rgba(117,170,219,0.1);border-color:rgba(117,170,219,0.3);color:#75AADB;" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>Web</a>
       </div>
     </div>
   </div>
@@ -6063,13 +6068,21 @@ function hinchaApplyProfile() {
   if (li) { if (hinchaProfile.linkedin) { li.href = 'https://linkedin.com/in/' + hinchaProfile.linkedin; li.style.display = ''; } else li.style.display = 'none'; }
   var wb = document.getElementById('hinchaWebLink');
   if (wb) { if (hinchaProfile.web) { wb.href = hinchaProfile.web; wb.style.display = ''; } else wb.style.display = 'none'; }
-  // Update redes counter and preview icons
-  var redesMap = [
-    {k:'instagram',e:'📸'},{k:'facebook',e:'📘'},{k:'twitter',e:'🐦'},{k:'youtube',e:'🎬'},
-    {k:'whatsapp',e:'💬'},{k:'spotify',e:'🎵'},{k:'tiktok',e:'🎵'},{k:'linkedin',e:'💼'},{k:'web',e:'🌐'}
-  ];
+  // Update redes counter and preview icons (SVG like WT)
+  var redesSvg = {
+    instagram:'<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/>',
+    facebook:'<path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>',
+    twitter:'<path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5"/>',
+    youtube:'<rect x="2" y="4" width="20" height="16" rx="4"/><polygon points="10 9 16 12 10 15 10 9"/>',
+    whatsapp:'<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3"/>',
+    linkedin:'<path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
+    tiktok:'<path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/>',
+    spotify:'<circle cx="12" cy="12" r="10"/><path d="M8 15c2-1 6-1 8 0"/><path d="M7 12c2.5-1.5 7.5-1.5 10 0"/>',
+    web:'<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>'
+  };
+  var redesColors = {instagram:'#E4405F',facebook:'#1877F2',twitter:'#1DA1F2',youtube:'#FF0000',whatsapp:'#25D366',linkedin:'#0A66C2',tiktok:'#ff0050',spotify:'#1DB954',web:'#75AADB'};
   var cnt = 0, icons = '';
-  redesMap.forEach(function(r){ if(hinchaProfile[r.k]) { cnt++; icons += '<span style="font-size:14px">'+r.e+'</span>'; } });
+  Object.keys(redesSvg).forEach(function(k){ if(hinchaProfile[k]) { cnt++; icons += '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="'+redesColors[k]+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.9">'+redesSvg[k]+'</svg>'; } });
   var cEl = document.getElementById('hinchaRedesCount');
   if (cEl) cEl.textContent = cnt;
   var iEl = document.getElementById('hinchaRedesIcons');
