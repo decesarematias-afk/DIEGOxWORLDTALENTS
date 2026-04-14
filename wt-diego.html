@@ -164,6 +164,8 @@ const I = {
 const SOCIAL_DEFS = [
   { key: "instagram", name: "Instagram", color: "#E4405F", bg: "rgba(228,64,95,.1)", prefix: "https://instagram.com/", ph: "fernandomilo", icon: <><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="5" /></> },
   { key: "facebook", name: "Facebook", color: "#1877F2", bg: "rgba(24,119,242,.1)", prefix: "https://facebook.com/", ph: "diegomaradona", icon: <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /> },
+  { key: "twitter", name: "Twitter / X", color: "#1DA1F2", bg: "rgba(29,161,242,.1)", prefix: "https://twitter.com/", ph: "DiegoAMaradona", icon: <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" /> },
+  { key: "youtube", name: "YouTube", color: "#FF0000", bg: "rgba(255,0,0,.08)", prefix: "https://youtube.com/@", ph: "diegomaradona", icon: <><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" style={{mixBlendMode:'multiply'}}/></> },
   { key: "whatsapp", name: "WhatsApp", color: "#25D366", bg: "rgba(37,211,102,.1)", prefix: "https://wa.me/", ph: "5491157564835", icon: <path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15c-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.14-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06s-.02-.46.13-.6c.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z" /> },
   { key: "linkedin", name: "LinkedIn", color: "#0A66C2", bg: "rgba(10,102,194,.1)", prefix: "https://linkedin.com/in/", ph: "fernandomilo", icon: <><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></> },
   { key: "tiktok", name: "TikTok", color: "#ff0050", bg: "rgba(255,0,80,.1)", prefix: "https://tiktok.com/@", ph: "fernandomilo", icon: <path d="M9 12a4 4 0 104 4V4a5 5 0 005 5" /> },
@@ -809,7 +811,7 @@ function WorldTalents() {
   const [profile, setProfile] = useState({
     name: "Diego Armando Maradona", nick: "@d10s",
     role: "Campeón del Mundo 1986 · El Mejor de Todos los Tiempos", initials: "DM",
-    bio: "Yo nací en un barrio privado de Buenos Aires: privado de luz, de agua, de teléfono y de gas.",
+    bio: "El fútbol me dio todo lo que le pedí y más de lo que soñé. De Fiorito al mundo. Eterno.",
     photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/400px-Maradona-Mundial_86_con_la_copa.JPG", coverPhoto: "https://img.youtube.com/vi/Pl3AnYCeTrU/maxresdefault.jpg",
     vipDesc: "Historias exclusivas del vestuario, anécdotas nunca contadas y el lado humano de D10S.",
     coverLink: "",
@@ -821,7 +823,7 @@ function WorldTalents() {
   const [loginLoading, setLoginLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
-  const [socials, setSocials] = useState({ instagram: "maradona", facebook: "diegomaradona", whatsapp: "", linkedin: "", tiktok: "", web: "https://m10memorial.com" });
+  const [socials, setSocials] = useState({ instagram: "maradona", facebook: "diegomaradona", twitter: "DiegoAMaradona", youtube: "diegomaradona", whatsapp: "", linkedin: "", tiktok: "", web: "https://m10memorial.com" });
   const [editSocials, setEditSocials] = useState({ ...socials });
   const [cropSrc, setCropSrc] = useState(null);
   const [cropTarget, setCropTarget] = useState("avatar");
