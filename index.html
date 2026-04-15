@@ -6113,7 +6113,8 @@ function hinchaApplyProfile() {
   if (al) {
     if (hinchaProfile.club) {
       var _cd = (typeof CLUBES_ARG!=='undefined') ? CLUBES_ARG.find(function(c){return c.n===hinchaProfile.club;}) : null;
-      al.innerHTML = (_cd ? '<img src="'+_cd.e+'" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;margin-right:6px">' : '') + 'HINCHA DE ' + hinchaProfile.club.toUpperCase();
+      al.innerHTML = (_cd ? '<img src="'+_cd.e+'" style="width:32px;height:32px;object-fit:contain;display:block;margin:0 auto 6px;">' : '') + 'HINCHA DE ' + hinchaProfile.club.toUpperCase();
+      al.style.display='flex';al.style.flexDirection='column';al.style.alignItems='center';al.style.gap='2px';
     } else al.textContent = '';
   }
   var wa = document.getElementById('hinchaWaLink');
