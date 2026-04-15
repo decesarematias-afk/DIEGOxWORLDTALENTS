@@ -5523,11 +5523,19 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // ─── TAB SWITCHING ───
+var isHinchaMode = window.location.hash.toLowerCase().includes('hincha') || window.location.hash.toLowerCase().includes('fan');
 document.querySelectorAll('.tab-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
+        var tab = btn.dataset.tab;
+
+        // Block maradoniano tab in hincha mode
+        if (isHinchaMode && tab === 'maradoniano') {
+            document.getElementById('lockedOverlay').style.display = 'flex';
+            return;
+        }
+
         document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
         btn.classList.add('active');
-        var tab = btn.dataset.tab;
         document.querySelectorAll('.tab-content').forEach(function(c) { c.style.display = 'none'; });
         var active = document.getElementById('tab-' + tab);
         if (active) {
@@ -6906,6 +6914,12 @@ function wtFollowDiego() {
 })();
 // ─── Fin Horizontal Scroll Marcas ───
 
+// ─── Add lock icon to blocked tabs in hincha mode ───
+if (isHinchaMode) {
+  var mTab = document.querySelector('.tab-btn[data-tab="maradoniano"] .tab-label');
+  if (mTab) mTab.innerHTML = '🔒 MARADONIANO';
+}
+
 // ─── Hash-based tab routing ───
 (function() {
   var hash = window.location.hash.toLowerCase().replace('#', '');
@@ -6919,6 +6933,20 @@ function wtFollowDiego() {
   }, 400);
 })();
 </script>
+
+<!-- Locked overlay for hincha mode -->
+<div id="lockedOverlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;" onclick="this.style.display='none'">
+  <div style="font-size:80px;margin-bottom:24px;animation:lockPulse 2s ease-in-out infinite;">🔒</div>
+  <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,6vw,3.5rem);color:#D4AF37;letter-spacing:0.1em;margin-bottom:12px;">CONTENIDO EXCLUSIVO</h2>
+  <p style="font-family:'Inter',sans-serif;font-size:clamp(14px,2.5vw,17px);color:rgba(240,237,230,0.6);max-width:400px;line-height:1.7;margin-bottom:32px;">Obtené tu pulsera D10S para desbloquear la experiencia <span style="color:#75AADB;font-weight:700;">Maradoniano</span></p>
+  <button onclick="event.stopPropagation();window.scrollTo({top:0,behavior:'smooth'});document.getElementById('lockedOverlay').style.display='none';" style="display:flex;align-items:center;gap:10px;padding:16px 32px;border-radius:60px;background:linear-gradient(135deg,#D4AF37,#F5CB5C);border:none;color:#0A0A0F;font-family:'Bebas Neue',sans-serif;font-size:clamp(16px,3vw,20px);letter-spacing:2px;cursor:pointer;box-shadow:0 6px 30px rgba(212,175,55,0.35);transition:all .25s;">
+    ⚡ QUIERO MI PULSERA
+  </button>
+  <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);margin-top:24px;letter-spacing:2px;">TOCÁ FUERA PARA CERRAR</p>
+</div>
+<style>
+@keyframes lockPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:0.8}}
+</style>
 
 </body>
 </html>
