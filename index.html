@@ -5093,7 +5093,7 @@ select.login-input option{background:#0A0A0F;color:#fff}
 <!-- ====== PERFIL EDITABLE ====== -->
 <div class="hincha-profile-header">
   <div class="hincha-profile-avatar-wrap" onclick="hinchaOpenLogin()" style="cursor:pointer">
-    <img id="hinchaProfilePhoto" class="hincha-profile-avatar" src="./imagen_perfil_ultima.png" alt="Avatar">
+    <img id="hinchaProfilePhoto" class="hincha-profile-avatar" src="./foto-hincha.jpg" alt="Avatar">
     <div class="hincha-avatar-pencil">&#x270f;&#xfe0f;</div>
   </div>
   <h2 class="hincha-profile-name" id="hinchaProfileName">HINCHA</h2>
@@ -5146,7 +5146,7 @@ select.login-input option{background:#0A0A0F;color:#fff}
     <h3>TU PERFIL HINCHA</h3>
     <p>PERSONALIZA TU EXPERIENCIA</p>
     <div class="profile-photo-wrap">
-      <img id="loginPhotoPreview" src="./imagen_perfil_ultima.png" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid rgba(117,170,219,0.3);cursor:pointer" onclick="document.getElementById('hinchaPhotoInput').click()">
+      <img id="loginPhotoPreview" src="./foto-hincha.jpg" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid rgba(117,170,219,0.3);cursor:pointer" onclick="document.getElementById('hinchaPhotoInput').click()">
       <div class="profile-photo-pencil">&#x270f;&#xfe0f;</div>
       <input type="file" id="hinchaPhotoInput" accept="image/*" style="display:none" onchange="hinchaHandlePhotoUpload(event)">
     </div>
@@ -5853,14 +5853,14 @@ updateNav();
    HINCHA TAB — Mundial 2026 / Profile / Songs / Map
    ═══════════════════════════════════════════════ */
 (function(){
-var _hd = {name:'Diego Armando Maradona',photo:'./imagen_perfil_ultima.png',club:'Boca Juniors',slogan:'La pelota no se mancha',instagram:'maradona',facebook:'diegomaradona',twitter:'DiegoAMaradona',youtube:'diegomaradona',spotify:'',tiktok:'',whatsapp:'5491164899266',linkedin:'',web:'https://m10memorial.com'};
+var _hd = {name:'Diego Armando Maradona',photo:'./foto-hincha.jpg',club:'Boca Juniors',slogan:'La pelota no se mancha',instagram:'maradona',facebook:'diegomaradona',twitter:'DiegoAMaradona',youtube:'diegomaradona',spotify:'',tiktok:'',whatsapp:'5491164899266',linkedin:'',web:'https://m10memorial.com'};
 var hinchaProfile = JSON.parse(localStorage.getItem('hinchaProfile') || 'null') || {};
 Object.keys(_hd).forEach(function(k){ if(!hinchaProfile[k]) hinchaProfile[k] = _hd[k]; });
 // Load photo from separate key (avoids localStorage quota errors with large images)
 var _storedPhoto = localStorage.getItem('hinchaProfilePhoto') || '';
 if (_storedPhoto && _storedPhoto.length > 10) hinchaProfile.photo = _storedPhoto;
 // Always ensure photo has a value
-if (!hinchaProfile.photo || hinchaProfile.photo.length < 5) hinchaProfile.photo = './imagen_perfil_ultima.png';
+if (!hinchaProfile.photo || hinchaProfile.photo.length < 5) hinchaProfile.photo = './foto-hincha.jpg';
 var hinchaLeafletMap = null;
 var hinchaCountdownInterval = null;
 var hinchaCurrentH2HRival = null;
@@ -6104,7 +6104,7 @@ function hinchaApplyProfile() {
   var n = document.getElementById('hinchaProfileName');
   if (n) n.textContent = hinchaProfile.name ? hinchaProfile.name.toUpperCase() : 'HINCHA';
   var p = document.getElementById('hinchaProfilePhoto');
-  if (p) p.src = hinchaProfile.photo || './imagen_perfil_ultima.png';
+  if (p) p.src = hinchaProfile.photo || './foto-hincha.jpg';
   var s = document.getElementById('hinchaSlogan');
   if (s) s.textContent = hinchaProfile.slogan || '';
   var c = document.getElementById('hinchaProfileClub');
