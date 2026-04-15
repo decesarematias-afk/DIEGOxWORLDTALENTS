@@ -6905,6 +6905,19 @@ function wtFollowDiego() {
   }
 })();
 // ─── Fin Horizontal Scroll Marcas ───
+
+// ─── Hash-based tab routing ───
+(function() {
+  var hash = window.location.hash.toLowerCase().replace('#', '');
+  if (!hash) return;
+  var map = { maradona: 'maradona', maradoniano: 'maradoniano', hincha: 'hincha', fan: 'hincha' };
+  var target = map[hash];
+  if (!target) return;
+  setTimeout(function() {
+    var btn = document.querySelector('.tab-btn[data-tab="' + target + '"]');
+    if (btn) btn.click();
+  }, 400);
+})();
 </script>
 
 </body>
