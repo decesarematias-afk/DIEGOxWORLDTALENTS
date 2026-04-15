@@ -585,38 +585,38 @@ const getStyles = (C) => { const tx2=C.wa(0.45),tx3=C.wa(0.25),bg1=C.wa(0.03),bd
 @keyframes wt-arc-in{0%{opacity:0;transform:scale(.7) translateY(8px)}100%{opacity:1;transform:scale(1) translateY(0)}}
 @keyframes wt-arc-pulse-a{0%,100%{opacity:1;box-shadow:0 0 18px ${C.ta(0.35)};border-color:${C.ta(0.4)}}50%{opacity:.5;box-shadow:0 0 4px ${C.ta(0.05)};border-color:${C.ta(0.08)}}}
 @keyframes wt-arc-pulse-b{0%,100%{opacity:.5;box-shadow:0 0 4px ${C.ga(0.05)};border-color:${C.ga(0.08)}}50%{opacity:1;box-shadow:0 0 18px ${C.ga(0.35)};border-color:${C.ga(0.4)}}}
-.wt-arc-val{font-size:17px;font-weight:900;font-family:'JetBrains Mono',monospace;line-height:1;text-shadow:0 0 12px currentColor}
+.wt-arc-val{font-size:30px;font-weight:900;font-family:'JetBrains Mono',monospace;line-height:1;text-shadow:0 0 12px currentColor}
 .wt-arc-lbl{font-size:7.5px;color:${C.wa(0.35)};font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-top:2px;font-family:'JetBrains Mono',monospace;white-space:nowrap}
 .wt-arc-line{display:none}
 
 /* Social panel */
 /* Redes de contacto button + expand */
-.wt-redes-btn{width:100%;display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:16px;background:${C.ta(0.04)};border:1px solid ${C.ta(0.15)};color:${C.teal};font-size:13.5px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .25s;animation:wt-redes-glow 2s ease-in-out infinite;position:relative;overflow:hidden}
+.wt-redes-btn{width:100%;display:flex;align-items:center;gap:10px;padding:16px 20px;border-radius:16px;background:${C.ta(0.04)};border:1px solid ${C.ta(0.15)};color:${C.teal};font-size:24px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .25s;animation:wt-redes-glow 2s ease-in-out infinite;position:relative;overflow:hidden}
 .wt-redes-btn::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(90deg,transparent,${C.ta(0.06)},transparent);animation:wt-redes-shine 3s ease-in-out infinite}
 @keyframes wt-redes-glow{0%,100%{border-color:${C.ta(0.15)};box-shadow:0 0 8px ${C.ta(0.05)}}50%{border-color:${C.ta(0.35)};box-shadow:0 0 20px ${C.ta(0.15)}}}
 @keyframes wt-redes-shine{0%{transform:translateX(-100%)}50%{transform:translateX(100%)}100%{transform:translateX(100%)}}
 .wt-redes-btn:hover{border-color:${C.ta(0.4)};background:${C.ta(0.07)};box-shadow:0 0 24px ${C.ta(0.2)}}
-.wt-redes-count{padding:3px 8px;border-radius:10px;background:${C.ta(0.12)};color:${C.teal};font-size:10px;font-weight:800;font-family:'JetBrains Mono',monospace}
+.wt-redes-count{padding:4px 10px;border-radius:10px;background:${C.ta(0.12)};color:${C.teal};font-size:18px;font-weight:800;font-family:'JetBrains Mono',monospace}
 .wt-redes-expand{overflow:hidden;max-height:0;opacity:0;transition:max-height .4s cubic-bezier(.4,0,.2,1),opacity .3s,margin .3s;margin-top:0}
 .wt-redes-expand.open{max-height:220px;opacity:1;margin-top:10px}
 .wt-social-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:0 12px}
-.wt-social-btn{display:flex;align-items:center;gap:7px;padding:10px 16px;border-radius:14px;border:1px solid;text-decoration:none;font-size:12px;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Outfit',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.wt-social-btn{display:flex;align-items:center;gap:10px;padding:14px 22px;border-radius:14px;border:1px solid;text-decoration:none;font-size:22px;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Outfit',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 .wt-social-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
 
 /* Profile info */
-.wt-name{font-size:27px;font-weight:900;text-align:center;margin-top:12px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.wt-name{font-size:48px;font-weight:900;text-align:center;margin-top:12px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
 .wt-credentials{display:flex;justify-content:center;gap:7px;margin-top:8px;padding:0 16px;flex-wrap:wrap}
-.wt-cred{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:20px;font-size:10.5px;font-weight:600;cursor:pointer;background:${C.ta(0.05)};border:1px solid ${C.ta(0.12)};color:${C.teal};transition:all .25s;font-family:'Outfit',sans-serif;backdrop-filter:blur(8px)}
+.wt-cred{display:flex;align-items:center;gap:5px;padding:8px 16px;border-radius:20px;font-size:18px;font-weight:600;cursor:pointer;background:${C.ta(0.05)};border:1px solid ${C.ta(0.12)};color:${C.teal};transition:all .25s;font-family:'Outfit',sans-serif;backdrop-filter:blur(8px)}
 .wt-cred:hover{background:${C.ta(0.08)};border-color:${C.ta(0.2)};transform:translateY(-1px)}
 .wt-cred.active{border-color:${C.ta(0.3)};background:${C.ta(0.1)};box-shadow:0 0 12px ${C.ta(0.1)}}
-.wt-nick{font-size:12px;text-align:center;margin-top:5px;font-family:'JetBrains Mono',monospace;color:${C.wa(0.3)};letter-spacing:.3px}
-.wt-bio{text-align:center;font-size:12.5px;color:${C.wa(0.55)};margin:8px 28px 0;line-height:1.7;font-weight:400}
+.wt-nick{font-size:20px;text-align:center;margin-top:5px;font-family:'JetBrains Mono',monospace;color:${C.wa(0.3)};letter-spacing:.3px}
+.wt-bio{text-align:center;font-size:22px;color:${C.wa(0.55)};margin:8px 28px 0;line-height:1.7;font-weight:400}
 .wt-know-bar{margin:10px 16px 0;padding:10px 14px;border-radius:14px;background:rgba(0,255,136,.03);border:1px solid rgba(0,255,136,.1);display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .2s}
 .wt-know-bar:hover{background:rgba(0,255,136,.06);border-color:rgba(0,255,136,.2)}
 
 /* Badges */
 .wt-badges{display:flex;justify-content:center;gap:8px;margin-top:12px;padding:0 16px}
-.wt-badge-btn{display:flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;background:${bg1};border:1px solid ${bd1};color:${C.white};font-family:'Outfit',sans-serif;transition:all .2s}
+.wt-badge-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:20px;font-size:20px;font-weight:600;cursor:pointer;background:${bg1};border:1px solid ${bd1};color:${C.white};font-family:'Outfit',sans-serif;transition:all .2s}
 .wt-badge-btn.active{border-color:${C.ta(0.25)};background:${C.ta(0.06)}}
 .wt-badge-expand{overflow:hidden;max-height:0;opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1)}
 .wt-badge-expand.open{max-height:200px;opacity:1;margin-top:8px}
@@ -624,7 +624,7 @@ const getStyles = (C) => { const tx2=C.wa(0.45),tx3=C.wa(0.25),bg1=C.wa(0.03),bd
 
 /* Quick row */
 .wt-qrow{display:flex;gap:8px;padding:0 16px;margin-top:16px}
-.wt-qbtn{flex:1;padding:12px 4px;border-radius:14px;font-size:10px;font-weight:600;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:'Outfit',sans-serif;border:1px solid ${bd1};background:${bg1};color:${C.wa(0.55)};transition:all .25s;backdrop-filter:blur(8px)}
+.wt-qbtn{flex:1;padding:16px 4px;border-radius:14px;font-size:18px;font-weight:600;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:'Outfit',sans-serif;border:1px solid ${bd1};background:${bg1};color:${C.wa(0.55)};transition:all .25s;backdrop-filter:blur(8px)}
 .wt-qbtn:hover{background:${C.wa(0.06)};border-color:${C.wa(0.15)};transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.3)}
 
 /* Action row */
