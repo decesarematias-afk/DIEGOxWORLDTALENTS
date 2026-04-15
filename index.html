@@ -5090,18 +5090,19 @@ select.login-input option{background:#0A0A0F;color:#fff}
      ═══════════════════════════════════════════════════════ -->
 <div class="tab-content" id="tab-hincha" style="display:none; padding-top: 0;">
 
-<!-- Banner Hinchada Argentina -->
-<div style="position:relative;width:100%;height:clamp(220px,40vw,360px);overflow:hidden;">
-  <img src="./banner.WEBP" alt="Hinchada Argentina" style="width:100%;height:100%;object-fit:cover;object-position:center center;filter:brightness(0.55) saturate(1.2);">
-  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(10,10,15,0.95) 100%);"></div>
-  <div style="position:absolute;bottom:20px;left:0;right:0;text-align:center;z-index:2;">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,7vw,48px);color:#fff;letter-spacing:0.08em;text-shadow:0 2px 12px rgba(0,0,0,0.6);">🇦🇷 LA HINCHADA</div>
-    <div style="font-family:'Space Mono',monospace;font-size:clamp(9px,2vw,12px);color:rgba(117,170,219,0.8);letter-spacing:3px;text-transform:uppercase;">MUNDIAL 2026 · ESTADOS UNIDOS</div>
+<!-- Banner Hinchada Argentina (integrado con perfil) -->
+<div style="position:relative;width:100%;overflow:hidden;">
+  <div style="position:relative;width:100%;height:clamp(200px,35vw,320px);overflow:hidden;">
+    <img src="./banner.WEBP" alt="Hinchada Argentina" style="width:100%;height:100%;object-fit:cover;object-position:center center;filter:brightness(0.5) saturate(1.2);">
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 20%,rgba(10,10,15,1) 100%);"></div>
+    <div style="position:absolute;top:16px;left:0;right:0;text-align:center;z-index:2;">
+      <div style="font-family:'Space Mono',monospace;font-size:clamp(8px,1.8vw,11px);color:rgba(117,170,219,0.7);letter-spacing:3px;text-transform:uppercase;">MUNDIAL 2026 · ESTADOS UNIDOS</div>
+    </div>
   </div>
 </div>
 
-<!-- ====== PERFIL EDITABLE ====== -->
-<div class="hincha-profile-header">
+<!-- ====== PERFIL EDITABLE (avatar superpuesto al banner) ====== -->
+<div class="hincha-profile-header" style="margin-top:-70px;position:relative;z-index:3;">
   <div class="hincha-profile-avatar-wrap" onclick="hinchaOpenLogin()" style="cursor:pointer">
     <img id="hinchaProfilePhoto" class="hincha-profile-avatar" src="./foto-hincha.jpg" alt="Avatar">
     <div class="hincha-avatar-pencil">&#x270f;&#xfe0f;</div>
