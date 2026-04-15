@@ -565,7 +565,7 @@ const getStyles = (C) => { const tx2=C.wa(0.45),tx3=C.wa(0.25),bg1=C.wa(0.03),bd
 .wt-avatar-ring{width:200px;height:200px;border-radius:50%;padding:3px;cursor:pointer;transition:transform .25s,box-shadow .3s;position:relative;box-shadow:0 0 30px ${C.ta(0.15)},0 8px 32px rgba(0,0,0,.5)}
 .wt-avatar-ring:hover{transform:scale(1.03);box-shadow:0 0 40px ${C.ta(0.25)},0 8px 32px rgba(0,0,0,.5)}
 .wt-avatar-img{width:100%;height:100%;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:50px;font-weight:900;background:linear-gradient(135deg,${C.blackLt},#1a1a24);color:${C.teal};border:3px solid ${C.black}}
-.wt-avatar-img img{width:100%;height:100%;object-fit:cover}
+.wt-avatar-img img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
 .wt-avatar-lock{position:absolute;bottom:6px;right:6px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);border:2px solid ${C.ta(0.3)};display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;box-shadow:0 0 16px ${C.ta(0.2)};transition:all .25s;animation:wt-lock-pulse 2.5s ease-in-out infinite}
 .wt-avatar-lock:hover{transform:scale(1.12);box-shadow:0 0 24px ${C.ta(0.4)};border-color:${C.ta(0.5)};animation:none}
 .wt-avatar-lock.unlocked{border-color:${C.ta(0.5)};background:${C.ta(0.12)};animation:none}
