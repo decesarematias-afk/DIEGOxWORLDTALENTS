@@ -6960,5 +6960,75 @@ if (isHinchaMode) {
 @keyframes lockPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:0.8}}
 </style>
 
+<a href="https://gooby-landing-pink.vercel.app" target="_blank" rel="noopener" id="goobyFab" aria-label="Conocé Gooby">
+  <span class="gooby-fab__ring"></span>
+  <span class="gooby-fab__inner">
+    <img src="/gooby.png" alt="Gooby" class="gooby-fab__logo">
+  </span>
+  <span class="gooby-fab__tip">CONOCÉ GOOBY</span>
+</a>
+<style>
+#goobyFab{
+  position:fixed;right:20px;bottom:20px;width:72px;height:72px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;text-decoration:none;z-index:99999;
+  background:linear-gradient(135deg,#ff00d4 0%,#a855f7 50%,#22d3ee 100%);
+  box-shadow:0 8px 32px rgba(255,0,212,0.45),0 4px 16px rgba(34,211,238,0.35),inset 0 0 0 2px rgba(255,255,255,0.15);
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s ease;
+  animation:goobyFloat 3.2s ease-in-out infinite;
+  -webkit-tap-highlight-color:transparent;
+}
+#goobyFab:hover{transform:scale(1.12) rotate(-6deg);box-shadow:0 12px 40px rgba(255,0,212,0.65),0 6px 24px rgba(34,211,238,0.55),inset 0 0 0 2px rgba(255,255,255,0.25)}
+#goobyFab:active{transform:scale(.96)}
+.gooby-fab__ring{
+  position:absolute;inset:-6px;border-radius:50%;
+  background:conic-gradient(from 0deg,#ff00d4,#22d3ee,#a855f7,#ff00d4);
+  filter:blur(8px);opacity:.65;z-index:-1;
+  animation:goobySpin 4s linear infinite;
+}
+#goobyFab::before{
+  content:"";position:absolute;inset:-14px;border-radius:50%;
+  border:2px solid rgba(255,0,212,0.5);
+  animation:goobyPulse 2.2s ease-out infinite;
+}
+#goobyFab::after{
+  content:"";position:absolute;inset:-14px;border-radius:50%;
+  border:2px solid rgba(34,211,238,0.5);
+  animation:goobyPulse 2.2s ease-out infinite;animation-delay:1.1s;
+}
+.gooby-fab__inner{
+  position:relative;width:62px;height:62px;border-radius:50%;
+  background:#0a0a0f;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.gooby-fab__logo{
+  width:78%;height:78%;object-fit:contain;
+  filter:drop-shadow(0 0 6px rgba(255,0,212,0.6));
+  animation:goobyWiggle 5s ease-in-out infinite;
+}
+.gooby-fab__tip{
+  position:absolute;right:84px;top:50%;transform:translateY(-50%) translateX(8px);
+  background:linear-gradient(135deg,#ff00d4,#22d3ee);
+  color:#fff;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;
+  letter-spacing:1.5px;padding:8px 14px;border-radius:20px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;
+  box-shadow:0 6px 20px rgba(0,0,0,0.4);
+}
+.gooby-fab__tip::after{
+  content:"";position:absolute;right:-5px;top:50%;transform:translateY(-50%) rotate(45deg);
+  width:10px;height:10px;background:linear-gradient(135deg,transparent 50%,#22d3ee 50%);
+}
+#goobyFab:hover .gooby-fab__tip{opacity:1;transform:translateY(-50%) translateX(0)}
+@keyframes goobyFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes goobySpin{to{transform:rotate(360deg)}}
+@keyframes goobyPulse{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+@keyframes goobyWiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
+@media(max-width:480px){
+  #goobyFab{width:62px;height:62px;right:16px;bottom:16px}
+  .gooby-fab__inner{width:54px;height:54px}
+  .gooby-fab__tip{display:none}
+}
+</style>
+
 </body>
 </html>
