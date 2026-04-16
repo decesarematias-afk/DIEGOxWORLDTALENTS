@@ -6961,7 +6961,6 @@ if (isHinchaMode) {
 </style>
 
 <a href="https://gooby-landing-pink.vercel.app" target="_blank" rel="noopener" id="goobyFab" aria-label="Conocé Gooby">
-  <span class="gooby-fab__ring"></span>
   <span class="gooby-fab__inner">
     <img src="./gooby.png" alt="Gooby" class="gooby-fab__logo">
   </span>
@@ -6980,22 +6979,6 @@ if (isHinchaMode) {
 }
 #goobyFab:hover{transform:scale(1.12) rotate(-6deg);box-shadow:0 12px 40px rgba(255,0,212,0.65),0 6px 24px rgba(34,211,238,0.55),inset 0 0 0 2px rgba(255,255,255,0.25)}
 #goobyFab:active{transform:scale(.96)}
-.gooby-fab__ring{
-  position:absolute;inset:-6px;border-radius:50%;
-  background:conic-gradient(from 0deg,#ff00d4,#22d3ee,#a855f7,#ff00d4);
-  filter:blur(8px);opacity:.65;z-index:-1;
-  animation:goobySpin 4s linear infinite;
-}
-#goobyFab::before{
-  content:"";position:absolute;inset:-14px;border-radius:50%;
-  border:2px solid rgba(255,0,212,0.5);
-  animation:goobyPulse 2.2s ease-out infinite;
-}
-#goobyFab::after{
-  content:"";position:absolute;inset:-14px;border-radius:50%;
-  border:2px solid rgba(34,211,238,0.5);
-  animation:goobyPulse 2.2s ease-out infinite;animation-delay:1.1s;
-}
 .gooby-fab__inner{
   position:relative;width:62px;height:62px;border-radius:50%;
   background:#0a0a0f;display:flex;align-items:center;justify-content:center;
@@ -7020,8 +7003,6 @@ if (isHinchaMode) {
 }
 #goobyFab:hover .gooby-fab__tip{opacity:1;transform:translateY(-50%) translateX(0)}
 @keyframes goobyFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes goobySpin{to{transform:rotate(360deg)}}
-@keyframes goobyPulse{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.6);opacity:0}}
 @keyframes goobyWiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
 @media(max-width:480px){
   #goobyFab{width:64px;height:64px;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 90px)}
