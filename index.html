@@ -6963,15 +6963,15 @@ if (isHinchaMode) {
 <a href="https://gooby-landing-pink.vercel.app" target="_blank" rel="noopener" id="goobyFab" aria-label="Conocé Gooby">
   <span class="gooby-fab__ring"></span>
   <span class="gooby-fab__inner">
-    <img src="/gooby.png" alt="Gooby" class="gooby-fab__logo">
+    <img src="./gooby.png" alt="Gooby" class="gooby-fab__logo">
   </span>
   <span class="gooby-fab__tip">CONOCÉ GOOBY</span>
 </a>
 <style>
 #goobyFab{
-  position:fixed;right:20px;bottom:20px;width:72px;height:72px;
+  position:fixed;right:20px;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);width:72px;height:72px;
   display:flex;align-items:center;justify-content:center;
-  border-radius:50%;text-decoration:none;z-index:99999;
+  border-radius:50%;text-decoration:none;z-index:2147483647;
   background:linear-gradient(135deg,#ff00d4 0%,#a855f7 50%,#22d3ee 100%);
   box-shadow:0 8px 32px rgba(255,0,212,0.45),0 4px 16px rgba(34,211,238,0.35),inset 0 0 0 2px rgba(255,255,255,0.15);
   transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s ease;
@@ -7024,8 +7024,8 @@ if (isHinchaMode) {
 @keyframes goobyPulse{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.6);opacity:0}}
 @keyframes goobyWiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
 @media(max-width:480px){
-  #goobyFab{width:62px;height:62px;right:16px;bottom:16px}
-  .gooby-fab__inner{width:54px;height:54px}
+  #goobyFab{width:64px;height:64px;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 90px)}
+  .gooby-fab__inner{width:56px;height:56px}
   .gooby-fab__tip{display:none}
 }
 </style>
