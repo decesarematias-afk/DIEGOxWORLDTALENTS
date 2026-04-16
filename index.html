@@ -6960,56 +6960,115 @@ if (isHinchaMode) {
 @keyframes lockPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:0.8}}
 </style>
 
-<a href="https://gooby-landing-pink.vercel.app" target="_blank" rel="noopener" id="goobyFab" aria-label="Conocé Gooby">
+<button type="button" id="goobyFab" aria-label="Conocé Gooby" onclick="document.getElementById('goobyModal').classList.add('open')">
   <span class="gooby-fab__inner">
     <img src="./gooby.png" alt="Gooby" class="gooby-fab__logo">
   </span>
-  <span class="gooby-fab__tip">CONOCÉ GOOBY</span>
-</a>
+</button>
+
+<div id="goobyModal" role="dialog" aria-modal="true" aria-labelledby="goobyModalTitle">
+  <div class="gooby-modal__backdrop" onclick="document.getElementById('goobyModal').classList.remove('open')"></div>
+  <div class="gooby-modal__card">
+    <button type="button" class="gooby-modal__close" aria-label="Cerrar" onclick="document.getElementById('goobyModal').classList.remove('open')">×</button>
+    <div class="gooby-modal__logo-wrap">
+      <img src="./gooby.png" alt="Gooby" class="gooby-modal__logo">
+    </div>
+    <h2 id="goobyModalTitle" class="gooby-modal__title">Descargá Gooby</h2>
+    <p class="gooby-modal__text">Accedé a la experiencia inmersiva oficial en memoria de <strong>Diego Armando Maradona</strong>.</p>
+    <p class="gooby-modal__quote">Gracias D10S por ser argentino.</p>
+    <a href="https://gooby-landing-pink.vercel.app" target="_blank" rel="noopener" class="gooby-modal__cta">DESCARGAR GOOBY</a>
+  </div>
+</div>
+
 <style>
 #goobyFab{
-  position:fixed;right:20px;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);width:72px;height:72px;
+  position:fixed;right:20px;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);width:68px;height:68px;
   display:flex;align-items:center;justify-content:center;
-  border-radius:50%;text-decoration:none;z-index:2147483647;
-  background:linear-gradient(135deg,#ff00d4 0%,#a855f7 50%,#22d3ee 100%);
-  box-shadow:0 8px 32px rgba(255,0,212,0.45),0 4px 16px rgba(34,211,238,0.35),inset 0 0 0 2px rgba(255,255,255,0.15);
-  transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s ease;
-  animation:goobyFloat 3.2s ease-in-out infinite;
+  border-radius:50%;border:1px solid rgba(255,255,255,0.12);
+  background:rgba(15,15,20,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  cursor:pointer;padding:0;z-index:2147483647;
+  box-shadow:0 6px 18px rgba(0,0,0,0.35);
+  transition:transform .2s ease,border-color .2s ease,background .2s ease;
   -webkit-tap-highlight-color:transparent;
 }
-#goobyFab:hover{transform:scale(1.12) rotate(-6deg);box-shadow:0 12px 40px rgba(255,0,212,0.65),0 6px 24px rgba(34,211,238,0.55),inset 0 0 0 2px rgba(255,255,255,0.25)}
+#goobyFab:hover{transform:translateY(-2px);border-color:rgba(255,255,255,0.25);background:rgba(20,20,28,0.92)}
 #goobyFab:active{transform:scale(.96)}
 .gooby-fab__inner{
-  position:relative;width:62px;height:62px;border-radius:50%;
-  background:#0a0a0f;display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
+  width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
 }
-.gooby-fab__logo{
-  width:78%;height:78%;object-fit:contain;
-  filter:drop-shadow(0 0 6px rgba(255,0,212,0.6));
-  animation:goobyWiggle 5s ease-in-out infinite;
+.gooby-fab__logo{width:100%;height:100%;object-fit:contain}
+
+#goobyModal{
+  position:fixed;inset:0;z-index:2147483646;display:none;
+  align-items:center;justify-content:center;padding:20px;
 }
-.gooby-fab__tip{
-  position:absolute;right:84px;top:50%;transform:translateY(-50%) translateX(8px);
-  background:linear-gradient(135deg,#ff00d4,#22d3ee);
-  color:#fff;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;
-  letter-spacing:1.5px;padding:8px 14px;border-radius:20px;white-space:nowrap;
-  opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;
-  box-shadow:0 6px 20px rgba(0,0,0,0.4);
+#goobyModal.open{display:flex;animation:goobyFadeIn .25s ease-out}
+.gooby-modal__backdrop{
+  position:absolute;inset:0;background:rgba(5,5,10,0.78);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
-.gooby-fab__tip::after{
-  content:"";position:absolute;right:-5px;top:50%;transform:translateY(-50%) rotate(45deg);
-  width:10px;height:10px;background:linear-gradient(135deg,transparent 50%,#22d3ee 50%);
+.gooby-modal__card{
+  position:relative;max-width:380px;width:100%;
+  background:linear-gradient(180deg,#13131a 0%,#0b0b12 100%);
+  border:1px solid rgba(255,255,255,0.08);border-radius:20px;
+  padding:32px 26px 26px;text-align:center;color:#fff;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  animation:goobyPop .3s cubic-bezier(.34,1.56,.64,1);
 }
-#goobyFab:hover .gooby-fab__tip{opacity:1;transform:translateY(-50%) translateX(0)}
-@keyframes goobyFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes goobyWiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
+.gooby-modal__close{
+  position:absolute;top:10px;right:12px;width:32px;height:32px;
+  border-radius:50%;border:1px solid rgba(255,255,255,0.12);
+  background:transparent;color:rgba(255,255,255,0.7);
+  font-size:20px;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.gooby-modal__close:hover{background:rgba(255,255,255,0.08);color:#fff}
+.gooby-modal__logo-wrap{
+  width:88px;height:88px;margin:0 auto 18px;border-radius:50%;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:center;
+}
+.gooby-modal__logo{width:74%;height:74%;object-fit:contain}
+.gooby-modal__title{
+  font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;
+  letter-spacing:1.5px;margin:0 0 14px;color:#fff;
+}
+.gooby-modal__text{
+  font-family:inherit;font-size:14px;line-height:1.55;margin:0 0 14px;
+  color:rgba(255,255,255,0.78);
+}
+.gooby-modal__text strong{color:#fff;font-weight:600}
+.gooby-modal__quote{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1.2px;
+  color:rgba(255,255,255,0.55);margin:0 0 22px;font-style:italic;
+}
+.gooby-modal__cta{
+  display:block;width:100%;padding:14px 20px;border-radius:12px;
+  background:#fff;color:#0b0b12;
+  font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;
+  letter-spacing:2px;text-decoration:none;text-align:center;
+  transition:transform .2s ease,background .2s ease;
+}
+.gooby-modal__cta:hover{transform:translateY(-2px);background:#f0f0f5}
+.gooby-modal__cta:active{transform:scale(.98)}
+
+@keyframes goobyFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes goobyPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+
 @media(max-width:480px){
-  #goobyFab{width:64px;height:64px;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 90px)}
-  .gooby-fab__inner{width:56px;height:56px}
-  .gooby-fab__tip{display:none}
+  #goobyFab{width:60px;height:60px;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 90px)}
+  .gooby-fab__inner{width:48px;height:48px}
+  .gooby-modal__card{padding:28px 22px 22px}
+  .gooby-modal__title{font-size:21px}
 }
 </style>
+<script>
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){var m=document.getElementById('goobyModal');if(m)m.classList.remove('open')}
+});
+</script>
 
 </body>
 </html>
