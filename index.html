@@ -3407,6 +3407,284 @@ select.login-input option{background:#0A0A0F;color:#fff}
 .mu-card-img .mu-card-link-label{color:rgba(255,255,255,0.55)}
 .mu-badge-float{position:absolute;top:14px;right:14px;z-index:3}
 @media(max-width:768px){.mu-card-img{height:min(420px,65vh)}}
+
+/* ════ SALA I — FIORITO CINEMATIC ════ */
+.fiorito-cinematic {
+  width: 100%;
+  overflow: hidden;
+}
+.fc-scene {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.fc-bg {
+  position: absolute;
+  inset: -15%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+.fc-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(5,5,10,0.55) 0%, rgba(5,5,10,0.75) 50%, rgba(5,5,10,0.92) 100%);
+  z-index: 1;
+}
+.fc-overlay-dark {
+  background: linear-gradient(180deg, rgba(5,5,10,0.30) 0%, rgba(5,5,10,0.85) 60%, rgba(5,5,10,0.97) 100%);
+}
+.fc-overlay-heavy {
+  background: rgba(5,5,10,0.82);
+}
+.fc-overlay-extra {
+  background: linear-gradient(135deg, rgba(5,5,10,0.92) 0%, rgba(5,5,10,0.70) 100%);
+}
+.fc-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.fc-watermark {
+  position: absolute;
+  bottom: -2%;
+  right: -2%;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(120px, 30vw, 220px);
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+.fc-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 600px;
+  padding: 40px 28px;
+  box-sizing: border-box;
+}
+.fc-content-center { text-align: center; }
+.fc-content-left   { text-align: left;   padding-left: 32px; }
+.fc-content-right  { text-align: right;  padding-right: 32px; margin-left: auto; }
+.fc-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(212,175,55,0.7);
+  margin-bottom: 16px;
+}
+.fc-title-big {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 18vw, 120px);
+  color: #ffffff;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  margin: 12px 0;
+  text-shadow: 0 4px 40px rgba(0,0,0,0.6);
+}
+.fc-tagline {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: clamp(16px, 4vw, 22px);
+  color: #D4AF37;
+  margin: 16px 0;
+}
+.fc-scene-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 12vw, 80px);
+  color: #ffffff;
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  margin: 12px 0 20px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.fc-scene-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.9;
+  color: rgba(240,237,230,0.80);
+  margin-bottom: 24px;
+}
+.fc-quote {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: clamp(14px, 3.5vw, 18px);
+  color: #D4AF37;
+  line-height: 1.7;
+  border-left: 2px solid rgba(212,175,55,0.5);
+  padding-left: 16px;
+  margin: 20px 0;
+}
+.fc-content-center .fc-quote,
+.fc-content-right .fc-quote {
+  border-left: none;
+  border-right: none;
+  padding: 0 16px;
+}
+.fc-content-right .fc-quote {
+  border-right: 2px solid rgba(212,175,55,0.5);
+}
+.fc-quote-giant {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: clamp(18px, 4.5vw, 28px);
+  color: rgba(240,237,230,0.92);
+  line-height: 1.8;
+  margin: 20px 0;
+  border: none;
+  padding: 0;
+}
+.fc-big-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(100px, 25vw, 160px);
+  color: #D4AF37;
+  line-height: 1;
+  text-shadow: 0 0 60px rgba(212,175,55,0.3);
+}
+.fc-big-number-sub {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 8px;
+  color: rgba(212,175,55,0.6);
+  margin-top: -12px;
+  margin-bottom: 20px;
+}
+.fc-year {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-top: 16px;
+}
+.fc-footnote {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.40);
+  line-height: 1.6;
+  margin-top: 16px;
+}
+.fc-divider {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  margin: 20px auto;
+  transform-origin: left;
+}
+.fc-content-left .fc-divider   { margin-left: 0; }
+.fc-content-right .fc-divider  { margin-right: 0; margin-left: auto; }
+.fc-dreams {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 24px 0;
+  text-align: left;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.fc-dream-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(212,175,55,0.15);
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+}
+.fc-dream-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: rgba(212,175,55,0.5);
+  letter-spacing: 1px;
+  min-width: 20px;
+}
+.fc-dream-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(240,237,230,0.85);
+  flex: 1;
+}
+.fc-dream-check {
+  font-size: 16px;
+  color: #D4AF37;
+}
+.fc-scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.4);
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.fc-scroll-arrow {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, rgba(212,175,55,0.6), transparent);
+  animation: fcScrollPulse 2s ease-in-out infinite;
+}
+@keyframes fcScrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50%       { opacity: 1;   transform: scaleY(1); }
+}
+.fc-scene + .fc-scene::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.20) 30%, rgba(212,175,55,0.20) 70%, transparent);
+  z-index: 10;
+}
+.fc-anim {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.fc-anim.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fc-anim[data-delay="0"]   { transition-delay: 0ms;   }
+.fc-anim[data-delay="100"] { transition-delay: 100ms; }
+.fc-anim[data-delay="150"] { transition-delay: 150ms; }
+.fc-anim[data-delay="200"] { transition-delay: 200ms; }
+.fc-anim[data-delay="300"] { transition-delay: 300ms; }
+.fc-anim[data-delay="350"] { transition-delay: 350ms; }
+.fc-anim[data-delay="400"] { transition-delay: 400ms; }
+.fc-anim[data-delay="500"] { transition-delay: 500ms; }
+.fc-anim[data-delay="600"] { transition-delay: 600ms; }
+.fc-anim[data-delay="700"] { transition-delay: 700ms; }
+.fc-anim[data-delay="800"] { transition-delay: 800ms; }
+.fc-anim[data-delay="900"] { transition-delay: 900ms; }
+@media (max-width: 430px) {
+  .fc-content { padding: 32px 22px; }
+  .fc-content-left  { padding-left: 22px; }
+  .fc-content-right { padding-right: 22px; }
+  .fc-scene-text { font-size: 14px; }
+  .fc-quote      { font-size: 13px; }
+}
+/* ════ FIN SALA I CINEMATIC CSS ════ */
 </style>
     <!-- ElevenLabs removed — using Cartesia voice agent instead -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -4138,118 +4416,155 @@ select.login-input option{background:#0A0A0F;color:#fff}
 <!-- SALA 3: FRASES DEL DIEGO (moved here) -->
 <div class="sala-content" id="sala-fiorito" data-sala="fiorito"><section id="sala-1" class="sala">
 
-    <!-- Horizontal scroll pinned section -->
-    <div class="fiorito-hscroll" id="fiorito-hscroll">
-      <div class="sala-header reveal">
-          <span class="sala-number">Sala I</span>
-          <h2 class="sala-title">Villa Fiorito</h2>
-          <p class="sala-subtitle">"Donde nació todo"</p>
+    <!-- ════ SALA I — VILLA FIORITO — CINEMATIC ════ -->
+    <div class="fiorito-cinematic" id="fiorito-cinematic">
+
+      <!-- ESCENA 0 — TITLE CARD -->
+      <div class="fc-scene fc-scene-title" id="fc-s0">
+        <div class="fc-bg" style="background-image:url('https://cloudfront-us-east-1.images.arcpublishing.com/infobae/RADIRBNRHNGEHHL2R7LZD7O4EY.jpg')"></div>
+        <div class="fc-overlay fc-overlay-heavy"></div>
+        <div class="fc-grain"></div>
+        <div class="fc-watermark">01</div>
+        <div class="fc-content fc-content-center">
+          <p class="fc-label fc-anim" data-delay="0">SALA I · MUSEO INTERACTIVO</p>
+          <h2 class="fc-title-big fc-anim" data-delay="200">VILLA<br>FIORITO</h2>
+          <p class="fc-tagline fc-anim" data-delay="400">"Donde nació todo"</p>
+          <div class="fc-divider fc-anim" data-delay="600"></div>
+          <p class="fc-year fc-anim" data-delay="700">1960 · Buenos Aires · Argentina</p>
+        </div>
+        <div class="fc-scroll-hint fc-anim" data-delay="900">
+          <span>Scrolleá para descubrir</span>
+          <div class="fc-scroll-arrow"></div>
+        </div>
       </div>
-      <div class="fiorito-track">
-        <div class="flip-grid" id="fiorito-track">
-        <div class="flip-card reveal-stagger" style="transition-delay: 0.1s">
-            <div class="flip-card-inner">
-                <div class="flip-card-front azamor-front">
-                    <img class="azamor-bg" src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/RADIRBNRHNGEHHL2R7LZD7O4EY.jpg" alt="Casa Azamor 523, Villa Fiorito" loading="lazy">
-                    <div class="azamor-overlay"></div>
-                    <div class="card-icon" style="position:relative;z-index:1"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 24L24 8l18 16"/><path d="M10 22v16a2 2 0 002 2h24a2 2 0 002-2V22"/><path d="M18 40V30h12v10"/><line x1="14" y1="16" x2="14" y2="12"/></svg></div>
-                    <h3 style="position:relative;z-index:1">Azamor 523</h3>
-                    <span class="flip-hint" style="position:relative;z-index:1">Click para descubrir</span>
-                </div>
-                <div class="flip-card-back">
-                    <p>La casa donde creció Diego: chapa, madera, sin agua corriente, sin luz eléctrica, sin gas. Los Maradona juntaban agua en tachos de aceite y cuando llovía ponían tachitos bajo las goteras.</p>
-                    <div class="quote">"Yo nací en un barrio privado de Buenos Aires: privado de luz, de agua, de teléfono y de gas."</div>
-                </div>
-            </div>
-        </div>
 
-        <div class="flip-card reveal-stagger" style="transition-delay: 0.2s">
-            <div class="flip-card-inner">
-                <div class="flip-card-front fc-photo-front">
-                    <img class="fc-photo-bg" src="https://img.youtube.com/vi/eXFeaQLc42M/hqdefault.jpg" alt="Diego Maradona joven Sub-20 1979" loading="lazy">
-                    <div class="fc-photo-overlay"></div>
-                    <div class="card-icon" style="position:relative;z-index:1"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M24 6l4 10h-8l4-10z"/><path d="M42 24l-10 4v-8l10 4z"/><path d="M24 42l-4-10h8l-4 10z"/><path d="M6 24l10-4v8l-10-4z"/><path d="M15 11l7 7-5 4-7-7z"/><path d="M33 11l-7 7 5 4 7-7z"/><path d="M33 37l-7-7 5-4 7 7z"/><path d="M15 37l7-7-5-4-7 7z"/></svg></div>
-                    <h3 style="position:relative;z-index:1">La Primera Pelota</h3>
-                    <span class="flip-hint" style="position:relative;z-index:1">Click para descubrir</span>
-                </div>
-                <div class="flip-card-back">
-                    <p>A los 3 años, su primo Beto Zárate le regaló su primera pelota. Diego no la soltó ni para dormir. Poco después, persiguiendo una pelota, cayó a un pozo ciego del barrio. Lo sacaron los vecinos.</p>
-                    <div class="quote">"Cuando me regalaron esa pelota fui el chico más feliz del mundo."</div>
-                </div>
-            </div>
+      <!-- ESCENA 1 — AZAMOR 523 -->
+      <div class="fc-scene" id="fc-s1">
+        <div class="fc-bg" style="background-image:url('https://media.eldiariosur.com/p/b5c4006b79452185fb5ea7d02e504d9d/adjuntos/291/imagenes/000/441/0000441089/1200x675/smart/mural-diego-vecinos-fioritojpg.jpg')"></div>
+        <div class="fc-overlay"></div>
+        <div class="fc-grain"></div>
+        <div class="fc-watermark">01</div>
+        <div class="fc-content fc-content-left">
+          <p class="fc-label fc-anim" data-delay="0">AZAMOR 523 · VILLA FIORITO</p>
+          <h3 class="fc-scene-title fc-anim" data-delay="150">La Casa<br>del Pibe</h3>
+          <p class="fc-scene-text fc-anim" data-delay="300">
+            Chapa, madera, sin agua corriente.<br>
+            Los Maradona juntaban agua en tachos de aceite.<br>
+            Cuando llovía, ponían tachitos bajo las goteras.
+          </p>
+          <blockquote class="fc-quote fc-anim" data-delay="500">
+            "Yo nací en un barrio privado de Buenos Aires:<br>
+            privado de luz, de agua, de teléfono y de gas."
+          </blockquote>
+          <p class="fc-footnote fc-anim" data-delay="700">
+            📍 Declarada Lugar Histórico Nacional · 2021
+          </p>
         </div>
+      </div>
 
-        <div class="flip-card reveal-stagger" style="transition-delay: 0.3s">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <div class="card-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="14"/><circle cx="24" cy="26" r="9"/><line x1="8" y1="10" x2="8" y2="42"/><line x1="6" y1="10" x2="10" y2="10"/><line x1="6" y1="16" x2="10" y2="16"/><line x1="8" y1="10" x2="8" y2="16"/><line x1="40" y1="10" x2="40" y2="42"/><path d="M38 10c0 4 2 6 2 10s-2 4-2 4"/></svg></div>
-                    <h3>"Soñaba con Comer"</h3>
-                    <span class="flip-hint">Click para descubrir</span>
-                </div>
-                <div class="flip-card-back">
-                    <p>Cuando le preguntaban qué quería de grande, Diego no decía futbolista. Decía que quería comer. El hambre era lo que más lo marcó de Fiorito. De chico pedía comida, no juguetes.</p>
-                    <div class="quote">"Ayuden a comer a la gente. Lo mío no es show, porque yo la pasé."</div>
-                </div>
-            </div>
+      <!-- ESCENA 2 — LA PRIMERA PELOTA -->
+      <div class="fc-scene" id="fc-s2">
+        <div class="fc-bg" style="background-image:url('https://img.youtube.com/vi/eXFeaQLc42M/maxresdefault.jpg')"></div>
+        <div class="fc-overlay fc-overlay-dark"></div>
+        <div class="fc-grain"></div>
+        <div class="fc-watermark">3</div>
+        <div class="fc-content fc-content-center">
+          <p class="fc-label fc-anim" data-delay="0">SU PRIMER REGALO · 1963</p>
+          <div class="fc-big-number fc-anim" data-delay="100">3</div>
+          <p class="fc-big-number-sub fc-anim" data-delay="200">AÑOS</p>
+          <h3 class="fc-scene-title fc-anim" data-delay="350">La Primera Pelota</h3>
+          <p class="fc-scene-text fc-anim" data-delay="500">
+            Su primo Beto Zárate se la regaló.<br>
+            Diego no la soltó ni para dormir.<br>
+            Poco después cayó en un pozo ciego<br>
+            persiguiéndola. Lo sacaron los vecinos.
+          </p>
+          <blockquote class="fc-quote fc-anim" data-delay="700">
+            "Cuando me regalaron esa pelota fui<br>
+            el chico más feliz del mundo."
+          </blockquote>
         </div>
+      </div>
 
-        <div class="flip-card reveal-stagger" style="transition-delay: 0.4s">
-            <div class="flip-card-inner">
-                <div class="flip-card-front fc-photo-front">
-                    <img class="fc-photo-bg" src="https://img.youtube.com/vi/ZTGBlyZf0gs/hqdefault.jpg" alt="Entrevista joven Diego Maradona" loading="lazy">
-                    <div class="fc-photo-overlay"></div>
-                    <div class="card-icon" style="position:relative;z-index:1"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6l3 8 7-4-2 9h-16l-2-9 7 4 3-8z"/><path d="M14 19l-2 4h24l-2-4"/><path d="M12 23v4a2 2 0 002 2h20a2 2 0 002-2v-4"/><circle cx="24" cy="26" r="1.5" fill="#D4AF37"/><path d="M24 32v6"/><path d="M20 38h8"/></svg></div>
-                    <h3 style="position:relative;z-index:1">Los Reyes Magos</h3>
-                    <span class="flip-hint" style="position:relative;z-index:1">Click para descubrir</span>
-                </div>
-                <div class="flip-card-back">
-                    <p>Cada 6 de enero, Diego dejaba los zapatitos. La carta a los Reyes Magos nunca fue respondida. Años después, siendo la estrella más grande del fútbol mundial, contó esto con los ojos llenos de agua.</p>
-                    <div class="quote">"Yo no le pido al fútbol nada más. Ya me dio más de lo que soñé."</div>
-                </div>
-            </div>
+      <!-- ESCENA 3 — SOÑABA CON COMER -->
+      <div class="fc-scene fc-scene-dark" id="fc-s3">
+        <div class="fc-bg" style="background-image:url('https://img.youtube.com/vi/ZTGBlyZf0gs/maxresdefault.jpg')"></div>
+        <div class="fc-overlay fc-overlay-extra"></div>
+        <div class="fc-grain"></div>
+        <div class="fc-watermark">∞</div>
+        <div class="fc-content fc-content-right">
+          <p class="fc-label fc-anim" data-delay="0">LO QUE NADIE SABÍA</p>
+          <h3 class="fc-scene-title fc-anim" data-delay="150">Soñaba<br>con Comer</h3>
+          <p class="fc-scene-text fc-anim" data-delay="300">
+            Cuando le preguntaban qué quería de grande,<br>
+            Diego no decía "futbolista".<br>
+            Decía que quería comer.<br>
+            El hambre era lo que más lo marcó de Fiorito.
+          </p>
+          <blockquote class="fc-quote fc-anim" data-delay="500">
+            "Ayuden a comer a la gente.<br>
+            Lo mío no es show,<br>
+            porque yo la pasé."
+          </blockquote>
+          <div class="fc-divider fc-anim" data-delay="700"></div>
+          <p class="fc-footnote fc-anim" data-delay="800">
+            Video Corazones Solidarios, 2020.<br>Se quebró ante la cámara sin poder terminar.
+          </p>
         </div>
+      </div>
 
-        <div class="flip-card reveal-stagger" style="transition-delay: 0.5s">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <div class="card-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 38h8"/><path d="M21 42h6"/><path d="M18 34c-4-3-7-7-7-13a13 13 0 0126 0c0 6-3 10-7 13"/><path d="M18 34h12"/><line x1="24" y1="4" x2="24" y2="8"/><line x1="38" y1="10" x2="35" y2="13"/><line x1="10" y1="10" x2="13" y2="13"/></svg></div>
-                    <h3>Sin Luz, Sin Agua</h3>
-                    <span class="flip-hint">Click para descubrir</span>
-                </div>
-                <div class="flip-card-back">
-                    <p>La casa de los Maradona no tenía baño. Los 8 hermanos se bañaban con agua que juntaban en tachos. De noche, una vela. Cuando llovía fuerte, el agua entraba por todos lados.</p>
-                    <div class="quote">"Yo no soy ningún mago. Los magos son los que viven en Fiorito con mil pesos por mes."</div>
-                </div>
+      <!-- ESCENA 4 — LOS 3 SUEÑOS -->
+      <div class="fc-scene" id="fc-s4">
+        <div class="fc-bg" style="background-image:url('https://img.youtube.com/vi/CZgk4ZZiHyQ/maxresdefault.jpg')"></div>
+        <div class="fc-overlay"></div>
+        <div class="fc-grain"></div>
+        <div class="fc-watermark">3</div>
+        <div class="fc-content fc-content-center">
+          <p class="fc-label fc-anim" data-delay="0">A LOS 12 AÑOS · ENTREVISTA DE TV</p>
+          <h3 class="fc-scene-title fc-anim" data-delay="150">Los Tres Sueños</h3>
+          <div class="fc-dreams fc-anim" data-delay="300">
+            <div class="fc-dream-item">
+              <span class="fc-dream-num">01</span>
+              <span class="fc-dream-text">Jugar en Primera División</span>
+              <span class="fc-dream-check">✓</span>
             </div>
-        </div>
-
-        <div class="flip-card reveal-stagger" style="transition-delay: 0.6s">
-            <div class="flip-card-inner">
-                <div class="flip-card-front fc-photo-front">
-                    <img class="fc-photo-bg" src="https://img.youtube.com/vi/O8G9ytZg-bM/hqdefault.jpg" alt="Gol del Siglo · Estadio Azteca 1986" loading="lazy">
-                    <div class="fc-photo-overlay"></div>
-                    <div class="card-icon" style="position:relative;z-index:1"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="24" cy="30" rx="20" ry="10"/><path d="M4 30V20c0-4 9-8 20-8s20 4 20 8v10"/><ellipse cx="24" cy="20" rx="20" ry="8"/><path d="M10 16v-4c0-2 6-5 14-5s14 3 14 5v4"/><ellipse cx="24" cy="12" rx="14" ry="5"/><line x1="24" y1="40" x2="24" y2="44"/><line x1="14" y1="39" x2="12" y2="43"/><line x1="34" y1="39" x2="36" y2="43"/></svg></div>
-                    <h3 style="position:relative;z-index:1">Lugar Histórico</h3>
-                    <span class="flip-hint" style="position:relative;z-index:1">Click para descubrir</span>
-                </div>
-                <div class="flip-card-back">
-                    <p>En 2021, la casa de Azamor 523 fue declarada <strong>Lugar Histórico Nacional</strong> por el Gobierno Argentino. Del barro al patrimonio nacional. De la miseria más profunda al monumento eterno.</p>
-                    <div class="quote">"En Fiorito a veces faltaba plata, pero nunca felicidad."</div>
-                </div>
+            <div class="fc-dream-item">
+              <span class="fc-dream-num">02</span>
+              <span class="fc-dream-text">Vestir la camiseta de la Selección</span>
+              <span class="fc-dream-check">✓</span>
             </div>
+            <div class="fc-dream-item">
+              <span class="fc-dream-num">03</span>
+              <span class="fc-dream-text">Ganar un Mundial</span>
+              <span class="fc-dream-check">✓</span>
+            </div>
+          </div>
+          <blockquote class="fc-quote fc-anim" data-delay="600">
+            "Eran mis sueños. Los tres se cumplieron."
+          </blockquote>
         </div>
-          <div style="flex-shrink:0;width:60px;height:1px;"></div>
-        </div><!-- /flip-grid -->
-      </div><!-- /fiorito-track -->
-      <div class="fiorito-progress"><div class="fiorito-progress-fill" id="fiorito-prog"></div></div>
-    </div><!-- /fiorito-hscroll -->
+      </div>
 
-    <!-- Entrevista al Diego -->
-    <div class="yt-lazy reveal" data-video="ZTGBlyZf0gs" onclick="loadYT(this)" style="margin-top: 40px; max-width:700px; margin-left:auto; margin-right:auto; aspect-ratio:16/9; border-radius:8px; overflow:hidden; cursor:pointer; position:relative; background:var(--dark-card);">
-        <img src="https://img.youtube.com/vi/ZTGBlyZf0gs/hqdefault.jpg" alt="Entrevista al Diego" loading="lazy">
-        <div class="yt-play"></div>
-        <div class="yt-title">Entrevista al Diego · Fiorito, la familia y sus sueños</div>
+      <!-- ESCENA 5 — LUGAR HISTÓRICO (CIERRE) -->
+      <div class="fc-scene fc-scene-close" id="fc-s5">
+        <div class="fc-bg" style="background-image:url('https://cloudfront-us-east-1.images.arcpublishing.com/infobae/RADIRBNRHNGEHHL2R7LZD7O4EY.jpg');filter:grayscale(60%)"></div>
+        <div class="fc-overlay fc-overlay-heavy"></div>
+        <div class="fc-grain"></div>
+        <div class="fc-content fc-content-center">
+          <p class="fc-label fc-anim" data-delay="0">DE FIORITO AL MUNDO</p>
+          <blockquote class="fc-quote-giant fc-anim" data-delay="200">
+            "Si me muero, quiero volver a nacer<br>
+            y quiero ser futbolista.<br>
+            Y quiero volver a ser<br>
+            Diego Armando Maradona."
+          </blockquote>
+          <div class="fc-divider fc-anim" data-delay="600"></div>
+          <p class="fc-year fc-anim" data-delay="700">1960 — 2020 · ETERNO</p>
+        </div>
+      </div>
+
     </div>
+    <!-- ════ FIN SALA I CINEMATIC ════ -->
 </section>
 </div><!-- /sala-content fiorito -->
 
@@ -7260,6 +7575,39 @@ if (isHinchaMode) {
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape'){var m=document.getElementById('goobyModal');if(m)m.classList.remove('open')}
 });
+</script>
+
+<script>
+// ════ SALA I — FIORITO CINEMATIC JS ════
+(function initFioritoAnimations() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fc-anim').forEach(function(el) { observer.observe(el); });
+})();
+(function initFioritoParallax() {
+  var scenes = document.querySelectorAll('.fc-scene');
+  if (!scenes.length) return;
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+  function updateParallax() {
+    scenes.forEach(function(scene) {
+      var bg = scene.querySelector('.fc-bg');
+      if (!bg) return;
+      var rect = scene.getBoundingClientRect();
+      var viewH = window.innerHeight;
+      if (rect.bottom < 0 || rect.top > viewH) return;
+      var progress = (viewH - rect.top) / (viewH + rect.height);
+      var offset = (progress - 0.5) * 80;
+      bg.style.transform = 'translateY(' + offset + 'px) scale(1.12)';
+    });
+    requestAnimationFrame(updateParallax);
+  }
+  requestAnimationFrame(updateParallax);
+})();
+// ════ FIN SALA I CINEMATIC JS ════
 </script>
 
 </body>
