@@ -3732,6 +3732,18 @@ select.login-input option{background:#0A0A0F;color:#fff}
   .fc-scene-text { font-size: 14px; }
   .fc-quote      { font-size: 13px; }
 }
+/* Escena 0 — background via <img> para fallback onerror */
+#fc-s0 .fc-bg {
+  position: absolute;
+  inset: -10%;
+  overflow: hidden;
+}
+#fc-s0 .fc-bg img {
+  width: 120%;
+  height: 120%;
+  object-fit: cover;
+  object-position: center;
+}
 /* ════ FIN SALA I CINEMATIC CSS ════ */
 </style>
     <!-- ElevenLabs removed — using Cartesia voice agent instead -->
@@ -4471,8 +4483,15 @@ select.login-input option{background:#0A0A0F;color:#fff}
 
       <!-- ESCENA 0 — TITLE CARD -->
       <div class="fc-scene fc-scene-title" id="fc-s0">
-        <div class="fc-bg" style="background-image:url('https://cloudfront-us-east-1.images.arcpublishing.com/infobae/RADIRBNRHNGEHHL2R7LZD7O4EY.jpg')"></div>
-        <div class="fc-overlay fc-overlay-heavy"></div>
+        <div class="fc-bg" id="fc-s0-bg">
+          <img
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/Esta%C3%B3n_Fiorito,_ferrocarril_Midland_(desactivado).jpg"
+            alt=""
+            style="width:100%;height:100%;object-fit:cover;object-position:center;"
+            onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Camino_de_la_Ribera_Sur_desde_el_puente_La_Noria.JPG'"
+          >
+        </div>
+        <div class="fc-overlay fc-overlay-heavy" style="background:rgba(5,5,10,0.72)"></div>
         <div class="fc-grain"></div>
         <div class="fc-watermark">01</div>
         <div class="fc-content fc-content-center">
