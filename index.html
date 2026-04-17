@@ -6124,8 +6124,8 @@ function hinchaApplyProfile() {
   if (al) {
     if (hinchaProfile.club) {
       var _cd = (typeof CLUBES_ARG!=='undefined') ? CLUBES_ARG.find(function(c){return c.n===hinchaProfile.club;}) : null;
-      al.innerHTML = (_cd ? '<img src="'+_cd.e+'" style="width:32px;height:32px;object-fit:contain;display:block;margin:0 auto 6px;">' : '') + 'HINCHA DE ' + hinchaProfile.club.toUpperCase();
-      al.style.display='flex';al.style.flexDirection='column';al.style.alignItems='center';al.style.gap='2px';
+      al.innerHTML = '<span>HINCHA DE ' + hinchaProfile.club.toUpperCase() + '</span>' + (_cd ? '<img src="'+_cd.e+'" style="width:16px;height:16px;object-fit:contain;display:block;flex-shrink:0;">' : '');
+      al.style.display='inline-flex';al.style.flexDirection='row';al.style.alignItems='center';al.style.justifyContent='center';al.style.gap='8px';
     } else al.textContent = '';
   }
   var wa = document.getElementById('hinchaWaLink');

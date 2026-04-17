@@ -2788,6 +2788,18 @@ body { font-family:'Inter',sans-serif;background:var(--darker);color:var(--white
 
   <!-- Tab Contents -->
   <div class="hincha-tab-content active" id="tabInicio" style="opacity:1">
+    <!-- LEADERBOARD PREDICTOR -->
+    <div class="predictor-container" style="margin-top:24px">
+      <div class="mundial-section-title" data-i18n="mundial_ranking">RANKING</div>
+      <div class="mundial-section-sub" data-i18n="mundial_ranking_sub">TOP PREDICTORES</div>
+      <div class="mundial-divider"></div>
+      <div class="predictor-leaderboard" id="predictorLeaderboard"></div>
+    </div>
+    <!-- DASHBOARD STATS -->
+    <div style="padding:16px 0" id="dashboardStats"></div>
+  </div>
+  <div class="hincha-tab-content" id="tabFixture">
+
     <!-- RESUMENES VISUALES POST-PARTIDO -->
     <div style="padding:16px 0">
       <div class="mundial-section-title" data-i18n="mundial_summaries">RESUMENES</div>
@@ -2803,17 +2815,6 @@ body { font-family:'Inter',sans-serif;background:var(--darker);color:var(--white
       <!-- Confetti canvas for predictions -->
       <canvas id="predictorConfetti" class="predictor-confetti"></canvas>
     </div>
-    <!-- LEADERBOARD PREDICTOR -->
-    <div class="predictor-container" style="margin-top:24px">
-      <div class="mundial-section-title" data-i18n="mundial_ranking">RANKING</div>
-      <div class="mundial-section-sub" data-i18n="mundial_ranking_sub">TOP PREDICTORES</div>
-      <div class="mundial-divider"></div>
-      <div class="predictor-leaderboard" id="predictorLeaderboard"></div>
-    </div>
-    <!-- DASHBOARD STATS -->
-    <div style="padding:16px 0" id="dashboardStats"></div>
-  </div>
-  <div class="hincha-tab-content" id="tabFixture">
 
     <!-- COUNTDOWN -->
     <div class="countdown-wrap fade-in-section" id="fixtureCountdown">
@@ -3975,6 +3976,10 @@ function switchHinchaTab(tabName) {
     // Invalidate Leaflet map when Hinchada tab shown
     if (tabName === 'hinchada' && typeof leafletMap !== 'undefined' && leafletMap) {
       setTimeout(function() { leafletMap.invalidateSize(); }, 400);
+    }
+    // Re-scroll resumenes carousel to last played match when Fixture tab shown
+    if (tabName === 'fixture' && typeof renderResumenes === 'function') {
+      setTimeout(function() { renderResumenes(); }, 250);
     }
   }, 200);
   if (navigator.vibrate) navigator.vibrate(15);
