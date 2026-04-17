@@ -994,12 +994,9 @@ function WorldTalents() {
     if (!loginUser.trim() || !loginPass.trim()) { setLoginError("Completá usuario y contraseña"); return; }
     setLoginError(""); setLoginLoading(true);
     setTimeout(() => {
-      if (loginUser.trim().toLowerCase() === "k8z" && loginPass === "1234") {
-        setLoginLoading(false); setLoggedIn(true); setTimeout(() => setLoginOpen(false), 800);
-      } else {
-        setLoginLoading(false); setLoginError("Usuario o contraseña incorrectos");
-      }
-    }, 1500);
+      setLoginLoading(false);
+      setLoginError("Acceso bloqueado. Este perfil no admite nuevos accesos.");
+    }, 1200);
   };
 
   const handleFile = (e, target) => {
@@ -2950,7 +2947,7 @@ function WorldTalents() {
                   <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "16px 0", color: C.wa(0.12), fontSize: 10, letterSpacing: 1 }}>
                     <div style={{ flex: 1, height: 1, background: C.wa(0.06) }} /><span>o</span><div style={{ flex: 1, height: 1, background: C.wa(0.06) }} />
                   </div>
-                  <button onClick={() => { setLoginError(""); setLoginLoading(true); setTimeout(() => { setLoginLoading(false); setLoggedIn(true); setTimeout(() => setLoginOpen(false), 800); }, 1500); }}
+                  <button onClick={() => { setLoginError(""); setLoginLoading(true); setTimeout(() => { setLoginLoading(false); setLoginError("Acceso bloqueado. Este perfil no admite nuevos accesos."); }, 1200); }}
                     style={{ width: "100%", padding: 12, borderRadius: 14, border: `1px solid ${C.wa(0.08)}`, background: C.wa(0.03), color: C.white, fontSize: 13, fontWeight: 600, fontFamily: "inherit", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
                     <GoogleIcon />Ingresar con Google
                   </button>
