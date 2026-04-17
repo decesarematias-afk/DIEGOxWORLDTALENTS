@@ -4400,8 +4400,8 @@ select.login-input option{background:#0A0A0F;color:#fff}
     </div>
 
     <div class="testimonios-filters">
-        <button class="test-filter active" data-filter="all">Todos</button>
-        <button class="test-filter" data-filter="sel86">Selección 86</button>
+        <button class="test-filter" data-filter="all">Todos</button>
+        <button class="test-filter active" data-filter="sel86">Selección 86</button>
         <button class="test-filter" data-filter="sel90">Selección 90</button>
         <button class="test-filter" data-filter="napoli">Napoli</button>
         <button class="test-filter" data-filter="rivales">Rivales</button>
@@ -5473,6 +5473,17 @@ document.querySelectorAll('.test-filter').forEach(btn => {
         });
     });
 });
+// Apply the default active filter on load (Seleccion 86)
+(function(){
+    const defaultFilter = document.querySelector('.test-filter.active');
+    if (defaultFilter) {
+        const filter = defaultFilter.dataset.filter;
+        document.querySelectorAll('.test-card').forEach(card => {
+            if (filter === 'all' || card.dataset.cat === filter) card.classList.remove('hidden');
+            else card.classList.add('hidden');
+        });
+    }
+})();
 
 // Testimonio expand
 document.querySelectorAll('.test-card').forEach(card => {
